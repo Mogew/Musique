@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		C822CAB52A36203200CAA5E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CAB42A36203200CAA5E0 /* AppDelegate.swift */; };
 		C822CAB72A36203200CAA5E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CAB62A36203200CAA5E0 /* SceneDelegate.swift */; };
-		C822CAB92A36203200CAA5E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CAB82A36203200CAA5E0 /* ViewController.swift */; };
-		C822CABC2A36203200CAA5E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C822CABA2A36203200CAA5E0 /* Main.storyboard */; };
+		C822CAB92A36203200CAA5E0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CAB82A36203200CAA5E0 /* MainViewController.swift */; };
 		C822CABE2A36203400CAA5E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C822CABD2A36203400CAA5E0 /* Assets.xcassets */; };
 		C822CAC12A36203400CAA5E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C822CABF2A36203400CAA5E0 /* LaunchScreen.storyboard */; };
 		C822CACC2A36203500CAA5E0 /* MusiqueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CACB2A36203500CAA5E0 /* MusiqueTests.swift */; };
 		C822CAD62A36203500CAA5E0 /* MusiqueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CAD52A36203500CAA5E0 /* MusiqueUITests.swift */; };
 		C822CAD82A36203500CAA5E0 /* MusiqueUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CAD72A36203500CAA5E0 /* MusiqueUITestsLaunchTests.swift */; };
+		C822CAEB2A362CD200CAA5E0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C822CAEA2A362CD200CAA5E0 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +39,7 @@
 		C822CAB12A36203200CAA5E0 /* Musique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Musique.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C822CAB42A36203200CAA5E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C822CAB62A36203200CAA5E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C822CAB82A36203200CAA5E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C822CABB2A36203200CAA5E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C822CAB82A36203200CAA5E0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C822CABD2A36203400CAA5E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C822CAC02A36203400CAA5E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C822CAC22A36203400CAA5E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C822CAEB2A362CD200CAA5E0 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,13 +99,10 @@
 		C822CAB32A36203200CAA5E0 /* Musique */ = {
 			isa = PBXGroup;
 			children = (
-				C822CAB42A36203200CAA5E0 /* AppDelegate.swift */,
-				C822CAB62A36203200CAA5E0 /* SceneDelegate.swift */,
-				C822CAB82A36203200CAA5E0 /* ViewController.swift */,
-				C822CABA2A36203200CAA5E0 /* Main.storyboard */,
-				C822CABD2A36203400CAA5E0 /* Assets.xcassets */,
-				C822CABF2A36203400CAA5E0 /* LaunchScreen.storyboard */,
-				C822CAC22A36203400CAA5E0 /* Info.plist */,
+				C822CAE42A36204100CAA5E0 /* Application */,
+				C822CAE52A36205400CAA5E0 /* Modules */,
+				C822CAE62A36207300CAA5E0 /* Resourses */,
+				C822CAE72A36208300CAA5E0 /* Plist */,
 			);
 			path = Musique;
 			sourceTree = "<group>";
@@ -127,6 +124,48 @@
 			path = MusiqueUITests;
 			sourceTree = "<group>";
 		};
+		C822CAE42A36204100CAA5E0 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C822CAB42A36203200CAA5E0 /* AppDelegate.swift */,
+				C822CAB62A36203200CAA5E0 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C822CAE52A36205400CAA5E0 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C822CAE82A362A4900CAA5E0 /* Main */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		C822CAE62A36207300CAA5E0 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				C822CABD2A36203400CAA5E0 /* Assets.xcassets */,
+				C822CABF2A36203400CAA5E0 /* LaunchScreen.storyboard */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		C822CAE72A36208300CAA5E0 /* Plist */ = {
+			isa = PBXGroup;
+			children = (
+				C822CAC22A36203400CAA5E0 /* Info.plist */,
+			);
+			name = Plist;
+			sourceTree = "<group>";
+		};
+		C822CAE82A362A4900CAA5E0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C822CAB82A36203200CAA5E0 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +182,9 @@
 			dependencies = (
 			);
 			name = Musique;
+			packageProductDependencies = (
+				C822CAEA2A362CD200CAA5E0 /* Kingfisher */,
+			);
 			productName = Musique;
 			productReference = C822CAB12A36203200CAA5E0 /* Musique.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +257,9 @@
 				Base,
 			);
 			mainGroup = C822CAA82A36203200CAA5E0;
+			packageReferences = (
+				C822CAE92A362CD200CAA5E0 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = C822CAB22A36203200CAA5E0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,7 +278,6 @@
 			files = (
 				C822CAC12A36203400CAA5E0 /* LaunchScreen.storyboard in Resources */,
 				C822CABE2A36203400CAA5E0 /* Assets.xcassets in Resources */,
-				C822CABC2A36203200CAA5E0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C822CAB92A36203200CAA5E0 /* ViewController.swift in Sources */,
+				C822CAB92A36203200CAA5E0 /* MainViewController.swift in Sources */,
 				C822CAB52A36203200CAA5E0 /* AppDelegate.swift in Sources */,
 				C822CAB72A36203200CAA5E0 /* SceneDelegate.swift in Sources */,
 			);
@@ -297,14 +341,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C822CABA2A36203200CAA5E0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C822CABB2A36203200CAA5E0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C822CABF2A36203400CAA5E0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -440,11 +476,13 @@
 				DEVELOPMENT_TEAM = 3YU35F66VY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Musique/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Musique;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -468,11 +506,13 @@
 				DEVELOPMENT_TEAM = 3YU35F66VY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Musique/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Musique;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -602,6 +642,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C822CAE92A362CD200CAA5E0 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C822CAEA2A362CD200CAA5E0 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C822CAE92A362CD200CAA5E0 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C822CAA92A36203200CAA5E0 /* Project object */;
 }
