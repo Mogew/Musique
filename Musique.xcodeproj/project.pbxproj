@@ -20,6 +20,8 @@
 		C86BD8BA2A3630E700FBD6FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8B92A3630E700FBD6FA /* GoogleService-Info.plist */; };
 		C86BD8BD2A36334B00FBD6FA /* Fonts+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8BC2A36334B00FBD6FA /* Fonts+Extension.swift */; };
 		C86BD8BF2A36336F00FBD6FA /* Colors+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8BE2A36336E00FBD6FA /* Colors+Extension.swift */; };
+		C86BD8C22A36353400FBD6FA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C86BD8C12A36353400FBD6FA /* Realm */; };
+		C86BD8C42A36353400FBD6FA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C86BD8C32A36353400FBD6FA /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C86BD8C42A36353400FBD6FA /* RealmSwift in Frameworks */,
+				C86BD8C22A36353400FBD6FA /* Realm in Frameworks */,
 				C822CAEB2A362CD200CAA5E0 /* Kingfisher in Frameworks */,
 				C86BD8B82A362EFD00FBD6FA /* FirebaseAuth in Frameworks */,
 			);
@@ -204,6 +208,8 @@
 			packageProductDependencies = (
 				C822CAEA2A362CD200CAA5E0 /* Kingfisher */,
 				C86BD8B72A362EFD00FBD6FA /* FirebaseAuth */,
+				C86BD8C12A36353400FBD6FA /* Realm */,
+				C86BD8C32A36353400FBD6FA /* RealmSwift */,
 			);
 			productName = Musique;
 			productReference = C822CAB12A36203200CAA5E0 /* Musique.app */;
@@ -280,6 +286,7 @@
 			packageReferences = (
 				C822CAE92A362CD200CAA5E0 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				C86BD8B62A362EFD00FBD6FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C86BD8C02A36353400FBD6FA /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = C822CAB22A36203200CAA5E0 /* Products */;
 			projectDirPath = "";
@@ -684,6 +691,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		C86BD8C02A36353400FBD6FA /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.40.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -696,6 +711,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C86BD8B62A362EFD00FBD6FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		C86BD8C12A36353400FBD6FA /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C86BD8C02A36353400FBD6FA /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		C86BD8C32A36353400FBD6FA /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C86BD8C02A36353400FBD6FA /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
