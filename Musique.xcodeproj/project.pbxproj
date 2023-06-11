@@ -17,6 +17,9 @@
 		C822CAD82A36203500CAA5E0 /* MusiqueUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CAD72A36203500CAA5E0 /* MusiqueUITestsLaunchTests.swift */; };
 		C822CAEB2A362CD200CAA5E0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C822CAEA2A362CD200CAA5E0 /* Kingfisher */; };
 		C86BD8B82A362EFD00FBD6FA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C86BD8B72A362EFD00FBD6FA /* FirebaseAuth */; };
+		C86BD8BA2A3630E700FBD6FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8B92A3630E700FBD6FA /* GoogleService-Info.plist */; };
+		C86BD8BD2A36334B00FBD6FA /* Fonts+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8BC2A36334B00FBD6FA /* Fonts+Extension.swift */; };
+		C86BD8BF2A36336F00FBD6FA /* Colors+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8BE2A36336E00FBD6FA /* Colors+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		C822CAD12A36203500CAA5E0 /* MusiqueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusiqueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C822CAD52A36203500CAA5E0 /* MusiqueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusiqueUITests.swift; sourceTree = "<group>"; };
 		C822CAD72A36203500CAA5E0 /* MusiqueUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusiqueUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C86BD8B92A3630E700FBD6FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C86BD8BC2A36334B00FBD6FA /* Fonts+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Extension.swift"; sourceTree = "<group>"; };
+		C86BD8BE2A36336E00FBD6FA /* Colors+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +152,7 @@
 		C822CAE62A36207300CAA5E0 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				C86BD8BB2A36330800FBD6FA /* Extensions */,
 				C822CABD2A36203400CAA5E0 /* Assets.xcassets */,
 				C822CABF2A36203400CAA5E0 /* LaunchScreen.storyboard */,
 			);
@@ -155,6 +162,7 @@
 		C822CAE72A36208300CAA5E0 /* Plist */ = {
 			isa = PBXGroup;
 			children = (
+				C86BD8B92A3630E700FBD6FA /* GoogleService-Info.plist */,
 				C822CAC22A36203400CAA5E0 /* Info.plist */,
 			);
 			name = Plist;
@@ -166,6 +174,15 @@
 				C822CAB82A36203200CAA5E0 /* MainViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		C86BD8BB2A36330800FBD6FA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C86BD8BC2A36334B00FBD6FA /* Fonts+Extension.swift */,
+				C86BD8BE2A36336E00FBD6FA /* Colors+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +299,7 @@
 			files = (
 				C822CAC12A36203400CAA5E0 /* LaunchScreen.storyboard in Resources */,
 				C822CABE2A36203400CAA5E0 /* Assets.xcassets in Resources */,
+				C86BD8BA2A3630E700FBD6FA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +326,8 @@
 			files = (
 				C822CAB92A36203200CAA5E0 /* MainViewController.swift in Sources */,
 				C822CAB52A36203200CAA5E0 /* AppDelegate.swift in Sources */,
+				C86BD8BF2A36336F00FBD6FA /* Colors+Extension.swift in Sources */,
+				C86BD8BD2A36334B00FBD6FA /* Fonts+Extension.swift in Sources */,
 				C822CAB72A36203200CAA5E0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,8 +504,8 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -514,8 +534,8 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
