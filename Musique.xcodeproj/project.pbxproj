@@ -16,6 +16,7 @@
 		C822CAD62A36203500CAA5E0 /* MusiqueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CAD52A36203500CAA5E0 /* MusiqueUITests.swift */; };
 		C822CAD82A36203500CAA5E0 /* MusiqueUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CAD72A36203500CAA5E0 /* MusiqueUITestsLaunchTests.swift */; };
 		C822CAEB2A362CD200CAA5E0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C822CAEA2A362CD200CAA5E0 /* Kingfisher */; };
+		C86BD8B82A362EFD00FBD6FA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C86BD8B72A362EFD00FBD6FA /* FirebaseAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C822CAEB2A362CD200CAA5E0 /* Kingfisher in Frameworks */,
+				C86BD8B82A362EFD00FBD6FA /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +186,7 @@
 			name = Musique;
 			packageProductDependencies = (
 				C822CAEA2A362CD200CAA5E0 /* Kingfisher */,
+				C86BD8B72A362EFD00FBD6FA /* FirebaseAuth */,
 			);
 			productName = Musique;
 			productReference = C822CAB12A36203200CAA5E0 /* Musique.app */;
@@ -259,6 +262,7 @@
 			mainGroup = C822CAA82A36203200CAA5E0;
 			packageReferences = (
 				C822CAE92A362CD200CAA5E0 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				C86BD8B62A362EFD00FBD6FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = C822CAB22A36203200CAA5E0 /* Products */;
 			projectDirPath = "";
@@ -652,6 +656,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		C86BD8B62A362EFD00FBD6FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -659,6 +671,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C822CAE92A362CD200CAA5E0 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		C86BD8B72A362EFD00FBD6FA /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C86BD8B62A362EFD00FBD6FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
