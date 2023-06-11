@@ -18,10 +18,16 @@
 		C822CAEB2A362CD200CAA5E0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C822CAEA2A362CD200CAA5E0 /* Kingfisher */; };
 		C86BD8B82A362EFD00FBD6FA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C86BD8B72A362EFD00FBD6FA /* FirebaseAuth */; };
 		C86BD8BA2A3630E700FBD6FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8B92A3630E700FBD6FA /* GoogleService-Info.plist */; };
-		C86BD8BD2A36334B00FBD6FA /* Fonts+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8BC2A36334B00FBD6FA /* Fonts+Extension.swift */; };
-		C86BD8BF2A36336F00FBD6FA /* Colors+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8BE2A36336E00FBD6FA /* Colors+Extension.swift */; };
+		C86BD8BD2A36334B00FBD6FA /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8BC2A36334B00FBD6FA /* UIFont+Extension.swift */; };
+		C86BD8BF2A36336F00FBD6FA /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8BE2A36336E00FBD6FA /* UIColor+Extension.swift */; };
 		C86BD8C22A36353400FBD6FA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C86BD8C12A36353400FBD6FA /* Realm */; };
 		C86BD8C42A36353400FBD6FA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C86BD8C32A36353400FBD6FA /* RealmSwift */; };
+		C86BD8CC2A366A8900FBD6FA /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C92A36635D00FBD6FA /* Montserrat-Medium.ttf */; };
+		C86BD8CD2A366A8D00FBD6FA /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8CA2A36636A00FBD6FA /* Montserrat-Regular.ttf */; };
+		C86BD8CE2A366A9000FBD6FA /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8CB2A36637400FBD6FA /* Montserrat-SemiBold.ttf */; };
+		C86BD8CF2A366A9300FBD6FA /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C62A36623A00FBD6FA /* Roboto-Bold.ttf */; };
+		C86BD8D02A366A9600FBD6FA /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C72A36624900FBD6FA /* Roboto-Medium.ttf */; };
+		C86BD8D12A366A9900FBD6FA /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C82A36625500FBD6FA /* Roboto-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +61,14 @@
 		C822CAD52A36203500CAA5E0 /* MusiqueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusiqueUITests.swift; sourceTree = "<group>"; };
 		C822CAD72A36203500CAA5E0 /* MusiqueUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusiqueUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C86BD8B92A3630E700FBD6FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C86BD8BC2A36334B00FBD6FA /* Fonts+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Extension.swift"; sourceTree = "<group>"; };
-		C86BD8BE2A36336E00FBD6FA /* Colors+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Extension.swift"; sourceTree = "<group>"; };
+		C86BD8BC2A36334B00FBD6FA /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		C86BD8BE2A36336E00FBD6FA /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		C86BD8C62A36623A00FBD6FA /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		C86BD8C72A36624900FBD6FA /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		C86BD8C82A36625500FBD6FA /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		C86BD8C92A36635D00FBD6FA /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		C86BD8CA2A36636A00FBD6FA /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		C86BD8CB2A36637400FBD6FA /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +168,7 @@
 		C822CAE62A36207300CAA5E0 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				C86BD8C52A36622500FBD6FA /* Fonts */,
 				C86BD8BB2A36330800FBD6FA /* Extensions */,
 				C822CABD2A36203400CAA5E0 /* Assets.xcassets */,
 				C822CABF2A36203400CAA5E0 /* LaunchScreen.storyboard */,
@@ -183,10 +196,23 @@
 		C86BD8BB2A36330800FBD6FA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C86BD8BC2A36334B00FBD6FA /* Fonts+Extension.swift */,
-				C86BD8BE2A36336E00FBD6FA /* Colors+Extension.swift */,
+				C86BD8BC2A36334B00FBD6FA /* UIFont+Extension.swift */,
+				C86BD8BE2A36336E00FBD6FA /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C86BD8C52A36622500FBD6FA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C86BD8C92A36635D00FBD6FA /* Montserrat-Medium.ttf */,
+				C86BD8CA2A36636A00FBD6FA /* Montserrat-Regular.ttf */,
+				C86BD8CB2A36637400FBD6FA /* Montserrat-SemiBold.ttf */,
+				C86BD8C62A36623A00FBD6FA /* Roboto-Bold.ttf */,
+				C86BD8C72A36624900FBD6FA /* Roboto-Medium.ttf */,
+				C86BD8C82A36625500FBD6FA /* Roboto-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,8 +330,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C86BD8D02A366A9600FBD6FA /* Roboto-Medium.ttf in Resources */,
+				C86BD8CF2A366A9300FBD6FA /* Roboto-Bold.ttf in Resources */,
+				C86BD8CE2A366A9000FBD6FA /* Montserrat-SemiBold.ttf in Resources */,
 				C822CAC12A36203400CAA5E0 /* LaunchScreen.storyboard in Resources */,
 				C822CABE2A36203400CAA5E0 /* Assets.xcassets in Resources */,
+				C86BD8CC2A366A8900FBD6FA /* Montserrat-Medium.ttf in Resources */,
+				C86BD8D12A366A9900FBD6FA /* Roboto-Regular.ttf in Resources */,
+				C86BD8CD2A366A8D00FBD6FA /* Montserrat-Regular.ttf in Resources */,
 				C86BD8BA2A3630E700FBD6FA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,8 +365,8 @@
 			files = (
 				C822CAB92A36203200CAA5E0 /* MainViewController.swift in Sources */,
 				C822CAB52A36203200CAA5E0 /* AppDelegate.swift in Sources */,
-				C86BD8BF2A36336F00FBD6FA /* Colors+Extension.swift in Sources */,
-				C86BD8BD2A36334B00FBD6FA /* Fonts+Extension.swift in Sources */,
+				C86BD8BF2A36336F00FBD6FA /* UIColor+Extension.swift in Sources */,
+				C86BD8BD2A36334B00FBD6FA /* UIFont+Extension.swift in Sources */,
 				C822CAB72A36203200CAA5E0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
