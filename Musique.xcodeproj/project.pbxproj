@@ -28,6 +28,7 @@
 		C86BD8CF2A366A9300FBD6FA /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C62A36623A00FBD6FA /* Roboto-Bold.ttf */; };
 		C86BD8D02A366A9600FBD6FA /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C72A36624900FBD6FA /* Roboto-Medium.ttf */; };
 		C86BD8D12A366A9900FBD6FA /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C82A36625500FBD6FA /* Roboto-Regular.ttf */; };
+		C86BD8D32A37189100FBD6FA /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8D22A37189100FBD6FA /* Builder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		C86BD8C92A36635D00FBD6FA /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		C86BD8CA2A36636A00FBD6FA /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		C86BD8CB2A36637400FBD6FA /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		C86BD8D22A37189100FBD6FA /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			children = (
 				C822CAB42A36203200CAA5E0 /* AppDelegate.swift */,
 				C822CAB62A36203200CAA5E0 /* SceneDelegate.swift */,
+				C86BD8D22A37189100FBD6FA /* Builder.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				C86BD8BF2A36336F00FBD6FA /* UIColor+Extension.swift in Sources */,
 				C86BD8BD2A36334B00FBD6FA /* UIFont+Extension.swift in Sources */,
 				C822CAB72A36203200CAA5E0 /* SceneDelegate.swift in Sources */,
+				C86BD8D32A37189100FBD6FA /* Builder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
