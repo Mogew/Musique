@@ -29,6 +29,9 @@
 		C86BD8D02A366A9600FBD6FA /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C72A36624900FBD6FA /* Roboto-Medium.ttf */; };
 		C86BD8D12A366A9900FBD6FA /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C82A36625500FBD6FA /* Roboto-Regular.ttf */; };
 		C86BD8D32A37189100FBD6FA /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8D22A37189100FBD6FA /* Builder.swift */; };
+		C86BD8D62A3735B200FBD6FA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8D52A3735B200FBD6FA /* NetworkService.swift */; };
+		C86BD8D82A37360100FBD6FA /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8D72A37360100FBD6FA /* DataRequest.swift */; };
+		C86BD8DA2A377B3C00FBD6FA /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8D92A377B3C00FBD6FA /* ErrorResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +74,9 @@
 		C86BD8CA2A36636A00FBD6FA /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		C86BD8CB2A36637400FBD6FA /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		C86BD8D22A37189100FBD6FA /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
+		C86BD8D52A3735B200FBD6FA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		C86BD8D72A37360100FBD6FA /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
+		C86BD8D92A377B3C00FBD6FA /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,7 @@
 		C822CAB32A36203200CAA5E0 /* Musique */ = {
 			isa = PBXGroup;
 			children = (
+				C86BD8D42A37207500FBD6FA /* Network */,
 				C822CAE42A36204100CAA5E0 /* Application */,
 				C822CAE52A36205400CAA5E0 /* Modules */,
 				C822CAE62A36207300CAA5E0 /* Resourses */,
@@ -216,6 +223,16 @@
 				C86BD8C82A36625500FBD6FA /* Roboto-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C86BD8D42A37207500FBD6FA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C86BD8D52A3735B200FBD6FA /* NetworkService.swift */,
+				C86BD8D72A37360100FBD6FA /* DataRequest.swift */,
+				C86BD8D92A377B3C00FBD6FA /* ErrorResponse.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +389,9 @@
 				C86BD8BD2A36334B00FBD6FA /* UIFont+Extension.swift in Sources */,
 				C822CAB72A36203200CAA5E0 /* SceneDelegate.swift in Sources */,
 				C86BD8D32A37189100FBD6FA /* Builder.swift in Sources */,
+				C86BD8DA2A377B3C00FBD6FA /* ErrorResponse.swift in Sources */,
+				C86BD8D62A3735B200FBD6FA /* NetworkService.swift in Sources */,
+				C86BD8D82A37360100FBD6FA /* DataRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
