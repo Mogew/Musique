@@ -21,10 +21,8 @@ class SearchViewController: UIViewController {
         return searchbar
     }()
     
-   //MARK: - Categorys collectionView config
     private var categoryCollectionView = SearchCategoryCollectionView()
 
-    
     private func addViewLayout() {
         view.addSubview(searchBar)
         view.addSubview(categoryCollectionView)
@@ -41,7 +39,6 @@ class SearchViewController: UIViewController {
         ])
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .mBlack
@@ -49,7 +46,6 @@ class SearchViewController: UIViewController {
         addViewLayout()
         categoryCollectionView.set(cells: SearchCategoryModel.makeMockModel())
     }
-    
 }
 
 //MARK: - Searcbar config
