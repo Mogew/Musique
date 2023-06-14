@@ -42,6 +42,10 @@
 		C86BD8D02A366A9600FBD6FA /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C72A36624900FBD6FA /* Roboto-Medium.ttf */; };
 		C86BD8D12A366A9900FBD6FA /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C82A36625500FBD6FA /* Roboto-Regular.ttf */; };
 		C86BD8D32A37189100FBD6FA /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8D22A37189100FBD6FA /* Builder.swift */; };
+		C8D6E0572A3A4B18000FACC9 /* UserSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0512A3A4B18000FACC9 /* UserSignUpController.swift */; };
+		C8D6E0582A3A4B18000FACC9 /* TextFieldBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0532A3A4B18000FACC9 /* TextFieldBuilder.swift */; };
+		C8D6E0592A3A4B18000FACC9 /* ButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0542A3A4B18000FACC9 /* ButtonBuilder.swift */; };
+		C8D6E05A2A3A4B18000FACC9 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0562A3A4B18000FACC9 /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +101,10 @@
 		C86BD8CA2A36636A00FBD6FA /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		C86BD8CB2A36637400FBD6FA /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		C86BD8D22A37189100FBD6FA /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
+		C8D6E0512A3A4B18000FACC9 /* UserSignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignUpController.swift; sourceTree = "<group>"; };
+		C8D6E0532A3A4B18000FACC9 /* TextFieldBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldBuilder.swift; sourceTree = "<group>"; };
+		C8D6E0542A3A4B18000FACC9 /* ButtonBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBuilder.swift; sourceTree = "<group>"; };
+		C8D6E0562A3A4B18000FACC9 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +256,7 @@
 		C822CAE52A36205400CAA5E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C8D6E04F2A3A4B18000FACC9 /* Authentication */,
 				94F6750B2A39FE8E0007576D /* Search */,
 				94EA02812A3784DE00959697 /* Home */,
 				C822CAE82A362A4900CAA5E0 /* Main */,
@@ -303,6 +312,41 @@
 				C86BD8C82A36625500FBD6FA /* Roboto-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C8D6E04F2A3A4B18000FACC9 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				C8D6E0502A3A4B18000FACC9 /* Register */,
+				C8D6E0522A3A4B18000FACC9 /* View */,
+				C8D6E0552A3A4B18000FACC9 /* Account */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		C8D6E0502A3A4B18000FACC9 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				C8D6E0512A3A4B18000FACC9 /* UserSignUpController.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		C8D6E0522A3A4B18000FACC9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C8D6E0532A3A4B18000FACC9 /* TextFieldBuilder.swift */,
+				C8D6E0542A3A4B18000FACC9 /* ButtonBuilder.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C8D6E0552A3A4B18000FACC9 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				C8D6E0562A3A4B18000FACC9 /* AccountViewController.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C822CAB92A36203200CAA5E0 /* MainViewController.swift in Sources */,
+				C8D6E0582A3A4B18000FACC9 /* TextFieldBuilder.swift in Sources */,
 				C822CAB52A36203200CAA5E0 /* AppDelegate.swift in Sources */,
 				C86BD8BF2A36336F00FBD6FA /* UIColor+Extension.swift in Sources */,
 				94F675172A39FF480007576D /* SearchCategoryModel.swift in Sources */,
@@ -463,9 +508,12 @@
 				94F6750D2A39FEB30007576D /* DataRequest.swift in Sources */,
 				C86BD8BD2A36334B00FBD6FA /* UIFont+Extension.swift in Sources */,
 				94EA028E2A386FF600959697 /* SongModel.swift in Sources */,
+				C8D6E0592A3A4B18000FACC9 /* ButtonBuilder.swift in Sources */,
+				C8D6E0572A3A4B18000FACC9 /* UserSignUpController.swift in Sources */,
 				94F675152A39FF3B0007576D /* SearchCategoryCollectionView.swift in Sources */,
 				94EA02852A383C8D00959697 /* SectionHeader.swift in Sources */,
 				C822CAB72A36203200CAA5E0 /* SceneDelegate.swift in Sources */,
+				C8D6E05A2A3A4B18000FACC9 /* AccountViewController.swift in Sources */,
 				94F675112A39FECF0007576D /* NetworkService.swift in Sources */,
 				94EA02802A3784D300959697 /* HomeViewController.swift in Sources */,
 				94F675132A39FF290007576D /* SearchCategoryCollectionViewCell.swift in Sources */,
