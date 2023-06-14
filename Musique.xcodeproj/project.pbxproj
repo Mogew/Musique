@@ -46,6 +46,8 @@
 		C8D6E0582A3A4B18000FACC9 /* TextFieldBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0532A3A4B18000FACC9 /* TextFieldBuilder.swift */; };
 		C8D6E0592A3A4B18000FACC9 /* ButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0542A3A4B18000FACC9 /* ButtonBuilder.swift */; };
 		C8D6E05A2A3A4B18000FACC9 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0562A3A4B18000FACC9 /* AccountViewController.swift */; };
+		C8D6E05E2A3A4C25000FACC9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E05C2A3A4C25000FACC9 /* Constants.swift */; };
+		C8D6E05F2A3A4C25000FACC9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E05D2A3A4C25000FACC9 /* OnboardingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		C8D6E0532A3A4B18000FACC9 /* TextFieldBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldBuilder.swift; sourceTree = "<group>"; };
 		C8D6E0542A3A4B18000FACC9 /* ButtonBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBuilder.swift; sourceTree = "<group>"; };
 		C8D6E0562A3A4B18000FACC9 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		C8D6E05C2A3A4C25000FACC9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C8D6E05D2A3A4C25000FACC9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +260,7 @@
 		C822CAE52A36205400CAA5E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C8D6E05B2A3A4C25000FACC9 /* Onboarding */,
 				C8D6E04F2A3A4B18000FACC9 /* Authentication */,
 				94F6750B2A39FE8E0007576D /* Search */,
 				94EA02812A3784DE00959697 /* Home */,
@@ -347,6 +352,15 @@
 				C8D6E0562A3A4B18000FACC9 /* AccountViewController.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		C8D6E05B2A3A4C25000FACC9 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C8D6E05C2A3A4C25000FACC9 /* Constants.swift */,
+				C8D6E05D2A3A4C25000FACC9 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,6 +523,7 @@
 				C86BD8BD2A36334B00FBD6FA /* UIFont+Extension.swift in Sources */,
 				94EA028E2A386FF600959697 /* SongModel.swift in Sources */,
 				C8D6E0592A3A4B18000FACC9 /* ButtonBuilder.swift in Sources */,
+				C8D6E05F2A3A4C25000FACC9 /* OnboardingViewController.swift in Sources */,
 				C8D6E0572A3A4B18000FACC9 /* UserSignUpController.swift in Sources */,
 				94F675152A39FF3B0007576D /* SearchCategoryCollectionView.swift in Sources */,
 				94EA02852A383C8D00959697 /* SectionHeader.swift in Sources */,
@@ -520,6 +535,7 @@
 				C86BD8D32A37189100FBD6FA /* Builder.swift in Sources */,
 				94EA02892A38416D00959697 /* PopularAlbumCell.swift in Sources */,
 				94F6750F2A39FEC10007576D /* ErrorResponse.swift in Sources */,
+				C8D6E05E2A3A4C25000FACC9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
