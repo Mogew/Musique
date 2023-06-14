@@ -9,6 +9,9 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    private let categoryCollectionView = SearchCategoryCollectionView()
+    private let categoryTableView = SearchCategoryTableView()
+    
     //MARK: - Searcbar config
     private lazy var searchBar: UISearchBar = {
         let searchbar = UISearchBar()
@@ -20,11 +23,9 @@ class SearchViewController: UIViewController {
         return searchbar
     }()
     
-    private let categoryCollectionView = SearchCategoryCollectionView()
-    
     private func addViewLayout() {
         
-        [searchBar, categoryCollectionView].forEach {
+        [searchBar, categoryCollectionView, categoryTableView].forEach {
             view.addSubview($0)
         }
         
@@ -36,7 +37,12 @@ class SearchViewController: UIViewController {
             categoryCollectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 40),
             categoryCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             categoryCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            categoryCollectionView.heightAnchor.constraint(equalToConstant: 40)
+            categoryCollectionView.heightAnchor.constraint(equalToConstant: 40),
+            
+            categoryTableView.topAnchor.constraint(equalTo: categoryCollectionView.bottomAnchor, constant: 20),
+            categoryTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            categoryTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            categoryTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
     
@@ -46,6 +52,7 @@ class SearchViewController: UIViewController {
         
         addViewLayout()
         categoryCollectionView.set(cells: SearchCategoryModel.makeMockModel())
+        categoryTableView.setTableView(cells: SearchCategoryModel.makeMockModel())
     }
 }
 
