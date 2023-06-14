@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		851B8C802A373C9700491863 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851B8C7F2A373C9700491863 /* SearchViewController.swift */; };
+		851B8C822A3765D400491863 /* SearcCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851B8C812A3765D400491863 /* SearcCategoryCollectionViewCell.swift */; };
+		851B8C862A38A42700491863 /* SearchCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851B8C852A38A42700491863 /* SearchCategoryModel.swift */; };
+		85804CFA2A38FBF100E64713 /* SearchCategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851B8C832A38928C00491863 /* SearchCategoryCollectionView.swift */; };
+		85804CFC2A3A045600E64713 /* SearchCategoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85804CFB2A3A045600E64713 /* SearchCategoryTableView.swift */; };
+		85804CFE2A3A05C400E64713 /* SearchCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85804CFD2A3A05C400E64713 /* SearchCategoryTableViewCell.swift */; };
 		94EA02802A3784D300959697 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA027F2A3784D300959697 /* HomeViewController.swift */; };
 		94EA02852A383C8D00959697 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA02842A383C8D00959697 /* SectionHeader.swift */; };
 		94EA02872A38415900959697 /* NewSongsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA02862A38415900959697 /* NewSongsCell.swift */; };
@@ -65,6 +71,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		851B8C7F2A373C9700491863 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		851B8C812A3765D400491863 /* SearcCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		851B8C832A38928C00491863 /* SearchCategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryCollectionView.swift; sourceTree = "<group>"; };
+		851B8C852A38A42700491863 /* SearchCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryModel.swift; sourceTree = "<group>"; };
+		85804CFB2A3A045600E64713 /* SearchCategoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryTableView.swift; sourceTree = "<group>"; };
+		85804CFD2A3A05C400E64713 /* SearchCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		94EA027F2A3784D300959697 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		94EA02842A383C8D00959697 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		94EA02862A38415900959697 /* NewSongsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSongsCell.swift; sourceTree = "<group>"; };
@@ -489,6 +501,10 @@
 				C8D6E0582A3A4B18000FACC9 /* TextFieldBuilder.swift in Sources */,
 				C822CAB52A36203200CAA5E0 /* AppDelegate.swift in Sources */,
 				C86BD8BF2A36336F00FBD6FA /* UIColor+Extension.swift in Sources */,
+				851B8C862A38A42700491863 /* SearchCategoryModel.swift in Sources */,
+				851B8C802A373C9700491863 /* SearchViewController.swift in Sources */,
+				851B8C822A3765D400491863 /* SearcCategoryCollectionViewCell.swift in Sources */,
+				85804CFA2A38FBF100E64713 /* SearchCategoryCollectionView.swift in Sources */,
 				C8D6E0612A3A5288000FACC9 /* UserSignUpPresenter.swift in Sources */,
 				94EA028B2A38418100959697 /* RecentlyMusicCell.swift in Sources */,
 				94EA02872A38415900959697 /* NewSongsCell.swift in Sources */,
@@ -505,6 +521,11 @@
 				94F675112A39FECF0007576D /* NetworkService.swift in Sources */,
 				94EA02802A3784D300959697 /* HomeViewController.swift in Sources */,
 				C86BD8D32A37189100FBD6FA /* Builder.swift in Sources */,
+				C86BD8DA2A377B3C00FBD6FA /* ErrorResponse.swift in Sources */,
+				C86BD8D62A3735B200FBD6FA /* NetworkService.swift in Sources */,
+				C86BD8D82A37360100FBD6FA /* DataRequest.swift in Sources */,
+				85804CFC2A3A045600E64713 /* SearchCategoryTableView.swift in Sources */,
+				85804CFE2A3A05C400E64713 /* SearchCategoryTableViewCell.swift in Sources */,
 				94EA02892A38416D00959697 /* PopularAlbumCell.swift in Sources */,
 				94F6750F2A39FEC10007576D /* ErrorResponse.swift in Sources */,
 				C8D6E05E2A3A4C25000FACC9 /* Constants.swift in Sources */,
