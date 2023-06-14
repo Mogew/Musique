@@ -1,63 +1,66 @@
-//
-//  SearchViewController.swift
-//  Musique
-//
-//  Created by Marat Guseynov on 12.06.2023.
-//
+import Foundation
 
-import UIKit
+protocol NetworkService {
+    func request<Request: DataRequest>(_ request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void)
+}
 
-class SearchViewController: UIViewController {
+final class DefaultNetworkService: NetworkService {
     
-    
-//MARK: - Searcbar config
-    private lazy var searchBar: UISearchBar = {
-        let searchbar = UISearchBar()
-        searchbar.translatesAutoresizingMaskIntoConstraints = false
-        searchbar.delegate = self
-        searchbar.barTintColor = .mBlack
-        searchbar.tintColor = .mLime
-        searchbar.showsCancelButton = false
-        return searchbar
-    }()
-    
-    private var categoryCollectionView = SearchCategoryCollectionView()
-
-    private func addViewLayout() {
-        view.addSubview(searchBar)
-        view.addSubview(categoryCollectionView)
+    func request<Request: DataRequest>(_ request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void) {
         
-        NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+        guard var urlComponent = URLComponents(string: request.url) else {
+            let error = NSError(
+                domain: ErrorResponse.invalidEndpoint.rawValue,
+                code: 404,
+                userInfo: nil
+            )
             
-            categoryCollectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 40),
-            categoryCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            categoryCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            categoryCollectionView.heightAnchor.constraint(equalToConstant: 40)
-        ])
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .mBlack
+            return completion(.failure(error))
+        }
         
-        addViewLayout()
-        categoryCollectionView.set(cells: SearchCategoryModel.makeMockModel())
+        var queryItems: [URLQueryItem] = []
+        
+        request.queryItems.forEach {
+            let urlQueryItem = URLQueryItem(name: $0.key, value: $0.value)
+            urlComponent.queryItems?.append(urlQueryItem)
+            queryItems.append(urlQueryItem)
+        }
+        
+        urlComponent.queryItems = queryItems
+        
+        guard let url = urlComponent.url else {
+            let error = NSError(
+                domain: ErrorResponse.invalidEndpoint.rawValue,
+                code: 404,
+                userInfo: nil
+            )
+            
+            return completion(.failure(error))
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = request.method.rawValue
+        urlRequest.allHTTPHeaderFields = request.headers
+        
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            if let error = error {
+                return completion(.failure(error))
+            }
+            
+            guard let response = response as? HTTPURLResponse, 200..<300 ~= response.statusCode else {
+                return completion(.failure(NSError()))
+            }
+            
+            guard let data = data else {
+                return completion(.failure(NSError()))
+            }
+            
+            do {
+                try completion(.success(request.decode(data)))
+            } catch let error as NSError {
+                completion(.failure(error))
+            }
+        }
+        .resume()
     }
 }
-
-//MARK: - Searcbar config
-extension SearchViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.setShowsCancelButton(true, animated: true)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = nil
-        searchBar.resignFirstResponder()
-        searchBar.setShowsCancelButton(false, animated: true)
-    }
-}
-
