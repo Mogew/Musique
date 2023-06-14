@@ -10,7 +10,7 @@ import UIKit
 class SearchViewController: UIViewController {
     
     
-//MARK: - Searcbar config
+    //MARK: - Searcbar config
     private lazy var searchBar: UISearchBar = {
         let searchbar = UISearchBar()
         searchbar.translatesAutoresizingMaskIntoConstraints = false
@@ -21,11 +21,13 @@ class SearchViewController: UIViewController {
         return searchbar
     }()
     
-    private var categoryCollectionView = SearchCategoryCollectionView()
-
+    private let categoryCollectionView = SearchCategoryCollectionView()
+    
     private func addViewLayout() {
-        view.addSubview(searchBar)
-        view.addSubview(categoryCollectionView)
+        
+        [searchBar, categoryCollectionView].forEach {
+            view.addSubview($0)
+        }
         
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -38,7 +40,7 @@ class SearchViewController: UIViewController {
             categoryCollectionView.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .mBlack

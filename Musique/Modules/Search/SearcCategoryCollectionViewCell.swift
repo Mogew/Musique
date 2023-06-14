@@ -11,7 +11,7 @@ class SearcCategoryCollectionViewCell: UICollectionViewCell {
     
     static let reuseID = "SearcCategoryCollectionViewCell"
     
-    private let categoryCellView: UIView = {
+    var categoryCellView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 16
@@ -20,19 +20,23 @@ class SearcCategoryCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-     let categoryTitleLabel: UILabel = {
+    let categoryTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 1
-        label.lineBreakMode = .byWordWrapping
         label.textColor = .white
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        addviewLayout()
+    }
+    
+    private func addviewLayout() {
         contentView.addSubview(categoryCellView)
         categoryCellView.addSubview(categoryTitleLabel)
         

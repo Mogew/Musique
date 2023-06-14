@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		851B8C802A373C9700491863 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851B8C7F2A373C9700491863 /* SearchViewController.swift */; };
 		851B8C822A3765D400491863 /* SearcCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851B8C812A3765D400491863 /* SearcCategoryCollectionViewCell.swift */; };
-		851B8C842A38928C00491863 /* SearchCategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851B8C832A38928C00491863 /* SearchCategoryCollectionView.swift */; };
 		851B8C862A38A42700491863 /* SearchCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851B8C852A38A42700491863 /* SearchCategoryModel.swift */; };
+		85804CFA2A38FBF100E64713 /* SearchCategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851B8C832A38928C00491863 /* SearchCategoryCollectionView.swift */; };
 		C822CAB52A36203200CAA5E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CAB42A36203200CAA5E0 /* AppDelegate.swift */; };
 		C822CAB72A36203200CAA5E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CAB62A36203200CAA5E0 /* SceneDelegate.swift */; };
 		C822CAB92A36203200CAA5E0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CAB82A36203200CAA5E0 /* MainViewController.swift */; };
@@ -409,6 +409,7 @@
 				851B8C862A38A42700491863 /* SearchCategoryModel.swift in Sources */,
 				851B8C802A373C9700491863 /* SearchViewController.swift in Sources */,
 				851B8C822A3765D400491863 /* SearcCategoryCollectionViewCell.swift in Sources */,
+				85804CFA2A38FBF100E64713 /* SearchCategoryCollectionView.swift in Sources */,
 				C86BD8BD2A36334B00FBD6FA /* UIFont+Extension.swift in Sources */,
 				C822CAB72A36203200CAA5E0 /* SceneDelegate.swift in Sources */,
 				C86BD8D32A37189100FBD6FA /* Builder.swift in Sources */,
