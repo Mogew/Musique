@@ -1,8 +1,12 @@
-//
-//  UIButton+Extension.swift
-//  Musique
-//
-//  Created by Mikhail Tedeev on 14.06.2023.
-//
+import UIKit
 
-import Foundation
+extension UIButton {
+    convenience init(text: String, textColor: UIColor, backgroundColor: UIColor) {
+        self.init(type: .system)
+        self.setTitle(text, for: .normal)
+        self.titleLabel?.font = .robotoBold(ofSize: 16)
+        self.layer.cornerRadius = 4
+        self.backgroundColor = backgroundColor
+        self.tintColor = textColor
+    }
+}
