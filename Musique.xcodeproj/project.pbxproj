@@ -47,6 +47,8 @@
 		C8D6E05A2A3A4B18000FACC9 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0562A3A4B18000FACC9 /* AccountViewController.swift */; };
 		C8D6E05E2A3A4C25000FACC9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E05C2A3A4C25000FACC9 /* Constants.swift */; };
 		C8D6E05F2A3A4C25000FACC9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E05D2A3A4C25000FACC9 /* OnboardingViewController.swift */; };
+		C8D6E0612A3A5288000FACC9 /* UserSignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0602A3A5288000FACC9 /* UserSignUpPresenter.swift */; };
+		C8D6E0632A3A5900000FACC9 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0622A3A5900000FACC9 /* UIButton+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +109,8 @@
 		C8D6E0562A3A4B18000FACC9 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		C8D6E05C2A3A4C25000FACC9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C8D6E05D2A3A4C25000FACC9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		C8D6E0602A3A5288000FACC9 /* UserSignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSignUpPresenter.swift; path = ../../../../../../Documents/UserSignUpPresenter.swift; sourceTree = "<group>"; };
+		C8D6E0622A3A5900000FACC9 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +276,7 @@
 				C86BD8C52A36622500FBD6FA /* Fonts */,
 				C86BD8BB2A36330800FBD6FA /* Extensions */,
 				C822CABD2A36203400CAA5E0 /* Assets.xcassets */,
+				C8D6E05C2A3A4C25000FACC9 /* Constants.swift */,
 				C822CABF2A36203400CAA5E0 /* LaunchScreen.storyboard */,
 			);
 			path = Resourses;
@@ -291,6 +296,7 @@
 			children = (
 				C86BD8BC2A36334B00FBD6FA /* UIFont+Extension.swift */,
 				C86BD8BE2A36336E00FBD6FA /* UIColor+Extension.swift */,
+				C8D6E0622A3A5900000FACC9 /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				C8D6E0512A3A4B18000FACC9 /* UserSignUpController.swift */,
+				C8D6E0602A3A5288000FACC9 /* UserSignUpPresenter.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -346,7 +353,6 @@
 		C8D6E05B2A3A4C25000FACC9 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				C8D6E05C2A3A4C25000FACC9 /* Constants.swift */,
 				C8D6E05D2A3A4C25000FACC9 /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
@@ -505,6 +511,7 @@
 				C86BD8BF2A36336F00FBD6FA /* UIColor+Extension.swift in Sources */,
 				94F675172A39FF480007576D /* SearchCategoryModel.swift in Sources */,
 				94F675192A39FF530007576D /* SearchViewController.swift in Sources */,
+				C8D6E0612A3A5288000FACC9 /* UserSignUpPresenter.swift in Sources */,
 				94EA028B2A38418100959697 /* RecentlyMusicCell.swift in Sources */,
 				94EA02872A38415900959697 /* NewSongsCell.swift in Sources */,
 				94F6750D2A39FEB30007576D /* DataRequest.swift in Sources */,
@@ -514,6 +521,7 @@
 				C8D6E05F2A3A4C25000FACC9 /* OnboardingViewController.swift in Sources */,
 				C8D6E0572A3A4B18000FACC9 /* UserSignUpController.swift in Sources */,
 				94F675152A39FF3B0007576D /* SearchCategoryCollectionView.swift in Sources */,
+				C8D6E0632A3A5900000FACC9 /* UIButton+Extension.swift in Sources */,
 				94EA02852A383C8D00959697 /* SectionHeader.swift in Sources */,
 				C822CAB72A36203200CAA5E0 /* SceneDelegate.swift in Sources */,
 				C8D6E05A2A3A4B18000FACC9 /* AccountViewController.swift in Sources */,

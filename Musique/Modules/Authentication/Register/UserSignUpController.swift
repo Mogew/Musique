@@ -6,10 +6,12 @@
 //
 
 import UIKit
-import Firebase
 
 class UserSignUpController: UIViewController {
 
+    //MARK: - Property
+    var presenter: UserSignUpPresenterProtocol!
+    
     // MARK: - Outlets
     
     lazy var backgroundImageView: UIImageView = {
@@ -71,22 +73,9 @@ class UserSignUpController: UIViewController {
     // MARK:- Private Methods
     @objc private func signUpButtonTapped() {
         if let email = emailTextField.text, let password = passwordTextField.text {
-            Auth.auth().createUser(withEmail: email, password: password) { [unowned self] authResult, error in
-                if let e = error {
-                    let alert = UIAlertController(title: "Invalid format", message: e.localizedDescription, preferredStyle: .alert)
-                    
-                    let OkAction = UIAlertAction(title: "OK", style: .default) { [unowned self] _ in
-                        self.passwordTextField.text = ""
-                    }
-                        alert.addAction(OkAction)
-                        present(alert, animated: true)
-                        return
-                    } else {
-                            //  нужно добавить метод
-                    }
-                }
-            }
+            presenter.createUser(email: email, password: password)
         }
+    }
    
         
     
@@ -132,7 +121,15 @@ class UserSignUpController: UIViewController {
             signInButton.heightAnchor.constraint(equalToConstant: 46),
             signInButton.widthAnchor.constraint(equalToConstant: 295)
         ])
-        
+    }
+}
+
+extension UserSignUpController: UserSignUpViewProtocol {
+    func failure(_ error: Error) {
+        print(error)
     }
     
+    func succses() {
+        print("win")
+    }
 }
