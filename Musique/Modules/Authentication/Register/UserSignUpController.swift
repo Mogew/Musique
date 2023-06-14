@@ -29,38 +29,33 @@ class UserSignUpController: UIViewController {
         return label
     }()
     
-    var nameTextField: UITextField = {
-       let textField = UITextField()
-       textField.placeholder = "Name"
-       textField.borderStyle = .roundedRect
-       textField.translatesAutoresizingMaskIntoConstraints = false
-       return textField
-   }()
-    
-     var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Email"
-        textField.borderStyle = .roundedRect
-        textField.translatesAutoresizingMaskIntoConstraints = false
+    lazy var nameTextField: UITextField = {
+        let textField = TextFieldBuilder()
+            .setPlaceholder("Name")
+            .build()
         return textField
     }()
-    
+
+    lazy var emailTextField: UITextField = {
+        let textField = TextFieldBuilder()
+            .setPlaceholder("Email")
+            .build()
+        return textField
+    }()
+
     lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Password"
-        textField.borderStyle = .roundedRect
-        textField.isSecureTextEntry = true
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        let textField = TextFieldBuilder()
+            .setPlaceholder("Password")
+            .setIsSecureTextEntry(true)
+            .build()
         return textField
     }()
   
     lazy var signInButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("SIGN UP", for: .normal)
-        button.setTitleColor(.mGray, for: .normal)
-        button.backgroundColor = .mLime
-        button.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = ButtonBuilder()
+            .setTitle("SIGN IN")
+            .setAction(self, action: #selector(signUpButtonTapped))
+            .build()
         return button
     }()
  
@@ -87,8 +82,7 @@ class UserSignUpController: UIViewController {
                         present(alert, animated: true)
                         return
                     } else {
-                        //Navigate to the ChatVController
-                       // self.performSegue(withIdentifier: K.registerSegue, sender: self)
+                            //  нужно добавить метод
                     }
                 }
             }

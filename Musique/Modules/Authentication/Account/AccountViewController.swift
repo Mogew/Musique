@@ -29,20 +29,18 @@ class AccountViewController: UIViewController {
         return label
     }()
     
-     var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Email"
-        textField.borderStyle = .roundedRect
-        textField.translatesAutoresizingMaskIntoConstraints = false
+    lazy var emailTextField: UITextField = {
+        let textField = TextFieldBuilder()
+            .setPlaceholder("Email")
+            .build()
         return textField
     }()
-    
+
     lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Password"
-        textField.borderStyle = .roundedRect
-        textField.isSecureTextEntry = true
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        let textField = TextFieldBuilder()
+            .setPlaceholder("Password")
+            .setIsSecureTextEntry(true)
+            .build()
         return textField
     }()
   
@@ -57,12 +55,10 @@ class AccountViewController: UIViewController {
     }()
     
     lazy var signUpButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("SIGN UP", for: .normal)
-        button.setTitleColor(.mLime, for: .normal)
-        button.titleLabel?.font = UIFont.robotoBold(ofSize: 14)
-        button.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = ButtonBuilder()
+            .setTitle("SIGN UP")
+            .setAction(self, action: #selector(signUpButtonTapped))
+            .build()
         return button
     }()
  
