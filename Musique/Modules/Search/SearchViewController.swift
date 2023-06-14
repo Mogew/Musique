@@ -9,7 +9,6 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    
     //MARK: - Searcbar config
     private lazy var searchBar: UISearchBar = {
         let searchbar = UISearchBar()
