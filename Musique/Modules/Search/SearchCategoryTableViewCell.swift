@@ -14,7 +14,7 @@ class SearchCategoryTableViewCell: UITableViewCell {
     var cellView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = .mBlack
         view.clipsToBounds = true
         return view
     }()
