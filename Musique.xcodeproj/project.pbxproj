@@ -49,13 +49,13 @@
 		C8D6E05A2A3A4B18000FACC9 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0562A3A4B18000FACC9 /* AccountViewController.swift */; };
 		C8D6E05E2A3A4C25000FACC9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E05C2A3A4C25000FACC9 /* Constants.swift */; };
 		C8D6E05F2A3A4C25000FACC9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E05D2A3A4C25000FACC9 /* OnboardingViewController.swift */; };
-		C8D6E0612A3A5288000FACC9 /* UserSignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0602A3A5288000FACC9 /* UserSignUpPresenter.swift */; };
 		C8D6E0632A3A5900000FACC9 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0622A3A5900000FACC9 /* UIButton+Extension.swift */; };
 		C8D6E06B2A3A6313000FACC9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0662A3A6313000FACC9 /* SearchViewController.swift */; };
 		C8D6E06C2A3A6313000FACC9 /* SearchCategoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0672A3A6313000FACC9 /* SearchCategoryTableView.swift */; };
 		C8D6E06D2A3A6313000FACC9 /* SearchCategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0682A3A6313000FACC9 /* SearchCategoryCollectionView.swift */; };
 		C8D6E06E2A3A6313000FACC9 /* SearcCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0692A3A6313000FACC9 /* SearcCategoryCollectionViewCell.swift */; };
 		C8D6E06F2A3A6313000FACC9 /* SearchCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E06A2A3A6313000FACC9 /* SearchCategoryTableViewCell.swift */; };
+		C8D6E0712A3AFF0A000FACC9 /* UserSignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0702A3AFF09000FACC9 /* UserSignUpPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,13 +118,13 @@
 		C8D6E0562A3A4B18000FACC9 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		C8D6E05C2A3A4C25000FACC9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C8D6E05D2A3A4C25000FACC9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		C8D6E0602A3A5288000FACC9 /* UserSignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSignUpPresenter.swift; path = ../../../../../../Documents/UserSignUpPresenter.swift; sourceTree = "<group>"; };
 		C8D6E0622A3A5900000FACC9 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		C8D6E0662A3A6313000FACC9 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C8D6E0672A3A6313000FACC9 /* SearchCategoryTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCategoryTableView.swift; sourceTree = "<group>"; };
 		C8D6E0682A3A6313000FACC9 /* SearchCategoryCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCategoryCollectionView.swift; sourceTree = "<group>"; };
 		C8D6E0692A3A6313000FACC9 /* SearcCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearcCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		C8D6E06A2A3A6313000FACC9 /* SearchCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		C8D6E0702A3AFF09000FACC9 /* UserSignUpPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignUpPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,7 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				C8D6E0512A3A4B18000FACC9 /* UserSignUpController.swift */,
-				C8D6E0602A3A5288000FACC9 /* UserSignUpPresenter.swift */,
+				C8D6E0702A3AFF09000FACC9 /* UserSignUpPresenter.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -542,7 +542,6 @@
 				851B8C802A373C9700491863 /* SearchViewController.swift in Sources */,
 				851B8C822A3765D400491863 /* SearcCategoryCollectionViewCell.swift in Sources */,
 				85804CFA2A38FBF100E64713 /* SearchCategoryCollectionView.swift in Sources */,
-				C8D6E0612A3A5288000FACC9 /* UserSignUpPresenter.swift in Sources */,
 				94EA028B2A38418100959697 /* RecentlyMusicCell.swift in Sources */,
 				C8D6E06D2A3A6313000FACC9 /* SearchCategoryCollectionView.swift in Sources */,
 				94EA02872A38415900959697 /* NewSongsCell.swift in Sources */,
@@ -558,6 +557,7 @@
 				C822CAB72A36203200CAA5E0 /* SceneDelegate.swift in Sources */,
 				C8D6E05A2A3A4B18000FACC9 /* AccountViewController.swift in Sources */,
 				94F675112A39FECF0007576D /* NetworkService.swift in Sources */,
+				C8D6E0712A3AFF0A000FACC9 /* UserSignUpPresenter.swift in Sources */,
 				94EA02802A3784D300959697 /* HomeViewController.swift in Sources */,
 				C86BD8D32A37189100FBD6FA /* Builder.swift in Sources */,
 				85804CFC2A3A045600E64713 /* SearchCategoryTableView.swift in Sources */,
