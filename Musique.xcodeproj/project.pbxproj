@@ -405,10 +405,10 @@
 			isa = PBXGroup;
 			children = (
 				C8D6E0662A3A6313000FACC9 /* SearchViewController.swift */,
-				C8D6E0672A3A6313000FACC9 /* SearchCategoryTableView.swift */,
 				C81522A52A3B09DE00A470F6 /* SearchCategoryModel.swift */,
 				C8D6E0682A3A6313000FACC9 /* SearchCategoryCollectionView.swift */,
 				C8D6E0692A3A6313000FACC9 /* SearcCategoryCollectionViewCell.swift */,
+				C8D6E0672A3A6313000FACC9 /* SearchCategoryTableView.swift */,
 				C8D6E06A2A3A6313000FACC9 /* SearchCategoryTableViewCell.swift */,
 			);
 			path = Search;
