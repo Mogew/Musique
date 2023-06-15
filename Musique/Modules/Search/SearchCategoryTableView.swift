@@ -40,13 +40,35 @@ extension SearchCategoryTableView: UITableViewDataSource{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchCategoryTableViewCell.reuseID, for: indexPath) as! SearchCategoryTableViewCell
         
-        cell.tableTitleLabel.text = cellsTableView[indexPath.row].category
+        cell.songNameLabel.text = cellsTableView[indexPath.row].songName
+        cell.artistImage.image = cellsTableView[indexPath.row].image
+        cell.artistNameLabel.text = cellsTableView[indexPath.row].artistName
+        cell.dotsLabel.text = cellsTableView[indexPath.row].dots
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 75
     }
+    //MARK: - Header
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        headerView.backgroundColor = .systemGray4
+        
+        let headerLabel = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.frame.width - 20, height: headerView.frame.height))
+        headerLabel.text = "Header Title"
+        headerLabel.font = UIFont.systemFont(ofSize: 18)
+        headerView.addSubview(headerLabel)
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
 }
 
 extension SearchCategoryTableView: UITableViewDelegate {

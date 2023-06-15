@@ -8,10 +8,10 @@
 import UIKit
 
 class SearchCategoryTableViewCell: UITableViewCell {
-
+    
     static let reuseID = "SearchCategoryTableViewCell"
     
-    var tableCellView: UIView = {
+    var cellView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .systemGray5
@@ -19,11 +19,34 @@ class SearchCategoryTableViewCell: UITableViewCell {
         return view
     }()
     
-    let tableTitleLabel: UILabel = {
+    let artistImage: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    let songNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16)
+        label.numberOfLines = 1
+        label.textColor = .white
+        return label
+    }()
+    
+    let artistNameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.numberOfLines = 1
+        label.textColor = .systemGray
+        return label
+    }()
+    
+    let dotsLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 20)
         label.numberOfLines = 1
         label.textColor = .white
         return label
@@ -35,19 +58,31 @@ class SearchCategoryTableViewCell: UITableViewCell {
     }
     
     private func addviewLayout() {
-        contentView.addSubview(tableCellView)
-        tableCellView.addSubview(tableTitleLabel)
+        contentView.addSubview(cellView)
+        cellView.addSubview(songNameLabel)
+        cellView.addSubview(artistImage)
+        cellView.addSubview(artistNameLabel)
+        cellView.addSubview(dotsLabel)
         
         NSLayoutConstraint.activate([
-            tableCellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            tableCellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            tableCellView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            tableCellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            cellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            cellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            cellView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            cellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            tableTitleLabel.topAnchor.constraint(equalTo: tableCellView.topAnchor, constant: 10),
-            tableTitleLabel.leadingAnchor.constraint(equalTo: tableCellView.leadingAnchor, constant: 10),
-            tableTitleLabel.trailingAnchor.constraint(equalTo: tableCellView.trailingAnchor, constant: -10),
-            tableTitleLabel.bottomAnchor.constraint(equalTo: tableCellView.bottomAnchor, constant: -10)
+            artistImage.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 17),
+            artistImage.leadingAnchor.constraint(equalTo: cellView.leadingAnchor, constant: 24),
+            artistImage.heightAnchor.constraint(equalToConstant: 40),
+            artistImage.widthAnchor.constraint(equalToConstant: 40),
+            
+            songNameLabel.topAnchor.constraint(equalTo: artistImage.topAnchor),
+            songNameLabel.leadingAnchor.constraint(equalTo: artistImage.trailingAnchor, constant: 16),
+            
+            artistNameLabel.bottomAnchor.constraint(equalTo: artistImage.bottomAnchor),
+            artistNameLabel.leadingAnchor.constraint(equalTo: artistImage.trailingAnchor, constant: 16),
+            
+            dotsLabel.bottomAnchor.constraint(equalTo: cellView.centerYAnchor),
+            dotsLabel.trailingAnchor.constraint(equalTo: cellView.trailingAnchor, constant: -28),
         ])
     }
     
