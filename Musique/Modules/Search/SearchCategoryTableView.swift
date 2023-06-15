@@ -55,7 +55,7 @@ extension SearchCategoryTableView: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
-        headerView.backgroundColor = .systemGray4
+        headerView.backgroundColor = .mBlack
         
         let headerLabel = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.frame.width - 20, height: headerView.frame.height))
         headerLabel.text = "Header Title"
@@ -72,5 +72,5 @@ extension SearchCategoryTableView: UITableViewDataSource{
 }
 
 extension SearchCategoryTableView: UITableViewDelegate {
-    
+ 
 }
