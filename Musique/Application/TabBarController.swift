@@ -10,20 +10,28 @@ class TabBarController: UITabBarController {
     }
     //MARK: - Tab Setup
     private func setupTabs() {
-        let home = self.createNav(with: "Home", and: UIImage(systemName: "house"),
-                                  and: "Music", vc: HomeViewController())
+        let home = self.createNav(with: "Home",
+                                  and: UIImage(systemName: "house"),
+                                  and: "Music",
+                                  vc: HomeViewController())
         let explore = self.createNav(with: "Explore",
                                      and: UIImage(systemName: "sparkles.rectangle.stack"),
                                      and: "Explore", vc: HomeViewController())
-        let favorites = self.createNav(with: "Favorites", and: UIImage(systemName: "heart"),
+        let favorites = self.createNav(with: "Favorites",
+                                       and: UIImage(systemName: "heart"),
                                        and: "Favorites",vc: HomeViewController())
-        let account = self.createNav(with: "Account", and: UIImage(systemName: "person"),
-                                     and: "Account", vc: HomeViewController())
+        let account = self.createNav(with: "Account",
+                                     and: UIImage(systemName: "person"),
+                                     and: "Account",
+                                     vc: HomeViewController())
         self.setViewControllers([home, explore, favorites, account], animated: true)
 
     }
     
-    private func createNav(with title: String, and image: UIImage?,and largeTitle: String, vc: UIViewController) -> UINavigationController {
+    private func createNav(with title: String,
+                           and image: UIImage?,
+                           and largeTitle: String,
+                           vc: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: vc)
         nav.tabBarItem.title = title
         nav.tabBarItem.image = image
@@ -45,7 +53,6 @@ class TabBarController: UITabBarController {
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
             }
         }
-        tabBar.layer.cornerRadius = 20
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tabBar.layer.masksToBounds = true
         tabBar.barTintColor = .mDarkBlue
