@@ -7,3 +7,4 @@ extension UIColor {
     static let mGray = UIColor(red: 0.441, green: 0.451, blue: 0.484, alpha: 1)
     static let mBlack = UIColor(red: 0.127, green: 0.139, blue: 0.183, alpha: 1)
 }
+

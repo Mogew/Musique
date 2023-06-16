@@ -22,6 +22,16 @@ class SearchViewController: UIViewController {
         searchbar.showsCancelButton = false
         return searchbar
     }()
+   //MARK: - Hide keyboard after tap on other place of screen
+    private lazy var tapGesture: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer()
+        tap.addTarget(self, action: #selector(dismissKeyboard(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
+    }()
+    @objc private func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        searchBar.resignFirstResponder()
+    }
     
     private func addViewLayout() {
         
@@ -53,6 +63,8 @@ class SearchViewController: UIViewController {
         addViewLayout()
         categoryCollectionView.set(cells: SearchCategoryModel.makeMockModel())
         categoryTableView.setTableView(cells: SearchCategoryModel.makeMockModel())
+        
+        view.addGestureRecognizer(tapGesture)
     }
 }
 
@@ -66,6 +78,17 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.text = nil
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // Вызываем поисковой запрос
+        performSearch(searchText: searchBar.text ?? "")
+        // Скрываем клавиатуру
+        searchBar.resignFirstResponder()
+    }
+
+    func performSearch(searchText: String) {
+        // Ваш код поискового запроса здесь
     }
 }
 
