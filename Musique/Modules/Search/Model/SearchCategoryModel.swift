@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct SearchCategoryModel {
+struct SearchCategoryModel: Decodable {
     
     var category: String
     var songName: String

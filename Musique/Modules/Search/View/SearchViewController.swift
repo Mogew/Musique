@@ -9,6 +9,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    var presenter: SearchPresenterProtocol!
     private let categoryCollectionView = SearchCategoryCollectionView()
     private let categoryTableView = SearchCategoryTableView()
     
@@ -68,6 +69,17 @@ class SearchViewController: UIViewController {
     }
 }
 
+//MARK: - ViewProtocol
+extension SearchViewController: SearchViewProtocol {
+    func succses() {
+        print("nice")
+    }
+    
+    func failure() {
+        
+    }
+}
+
 //MARK: - Searcbar config
 extension SearchViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -89,6 +101,7 @@ extension SearchViewController: UISearchBarDelegate {
 
     func performSearch(searchText: String) {
         // Ваш код поискового запроса здесь
+        presenter.request(q: searchText, type: .multi)
     }
 }
 
