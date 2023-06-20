@@ -4,7 +4,7 @@ class ExploreViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     let sections = exploreMOKSections
-    
+    let model = ExploreModel()
     var songCount = 1
     let CountRange = 1...9
     
@@ -148,11 +148,18 @@ extension ExploreViewController {
             }
             else {
                 sectionHeader.title.text = section.title
+                self?.check(header: sectionHeader)
             }
+
             return sectionHeader
         }
     }
     
+    func check (header: SectionHeaderView) {
+        if model.checkSection(with: header.title.text!) {
+            header.viewAllLabel.isHidden = true
+        }
+    }
     private func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, SongModel>()
         snapshot.appendSections(exploreMOKSections)

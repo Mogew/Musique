@@ -1,5 +1,6 @@
 import UIKit
 
+
 public struct Section: Hashable {
     let type: String
     let title: String
@@ -11,6 +12,19 @@ public var MOKSections: [Section] = [
     Section(type: "popularAlbum", title: "Popular Album", items: [SongModel(image: UIImage(named: "Test Image")!, name: "Nice For What", artist: "Avinci John", type: "Single")]),
     Section(type: "recentlyplayed", title: "Recently played", items: MOKModel2)
 ]
+
+struct SongModel1 {
+    func check(with title: String) -> Bool {
+        switch title {
+        case "Recently played":
+            return true
+        case "Popular Album":
+            return true
+        default:
+            return false
+        }
+    }
+}
 
 public struct SongModel: Hashable {
     let image: UIImage

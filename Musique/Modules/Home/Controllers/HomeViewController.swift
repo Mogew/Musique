@@ -5,6 +5,7 @@ class HomeViewController: UIViewController {
     let sections = MOKSections
     private var collectionView: UICollectionView!
     private let imageView = UIImageView(image: UIImage(systemName: "magnifyingglass"))
+    var model = SongModel1()
     var songCount = 1
     let CountRange = 1...9
     
@@ -70,8 +71,16 @@ extension HomeViewController {
             }
             else {
                 sectionHeader.title.text = section.title
+                self?.check(header: sectionHeader)
             }
+
             return sectionHeader
+        }
+    }
+    
+    func check (header: SectionHeaderView) {
+        if model.check(with: header.title.text!) {
+            header.viewAllLabel.isHidden = true
         }
     }
     
