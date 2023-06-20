@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94121ADF2A3C66D800167042 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94121ADE2A3C66D800167042 /* ExploreViewController.swift */; };
+		94121AE12A3C673F00167042 /* ExploreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94121AE02A3C673F00167042 /* ExploreModel.swift */; };
+		94121AE32A3C688600167042 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94121AE22A3C688600167042 /* TopicCell.swift */; };
+		94121AE82A3C778F00167042 /* TopTrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94121AE72A3C778F00167042 /* TopTrendingCell.swift */; };
 		94EA02802A3784D300959697 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA027F2A3784D300959697 /* HomeViewController.swift */; };
 		94EA02852A383C8D00959697 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA02842A383C8D00959697 /* SectionHeader.swift */; };
 		94EA02872A38415900959697 /* NewSongsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA02862A38415900959697 /* NewSongsCell.swift */; };
@@ -78,6 +82,10 @@
 		851B8C852A38A42700491863 /* SearchCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryModel.swift; sourceTree = "<group>"; };
 		85804CFB2A3A045600E64713 /* SearchCategoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryTableView.swift; sourceTree = "<group>"; };
 		85804CFD2A3A05C400E64713 /* SearchCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		94121ADE2A3C66D800167042 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		94121AE02A3C673F00167042 /* ExploreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreModel.swift; sourceTree = "<group>"; };
+		94121AE22A3C688600167042 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
+		94121AE72A3C778F00167042 /* TopTrendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTrendingCell.swift; sourceTree = "<group>"; };
 		94EA027F2A3784D300959697 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		94EA02842A383C8D00959697 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		94EA02862A38415900959697 /* NewSongsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSongsCell.swift; sourceTree = "<group>"; };
@@ -154,6 +162,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		94121AE42A3C688D00167042 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				94121AE02A3C673F00167042 /* ExploreModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		94121AE52A3C689500167042 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				94121ADE2A3C66D800167042 /* ExploreViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		94121AE62A3C68A200167042 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				94121AE22A3C688600167042 /* TopicCell.swift */,
+				94121AE72A3C778F00167042 /* TopTrendingCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		94EA02812A3784DE00959697 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +237,9 @@
 		94F6751A2A3B69740007576D /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				94121AE42A3C688D00167042 /* Model */,
+				94121AE52A3C689500167042 /* Controller */,
+				94121AE62A3C68A200167042 /* View */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -545,12 +581,16 @@
 			files = (
 				C8D6E0582A3A4B18000FACC9 /* TextFieldBuilder.swift in Sources */,
 				C822CAB52A36203200CAA5E0 /* AppDelegate.swift in Sources */,
+				94121ADF2A3C66D800167042 /* ExploreViewController.swift in Sources */,
+				94121AE82A3C778F00167042 /* TopTrendingCell.swift in Sources */,
 				C86BD8BF2A36336F00FBD6FA /* UIColor+Extension.swift in Sources */,
 				94EA028B2A38418100959697 /* RecentlyMusicCell.swift in Sources */,
 				C8D6E06D2A3A6313000FACC9 /* SearchCategoryCollectionView.swift in Sources */,
 				94EA02872A38415900959697 /* NewSongsCell.swift in Sources */,
 				94F6750D2A39FEB30007576D /* DataRequest.swift in Sources */,
+				94121AE32A3C688600167042 /* TopicCell.swift in Sources */,
 				C86BD8BD2A36334B00FBD6FA /* UIFont+Extension.swift in Sources */,
+				94121AE12A3C673F00167042 /* ExploreModel.swift in Sources */,
 				94EA028E2A386FF600959697 /* SongModel.swift in Sources */,
 				C81522A62A3B09DE00A470F6 /* SearchCategoryModel.swift in Sources */,
 				C8D6E0592A3A4B18000FACC9 /* ButtonBuilder.swift in Sources */,

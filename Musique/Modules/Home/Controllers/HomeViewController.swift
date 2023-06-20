@@ -5,6 +5,8 @@ class HomeViewController: UIViewController {
     let sections = MOKSections
     private var collectionView: UICollectionView!
     private let imageView = UIImageView(image: UIImage(systemName: "magnifyingglass"))
+    var songCount = 1
+    let CountRange = 1...9
     
     // 1 par - section, 2 par - item
     var dataSource: UICollectionViewDiffableDataSource<Section, SongModel>?
@@ -42,13 +44,19 @@ extension HomeViewController {
             case NewSongsCell.id:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewSongsCell.id, for: indexPath) as? NewSongsCell
                 cell?.configure(with: itemIdentifier)
-                return cell
+                return cell!
             case PopularAlbumCell.id:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularAlbumCell.id, for: indexPath) as? PopularAlbumCell
-                return cell
+                return cell!
             default:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentlyMusicCell.id, for: indexPath) as? RecentlyMusicCell
                 cell?.configure(with: itemIdentifier)
+                if self.CountRange.contains(self.songCount) {
+                    cell?.number.text = "0" + "\(self.songCount)"
+                } else {
+                    cell?.number.text = "\(self.songCount)"
+                }
+                self.songCount += 1
                 return cell
             }
         })
@@ -156,6 +164,7 @@ extension HomeViewController {
     }
 }
 
+//MARK: - navBar button
 extension HomeViewController {
     private func showImage(_ show: Bool) {
       UIView.animate(withDuration: 0.4) {
