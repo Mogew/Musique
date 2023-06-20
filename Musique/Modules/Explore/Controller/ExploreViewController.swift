@@ -59,7 +59,7 @@ class ExploreViewController: UIViewController {
                                                heightDimension: .estimated(1))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets.init(top: 12, leading: 16, bottom: 0, trailing: 16)
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 16, bottom: 0, trailing: 16)
         
         let header = createSectionHeader()
         section.boundarySupplementaryItems = [header]
@@ -101,7 +101,7 @@ class ExploreViewController: UIViewController {
     
     private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                       heightDimension: .estimated(1))
+                                                       heightDimension: .absolute(60))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize,
                                                             elementKind: UICollectionView.elementKindSectionHeader,
                                                             alignment: .top)

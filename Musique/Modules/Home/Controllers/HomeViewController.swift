@@ -73,7 +73,6 @@ extension HomeViewController {
                 sectionHeader.title.text = section.title
                 self?.check(header: sectionHeader)
             }
-
             return sectionHeader
         }
     }
@@ -165,7 +164,7 @@ extension HomeViewController {
     
     func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem{
         let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                       heightDimension: .estimated(1))
+                                                       heightDimension: .absolute(60))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize,
                                                                         elementKind: UICollectionView.elementKindSectionHeader,
                                                                         alignment: .top)

@@ -19,9 +19,9 @@ extension SectionHeaderView {
     
     private func customizeElement() {
         title.textColor = UIColor.mWhite
-        title.font = .systemFont(ofSize: 18)
+        title.font = .robotoMedium(ofSize: 22)
         viewAllLabel.textColor = .mWhite
-        viewAllLabel.font = .systemFont(ofSize: 12)
+        viewAllLabel.font = .robotoRegular(ofSize: 14)
         viewAllLabel.textAlignment = .right
         viewAllLabel.text = "View all"
     }
