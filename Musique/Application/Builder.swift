@@ -8,12 +8,11 @@ class Builder {
         return view
     }
     
-    static func getSearchModule() -> UIViewController {
-        let view = SearchViewController()
+    static func getHomeModule() -> UIViewController {
+        let view = HomeViewController()
         let networkService = DefaultNetworkService()
-        let presenter = SearchPresenter(view: view, networkService: networkService)
+        let presenter = HomePresenter(view: view, networkService: networkService)
         view.presenter = presenter
-        view.categoryCollectionView.presenter = presenter
         return view
     }
 }
