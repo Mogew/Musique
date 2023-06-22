@@ -10,8 +10,9 @@ import UIKit
 class SearchViewController: UIViewController {
     
     var presenter: SearchPresenterProtocol!
-    private let categoryCollectionView = SearchCategoryCollectionView()
+    let categoryCollectionView = SearchCategoryCollectionView()
     private let categoryTableView = SearchCategoryTableView()
+    var currentType: SearchType = .mix
     
     //MARK: - Searcbar config
     private lazy var searchBar: UISearchBar = {
@@ -63,7 +64,7 @@ class SearchViewController: UIViewController {
         
         addViewLayout()
         categoryCollectionView.set(cells: SearchCategoryModel.makeMockModel())
-        categoryTableView.setTableView(cells: SearchCategoryModel.makeMockModel())
+//        categoryTableView.setTableView(cells: SearchCategoryModel.makeMockModel())
         
         view.addGestureRecognizer(tapGesture)
     }
@@ -73,10 +74,14 @@ class SearchViewController: UIViewController {
 extension SearchViewController: SearchViewProtocol {
     func succses() {
         print("nice")
+        DispatchQueue.main.async {
+            self.categoryTableView.setTableView(cells: self.presenter.searchArray)
+            self.categoryTableView.reloadData()
+        }
     }
     
     func failure() {
-        
+        print("fail")
     }
 }
 
@@ -94,14 +99,9 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // Вызываем поисковой запрос
-        performSearch(searchText: searchBar.text ?? "")
+        presenter.request(term: searchBar.text ?? "", type: currentType)
         // Скрываем клавиатуру
         searchBar.resignFirstResponder()
-    }
-
-    func performSearch(searchText: String) {
-        // Ваш код поискового запроса здесь
-        presenter.request(q: searchText, type: .multi)
     }
 }
 

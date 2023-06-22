@@ -39,6 +39,7 @@ final class DefaultNetworkService: NetworkService {
         }
         
         var urlRequest = URLRequest(url: url)
+        print(urlRequest)
         urlRequest.httpMethod = request.method.rawValue
         urlRequest.allHTTPHeaderFields = request.headers
         
