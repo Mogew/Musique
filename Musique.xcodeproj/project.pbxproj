@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F34A02B2A3CE3A900CB5E14 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34A02A2A3CE3A900CB5E14 /* EditViewController.swift */; };
 		94EA02802A3784D300959697 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA027F2A3784D300959697 /* HomeViewController.swift */; };
 		94EA02852A383C8D00959697 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA02842A383C8D00959697 /* SectionHeader.swift */; };
 		94EA02872A38415900959697 /* NewSongsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA02862A38415900959697 /* NewSongsCell.swift */; };
@@ -72,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F34A02A2A3CE3A900CB5E14 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		851B8C7F2A373C9700491863 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		851B8C812A3765D400491863 /* SearcCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		851B8C832A38928C00491863 /* SearchCategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryCollectionView.swift; sourceTree = "<group>"; };
@@ -154,6 +156,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F34A0292A3CE39100CB5E14 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				0F34A02A2A3CE3A900CB5E14 /* EditViewController.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
 		94EA02812A3784DE00959697 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,13 +209,6 @@
 				94F675102A39FECF0007576D /* NetworkService.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		94F6751A2A3B69740007576D /* Explore */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Explore;
 			sourceTree = "<group>";
 		};
 		C822CAA82A36203200CAA5E0 = {
@@ -272,10 +275,10 @@
 		C822CAE52A36205400CAA5E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0F34A0292A3CE39100CB5E14 /* Edit */,
 				C8D6E0652A3A6313000FACC9 /* Search */,
 				C8D6E05B2A3A4C25000FACC9 /* Onboarding */,
 				C8D6E04F2A3A4B18000FACC9 /* Authentication */,
-				94F6751A2A3B69740007576D /* Explore */,
 				94EA02812A3784DE00959697 /* Home */,
 			);
 			path = Modules;
@@ -563,6 +566,7 @@
 				C822CAB72A36203200CAA5E0 /* SceneDelegate.swift in Sources */,
 				C8D6E05A2A3A4B18000FACC9 /* AccountViewController.swift in Sources */,
 				94F675112A39FECF0007576D /* NetworkService.swift in Sources */,
+				0F34A02B2A3CE3A900CB5E14 /* EditViewController.swift in Sources */,
 				94EA02802A3784D300959697 /* HomeViewController.swift in Sources */,
 				C86BD8D32A37189100FBD6FA /* Builder.swift in Sources */,
 				C8D6E06C2A3A6313000FACC9 /* SearchCategoryTableView.swift in Sources */,
