@@ -1,6 +1,8 @@
 import UIKit
 
 class Builder {
+    static let player = AVPlayerClass()
+    
     static func getSignUpModule() -> UIViewController {
         let view = UserSignUpController()
         let presenter = UserSignUpPresenter(view: view)
@@ -20,7 +22,6 @@ class Builder {
     static func getPlayModule(track: [SearchTracks]?, indexPath: IndexPath?) -> UIViewController {
         let view = PlayViewController()
         let networkService = DefaultNetworkService()
-        let player = AVPlayerClass()
         let presenter = PlayPresenter(view: view, networkService: networkService, avPlayer: player, indexPath: indexPath, tracksArray: track)
         view.presenter = presenter
         return view

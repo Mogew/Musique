@@ -7,10 +7,15 @@
 
 import UIKit
 
+protocol SearchTableViewProtocol: AnyObject {
+    func presentPlayer(track: [SearchTracks]?, indexPath: IndexPath?)
+}
+
 class SearchCategoryTableView: UITableView {
     
     var cellsTableView = [SearchTracks]()
     var selectedIndexPath: IndexPath?
+    weak var searchDelegate: SearchTableViewProtocol?
     
     init() {
         super.init(frame: .zero, style: .plain)
@@ -72,7 +77,7 @@ extension SearchCategoryTableView: UITableViewDataSource{
 
 extension SearchCategoryTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        searchDelegate?.presentPlayer(track: cellsTableView, indexPath: indexPath)
         if let selectedIndexPath = selectedIndexPath, selectedIndexPath == indexPath {
             // Ячейка уже выбрана, нет необходимости повторно выделять её
             return

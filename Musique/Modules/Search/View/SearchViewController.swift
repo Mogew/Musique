@@ -13,7 +13,7 @@ class SearchViewController: UIViewController {
     let categoryCollectionView = SearchCategoryCollectionView()
     private let categoryTableView = SearchCategoryTableView()
     var currentType: SearchType = .mix
-        
+    
     //MARK: - Searcbar config
     private lazy var searchBar: UISearchBar = {
         let searchbar = UISearchBar()
@@ -61,7 +61,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .mBlack
-        
+        categoryTableView.searchDelegate = self
         addViewLayout()
         categoryCollectionView.set(cells: SearchCategoryModel.makeMockModel())
 //        categoryTableView.setTableView(cells: SearchCategoryModel.makeMockModel())
@@ -86,6 +86,12 @@ extension SearchViewController: SearchViewProtocol {
     }
 }
 
+extension SearchViewController: SearchTableViewProtocol {
+    func presentPlayer(track: [SearchTracks]?, indexPath: IndexPath?) {
+        let play = Builder.getPlayModule(track: track, indexPath: indexPath)
+        present(play, animated: true)
+    }
+}
 //MARK: - Searcbar config
 extension SearchViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
