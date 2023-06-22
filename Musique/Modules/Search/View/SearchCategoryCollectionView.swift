@@ -11,6 +11,7 @@ class SearchCategoryCollectionView: UICollectionView {
     
     var cells = [SearchCategoryModel]()
     var selectedIndexPath: IndexPath?
+    var presenter: SearchPresenterProtocol!
     
     init() {
         let layout = UICollectionViewFlowLayout()

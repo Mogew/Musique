@@ -2,21 +2,26 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    let sections = MOKSections
-    private var collectionView: UICollectionView!
+    var sections: [Section]?
+    private var collectionView: UICollectionView?
     private let imageView = UIImageView(image: UIImage(systemName: "magnifyingglass"))
+    var model = SongModel1()
+    var songCount = 1
+    let CountRange = 1...9
+    
+    var presenter: HomePresenterProtocol!
     
     // 1 par - section, 2 par - item
-    var dataSource: UICollectionViewDiffableDataSource<Section, SongModel>?
+    var dataSource: UICollectionViewDiffableDataSource<Section, RequestResult>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.mDarkBlue
-        setupCollectionView()
-        createDataSource()
-        reloadData()
         setupButton()
+        setupCollectionView()
+        self.createDataSource()
     }
+    
 }
 
 extension HomeViewController {
@@ -24,31 +29,37 @@ extension HomeViewController {
     func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds,
                                               collectionViewLayout: createCompositionalLayout())
-        collectionView.backgroundColor = .mDarkBlue
-        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(collectionView)
-        collectionView.register(RecentlyMusicCell.self, forCellWithReuseIdentifier: RecentlyMusicCell.id)
-        collectionView.register(NewSongsCell.self, forCellWithReuseIdentifier: NewSongsCell.id)
-        collectionView.register(PopularAlbumCell.self, forCellWithReuseIdentifier: PopularAlbumCell.id)
-        collectionView.register(SectionHeaderView.self,
+        collectionView?.backgroundColor = .mDarkBlue
+        collectionView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(collectionView!)
+        collectionView?.register(RecentlyMusicCell.self, forCellWithReuseIdentifier: RecentlyMusicCell.id)
+        collectionView?.register(NewSongsCell.self, forCellWithReuseIdentifier: NewSongsCell.id)
+        collectionView?.register(PopularAlbumCell.self, forCellWithReuseIdentifier: PopularAlbumCell.id)
+        collectionView?.register(SectionHeaderView.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: SectionHeaderView.id)
-        collectionView.showsVerticalScrollIndicator = false
+        collectionView?.showsVerticalScrollIndicator = false
     }
     
     func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, SongModel>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-            switch self.sections[indexPath.section].type {
+        dataSource = UICollectionViewDiffableDataSource<Section, RequestResult>(collectionView: collectionView!, cellProvider: { collectionView, indexPath, itemIdentifier in
+            switch self.sections?[indexPath.section].type {
             case NewSongsCell.id:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewSongsCell.id, for: indexPath) as? NewSongsCell
                 cell?.configure(with: itemIdentifier)
-                return cell
+                return cell!
             case PopularAlbumCell.id:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PopularAlbumCell.id, for: indexPath) as? PopularAlbumCell
-                return cell
+                return cell!
             default:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentlyMusicCell.id, for: indexPath) as? RecentlyMusicCell
                 cell?.configure(with: itemIdentifier)
+                if self.CountRange.contains(self.songCount) {
+                    cell?.number.text = "0" + "\(self.songCount)"
+                } else {
+                    cell?.number.text = "\(self.songCount)"
+                }
+                self.songCount += 1
                 return cell
             }
         })
@@ -62,16 +73,23 @@ extension HomeViewController {
             }
             else {
                 sectionHeader.title.text = section.title
+                self?.check(header: sectionHeader)
             }
             return sectionHeader
         }
     }
     
+    func check (header: SectionHeaderView) {
+        if model.check(with: header.title.text!) {
+            header.viewAllLabel.isHidden = true
+        }
+    }
+    
     func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, SongModel>()
-        snapshot.appendSections(MOKSections)
+        var snapshot = NSDiffableDataSourceSnapshot<Section, RequestResult>()
+        snapshot.appendSections(sections!)
         
-        for section in MOKSections {
+        for section in sections! {
             snapshot.appendItems(section.items, toSection: section)
             
         }
@@ -80,7 +98,7 @@ extension HomeViewController {
     
     func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-            let section = self.sections[sectionIndex]
+            let section = self.sections![sectionIndex]
             
             switch section.type {
             case NewSongsCell.id:
@@ -148,7 +166,7 @@ extension HomeViewController {
     
     func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem{
         let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                       heightDimension: .estimated(1))
+                                                       heightDimension: .absolute(60))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize,
                                                                         elementKind: UICollectionView.elementKindSectionHeader,
                                                                         alignment: .top)
@@ -156,6 +174,30 @@ extension HomeViewController {
     }
 }
 
+//MARK: - HomeViewProtocol
+extension HomeViewController: HomeViewProtocol {
+    func succses() {
+        sections = [
+            Section(type: "newSongs", title: "New Songs",
+                    items: presenter.newSongArray),
+            Section(type: "popularAlbum", title: "Popular Album",
+                    items: presenter.popularAlbumArray),
+            Section(type: "recentlyplayed", title: "Recently played",
+                    items: presenter.recentlyPlayedArray)
+        ]
+        self.reloadData()
+
+
+      
+
+    }
+    
+    func failure() {
+        print("failure")
+    }
+}
+
+//MARK: - navBar button
 extension HomeViewController {
     private func showImage(_ show: Bool) {
       UIView.animate(withDuration: 0.4) {
@@ -205,7 +247,7 @@ extension HomeViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-      super.viewDidAppear(animated)
+      super.viewWillAppear(animated)
       showImage(true)
     }
 }
