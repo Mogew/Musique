@@ -1,11 +1,11 @@
 import UIKit
 
 
-struct RealHomeModel {
+struct RealHomeModel: Decodable {
     let results: [RequestResult]
 }
 
-struct RequestResult {
+struct RequestResult: Decodable {
     let artistName: String
     let trackName: String
     let artistViewUrl: String

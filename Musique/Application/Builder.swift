@@ -7,4 +7,12 @@ class Builder {
         view.presenter = presenter
         return view
     }
+    
+    static func getHomeModule() -> UIViewController {
+        let view = HomeViewController()
+        let networkService = DefaultNetworkService()
+        let presenter = HomePresenter(view: view, networkService: networkService)
+        view.presenter = presenter
+        return view
+    }
 }

@@ -9,6 +9,8 @@ class HomeViewController: UIViewController {
     var songCount = 1
     let CountRange = 1...9
     
+    var presenter: HomePresenterProtocol!
+    
     // 1 par - section, 2 par - item
     var dataSource: UICollectionViewDiffableDataSource<Section, SongModel>?
     
@@ -19,6 +21,7 @@ class HomeViewController: UIViewController {
         createDataSource()
         reloadData()
         setupButton()
+        
     }
     
 }
@@ -170,6 +173,17 @@ extension HomeViewController {
                                                                         elementKind: UICollectionView.elementKindSectionHeader,
                                                                         alignment: .top)
         return sectionHeader
+    }
+}
+
+//MARK: - HomeViewProtocol
+extension HomeViewController: HomeViewProtocol {
+    func succses() {
+        print(presenter.newSongArray)
+    }
+    
+    func failure() {
+        print("failure")
     }
 }
 

@@ -11,7 +11,7 @@ class TabBarController: UITabBarController {
     //MARK: - Tab Setup
     private func setupTabs() {
         let home = self.createNav(with: "Home", and: UIImage(systemName: "house"),
-                                  and: "Music", vc: HomeViewController())
+                                  and: "Music", vc: Builder.getHomeModule())
         let explore = self.createNav(with: "Explore",
                                      and: UIImage(systemName: "sparkles.rectangle.stack"),
                                      and: "Explore", vc: ExploreViewController())
