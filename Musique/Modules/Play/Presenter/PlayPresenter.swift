@@ -10,14 +10,14 @@ import Foundation
 //MARK: - Protocol PlayViewProtocol
 
 protocol PlayViewProtocol: AnyObject {
-    func getMusic(_ model: Track?)
-    func setData(index: IndexPath?, model: [Track]?)
+    func getMusic(_ model: SearchTracks?)
+    func setData(index: IndexPath?, model: [SearchTracks]?)
 }
 
 //MARK: - Protocol PlayPresenterProtocol
 
 protocol PlayPresenterProtocol: AnyObject {
-    init(view: PlayViewProtocol, networkService: NetworkServiceProtocol, avPlayer: AVplayerProtocol, indexPath: IndexPath?, tracksArray: [Track]?)
+    init(view: PlayViewProtocol, networkService: NetworkService, avPlayer: AVplayerProtocol, indexPath: IndexPath?, tracksArray: [SearchTracks]?)
     func setMusic()
     func playPause() -> Bool
     func playTrack()
@@ -29,7 +29,7 @@ protocol PlayPresenterProtocol: AnyObject {
     func findNextTrack(tag: Int)
     func sendData()
     var indexPath: IndexPath? { get set }
-    var tracksArray: [Track]? { get set }
+    var tracksArray: [SearchTracks]? { get set }
 }
 
 //MARK: - Class
@@ -40,17 +40,17 @@ class PlayPresenter: PlayPresenterProtocol {
     
     weak var view: PlayViewProtocol?
     
-    var networkService: NetworkServiceProtocol?
+    var networkService: NetworkService?
     
     var avPlayer: AVplayerProtocol?
     
-    var tracksArray: [Track]?
+    var tracksArray: [SearchTracks]?
     
     var indexPath: IndexPath?
     
     //MARK: - Init
     
-    required init(view: PlayViewProtocol, networkService: NetworkServiceProtocol, avPlayer: AVplayerProtocol, indexPath: IndexPath?, tracksArray: [Track]?) {
+    required init(view: PlayViewProtocol, networkService: NetworkService, avPlayer: AVplayerProtocol, indexPath: IndexPath?, tracksArray: [SearchTracks]?) {
         self.view = view
         self.networkService = networkService
         self.indexPath = indexPath

@@ -212,8 +212,8 @@ extension AlbumViewController: UITableViewDataSource {
         guard let model = presenter?.tracksArray?[indexPath.row] else { return UITableViewCell() }
         cell?.configure(
             number: String(indexPath.row + 1),
-            name: model.artistName,
-            song: model.trackName,
+            name: model.artistName!,
+            song: model.trackName!,
             imageLink: model)
         
         presenter?.getBackgroundImage()
@@ -226,11 +226,11 @@ extension AlbumViewController: UITableViewDataSource {
 //MARK: -  Extension AlbumViewProtocol
 
 extension AlbumViewController: AlbumViewProtocol {
-    func setBackgroundImage(model: Track) {
+    func setBackgroundImage(model: SearchTracks) {
         
         let urlImage = model.artworkUrl100?.replacingOccurrences(of: "100x100", with: "1920x1080")
         guard let url = URL(string: urlImage ?? "") else { return }
-        backgroundView.sd_setImage(with: url)
+//        backgroundView.sd_setImage(with: url)
         
         
     }

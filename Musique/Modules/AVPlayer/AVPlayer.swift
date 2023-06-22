@@ -10,7 +10,7 @@ import AVKit
 
 protocol AVplayerProtocol: AnyObject {
     func playPause() -> Bool
-    func playTrack(_ track: Track?)
+    func playTrack(_ track: SearchTracks?)
     func monitorStartTime(completion: @escaping () -> Void)
     func observPlayerCurrentTime(completion: @escaping (String, String) -> Void)
     func getCurrunetTime() -> Float
@@ -22,8 +22,8 @@ protocol AVplayerProtocol: AnyObject {
 
 class AVPlayerClass: AVplayerProtocol {
     
-    var tracks: [Track]?
-    var currentTrack: Track?
+    var tracks: [SearchTracks]?
+    var currentTrack: SearchTracks?
     
     private let avPlayer: AVPlayer = {
         let player = AVPlayer()
@@ -41,7 +41,7 @@ class AVPlayerClass: AVplayerProtocol {
         }
     }
     
-    func playTrack(_ track: Track?) {
+    func playTrack(_ track: SearchTracks?) {
         guard let urlTrack = URL(string: track?.previewUrl ?? "") else { return }
         let playerItem = AVPlayerItem(url: urlTrack)
         avPlayer.replaceCurrentItem(with: playerItem)

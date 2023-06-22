@@ -10,13 +10,13 @@ import Foundation
 //MARK: - Protocols
 
 protocol AlbumViewProtocol: AnyObject {
-    func setBackgroundImage(model: Track)
+    func setBackgroundImage(model: SearchTracks)
 }
 
 protocol AlbumPresenterProtocol: AnyObject {
-    init(view: AlbumViewProtocol, networkService: NetworkServiceProtocol, avPlayer: AVplayerProtocol, indexPath: IndexPath?, tracksArray: [Track]?)
+    init(view: AlbumViewProtocol, networkService: NetworkService, avPlayer: AVplayerProtocol, indexPath: IndexPath?, tracksArray: [SearchTracks]?)
     var indexPath: IndexPath? { get set }
-    var tracksArray: [Track]? { get set }
+    var tracksArray: [SearchTracks]? { get set }
     func getBackgroundImage()
 }
 
@@ -27,15 +27,15 @@ class AlbumPresenter: AlbumPresenterProtocol {
     
     weak var view: AlbumViewProtocol?
     
-    var networkService: NetworkServiceProtocol?
+    var networkService: NetworkService?
     
     var avPlayer: AVplayerProtocol?
     
     var indexPath: IndexPath?
     
-    var tracksArray: [Track]?
+    var tracksArray: [SearchTracks]?
     
-    required init(view: AlbumViewProtocol, networkService: NetworkServiceProtocol, avPlayer: AVplayerProtocol, indexPath: IndexPath?, tracksArray: [Track]?) {
+    required init(view: AlbumViewProtocol, networkService: NetworkService, avPlayer: AVplayerProtocol, indexPath: IndexPath?, tracksArray: [SearchTracks]?) {
         self.view = view
         self.networkService = networkService
         self.avPlayer = avPlayer

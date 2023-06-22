@@ -112,13 +112,13 @@ class AlbumCell: UITableViewCell {
         
     }
     
-    public func configure(number: String, name: String, song: String, imageLink: Track) {
+    public func configure(number: String, name: String, song: String, imageLink: SearchTracks) {
         numberLabel.text = number
         artistLabel.text = name
         songLabel.text = song
         
         guard let url = URL(string: imageLink.artworkUrl100 ?? "") else { return }
-        logoImage.sd_setImage(with: url)
+//        logoImage.sd_setImage(with: url)
     }
     
 }

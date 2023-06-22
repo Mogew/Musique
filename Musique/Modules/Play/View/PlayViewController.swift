@@ -18,7 +18,7 @@ class PlayViewController: UIViewController {
     
     private var indexPath: IndexPath?
     
-    private var trackArray: [Track]?
+    private var trackArray: [SearchTracks]?
     
     //MARK: - UI Buttons
     
@@ -360,10 +360,10 @@ class PlayViewController: UIViewController {
     }
     
     @objc private func tapPage() {
-        let albumVC = Builder.createAlbumVC(indexPath: indexPath, tracksArray: trackArray)
-        albumVC.modalPresentationStyle = .fullScreen
-        albumVC.modalTransitionStyle = .crossDissolve
-        present(albumVC, animated: true)
+//        let albumVC = Builder.createAlbumVC(indexPath: indexPath, tracksArray: trackArray)
+//        albumVC.modalPresentationStyle = .fullScreen
+//        albumVC.modalTransitionStyle = .crossDissolve
+//        present(albumVC, animated: true)
     }
     
     @objc private func tapButton() {
@@ -451,19 +451,19 @@ class PlayViewController: UIViewController {
 
 extension PlayViewController: PlayViewProtocol {
     
-    func setData(index: IndexPath?, model: [Track]?) {
+    func setData(index: IndexPath?, model: [SearchTracks]?) {
         indexPath = index
         trackArray = model
     }
     
-    func getMusic(_ model: Track?) {
+    func getMusic(_ model: SearchTracks?) {
         
         artistLabel.text = model?.artistName
         songLabel.text = model?.trackName
         
         let urlImage = model?.artworkUrl100?.replacingOccurrences(of: "100x100", with: "250x250")
         guard let url = URL(string: urlImage ?? "") else { return }
-        logoImage.sd_setImage(with: url)
+//        logoImage.sd_setImage(with: url)
         
         logoImage.layer.cornerRadius = 150
         logoImage.layer.masksToBounds = true

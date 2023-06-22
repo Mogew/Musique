@@ -19,6 +19,8 @@ class SearchCategoryTableView: UITableView {
         dataSource = self
         translatesAutoresizingMaskIntoConstraints = false
         super.register(SearchCategoryTableViewCell.self, forCellReuseIdentifier: SearchCategoryTableViewCell.reuseID)
+        
+        
     }
     
     required init?(coder: NSCoder) {
@@ -70,11 +72,12 @@ extension SearchCategoryTableView: UITableViewDataSource{
 
 extension SearchCategoryTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if let selectedIndexPath = selectedIndexPath, selectedIndexPath == indexPath {
             // Ячейка уже выбрана, нет необходимости повторно выделять её
             return
         }
-        
+
         if let cell = tableView.cellForRow(at: indexPath) as? SearchCategoryTableViewCell {
             cell.cellView.backgroundColor = UIColor.systemGray6// Выбранный цвет фона ячейки
         }
@@ -84,3 +87,5 @@ extension SearchCategoryTableView: UITableViewDelegate {
         selectedIndexPath = indexPath
     }
 }
+
+

@@ -13,7 +13,7 @@ class SearchViewController: UIViewController {
     let categoryCollectionView = SearchCategoryCollectionView()
     private let categoryTableView = SearchCategoryTableView()
     var currentType: SearchType = .mix
-    
+        
     //MARK: - Searcbar config
     private lazy var searchBar: UISearchBar = {
         let searchbar = UISearchBar()
@@ -67,6 +67,7 @@ class SearchViewController: UIViewController {
 //        categoryTableView.setTableView(cells: SearchCategoryModel.makeMockModel())
         
         view.addGestureRecognizer(tapGesture)
+        
     }
 }
 
@@ -104,4 +105,3 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
 }
-
