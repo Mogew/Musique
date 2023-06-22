@@ -9,7 +9,7 @@ import UIKit
 
 class SearchCategoryTableView: UITableView {
     
-    var cellsTableView = [SearchCategoryModel]()
+    var cellsTableView = [SearchTracks]()
     var selectedIndexPath: IndexPath?
     
     init() {
@@ -25,7 +25,7 @@ class SearchCategoryTableView: UITableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setTableView(cells: [SearchCategoryModel]) {
+    func setTableView(cells: [SearchTracks]) {
         self.cellsTableView = cells
     }
 }
@@ -40,11 +40,8 @@ extension SearchCategoryTableView: UITableViewDataSource{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchCategoryTableViewCell.reuseID, for: indexPath) as! SearchCategoryTableViewCell
         
-        cell.songNameLabel.text = cellsTableView[indexPath.row].songName
-        cell.artistImage.image = cellsTableView[indexPath.row].image
-        cell.artistNameLabel.text = cellsTableView[indexPath.row].artistName
-        cell.dotsLabel.text = cellsTableView[indexPath.row].dots
-        
+        let track = cellsTableView[indexPath.row]
+        cell.configureCell(model: track)
         return cell
     }
     
@@ -74,16 +71,16 @@ extension SearchCategoryTableView: UITableViewDataSource{
 extension SearchCategoryTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selectedIndexPath = selectedIndexPath, selectedIndexPath == indexPath {
-              // Ячейка уже выбрана, нет необходимости повторно выделять её
-              return
-          }
-          
+            // Ячейка уже выбрана, нет необходимости повторно выделять её
+            return
+        }
+        
         if let cell = tableView.cellForRow(at: indexPath) as? SearchCategoryTableViewCell {
-              cell.cellView.backgroundColor = UIColor.systemGray6// Выбранный цвет фона ячейки
-          }
-          if let selectedIndexPath = selectedIndexPath, let selectedCell = tableView.cellForRow(at: selectedIndexPath) as? SearchCategoryTableViewCell {
-              selectedCell.cellView.backgroundColor = .mBlack // Сброс цвета предыдущей выбранной ячейки
-          }
-          selectedIndexPath = indexPath
+            cell.cellView.backgroundColor = UIColor.systemGray6// Выбранный цвет фона ячейки
+        }
+        if let selectedIndexPath = selectedIndexPath, let selectedCell = tableView.cellForRow(at: selectedIndexPath) as? SearchCategoryTableViewCell {
+            selectedCell.cellView.backgroundColor = .mBlack // Сброс цвета предыдущей выбранной ячейки
+        }
+        selectedIndexPath = indexPath
     }
 }

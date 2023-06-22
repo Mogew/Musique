@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchCategoryTableViewCell: UITableViewCell {
     
@@ -55,6 +56,19 @@ class SearchCategoryTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addviewLayout()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        artistImage.image = nil
+    }
+    
+    func configureCell(model: SearchTracks) {
+        artistNameLabel.text = model.artistName
+        songNameLabel.text = model.trackName
+        guard let urlString = model.artworkUrl30 else {return}
+        let url = URL(string: urlString)
+        artistImage.kf.setImage(with: url)
     }
     
     private func addviewLayout() {

@@ -8,13 +8,13 @@ protocol SearchViewProtocol: AnyObject {
 protocol SearchPresenterProtocol: AnyObject {
     init(view: SearchViewProtocol, networkService: NetworkService)
     func getTracks()
-    func request(q: String, type: SearchType)
-    var searchArray: [SearchCategoryModel] { get }
+    func request(term: String, type: SearchType)
+    var searchArray: [SearchTracks] { get }
 }
 
 class SearchPresenter: SearchPresenterProtocol {
     weak var view: SearchViewProtocol?
-    var searchArray: [SearchCategoryModel] = []
+    var searchArray: [SearchTracks] = []
     var newtworkService: NetworkService?
     
     required init(view: SearchViewProtocol, networkService: NetworkService) {
@@ -26,15 +26,17 @@ class SearchPresenter: SearchPresenterProtocol {
         view?.succses()
     }
     
-    func request(q: String, type: SearchType) {
-        let request = SearchDataRequest(q: q, type: .multi)
+    func request(term: String, type: SearchType) {
+        let request = SearchDataRequest(term: term, type: type)
         newtworkService?.request(request, completion: { [weak self] result in
             switch result {
-            case .success(let success):
-                self?.searchArray.append(success)
+            case .success(let arrayResponse):
+                self?.searchArray = arrayResponse.results
+                print(arrayResponse.results, "sfasfasfasfafdasdfafdfsa")
                 self?.view?.succses()
-            case .failure(_):
+            case .failure(let error):
                 self?.view?.failure()
+                print(error.localizedDescription)
             }
         })
     }

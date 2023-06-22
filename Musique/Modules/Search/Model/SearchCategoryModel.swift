@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct SearchCategoryModel: Decodable {
+struct SearchCategoryModel {
     
     var category: String
     var songName: String
@@ -21,6 +21,16 @@ struct SearchCategoryModel: Decodable {
         SearchCategoryModel(category: "Artist", songName: "Song Name", artistName: "Artist Name", image: UIImage(named: "tableViewTestImage")!, dots: "..."),
         SearchCategoryModel(category: "Album", songName: "Song Name", artistName: "Artist Name", image: UIImage(named: "tableViewTestImage")!, dots: "..."),
         SearchCategoryModel(category: "Song", songName: "Song Name", artistName: "Artist Name", image: UIImage(named: "tableViewTestImage")!, dots: "..."),
-        SearchCategoryModel(category: "Playlist", songName: "Song Name", artistName: "Artist Name", image: UIImage(named: "tableViewTestImage")!, dots: "..."),
     ]}
+}
+
+struct SearchResponseModel: Decodable {
+    let results: [SearchTracks]
+}
+
+struct SearchTracks: Decodable {
+    let artistName: String?
+    let collectionName: String?
+    let trackName: String?
+    let artworkUrl30: String?
 }
