@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 class NewSongsCell: UICollectionViewCell {
     static var id = "newSongs"
@@ -32,10 +33,11 @@ class NewSongsCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with data: SongModel) {
-        image.image = data.image
-        songName.text = data.name
-        artist.text = data.type + " * " + data.artist
+    func configure(with data: RequestResult) {
+        let url = URL(string: data.artworkUrl100)
+        image.kf.setImage(with: url)
+        songName.text = data.trackName
+        artist.text = data.artistName
     }
     
     func setupConstraints() {

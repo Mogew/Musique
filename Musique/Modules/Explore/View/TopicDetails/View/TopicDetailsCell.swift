@@ -12,10 +12,6 @@ class TopicDetailsCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with data: SongModel) {
-
-    }
-    
     private func setupConstraints() {
         self.backgroundColor = .red
     }

@@ -2,7 +2,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    let sections = MOKSections
+    var sections: [Section]?
     private var collectionView: UICollectionView!
     private let imageView = UIImageView(image: UIImage(systemName: "magnifyingglass"))
     var model = SongModel1()
@@ -12,14 +12,13 @@ class HomeViewController: UIViewController {
     var presenter: HomePresenterProtocol!
     
     // 1 par - section, 2 par - item
-    var dataSource: UICollectionViewDiffableDataSource<Section, SongModel>?
+    var dataSource: UICollectionViewDiffableDataSource<Section, RequestResult>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.mDarkBlue
         setupCollectionView()
         createDataSource()
-        reloadData()
         setupButton()
         
     }
@@ -44,8 +43,8 @@ extension HomeViewController {
     }
     
     func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, SongModel>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-            switch self.sections[indexPath.section].type {
+        dataSource = UICollectionViewDiffableDataSource<Section, RequestResult>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            switch self.sections![indexPath.section].type {
             case NewSongsCell.id:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewSongsCell.id, for: indexPath) as? NewSongsCell
                 cell?.configure(with: itemIdentifier)
@@ -88,10 +87,10 @@ extension HomeViewController {
     }
     
     func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, SongModel>()
-        snapshot.appendSections(MOKSections)
+        var snapshot = NSDiffableDataSourceSnapshot<Section, RequestResult>()
+        snapshot.appendSections(sections!)
         
-        for section in MOKSections {
+        for section in sections! {
             snapshot.appendItems(section.items, toSection: section)
             
         }
@@ -100,7 +99,7 @@ extension HomeViewController {
     
     func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-            let section = self.sections[sectionIndex]
+            let section = self.sections![sectionIndex]
             
             switch section.type {
             case NewSongsCell.id:
@@ -179,7 +178,15 @@ extension HomeViewController {
 //MARK: - HomeViewProtocol
 extension HomeViewController: HomeViewProtocol {
     func succses() {
-        print(presenter.newSongArray)
+        sections = [
+            Section(type: "newSongs", title: "New Songs",
+                    items: presenter.newSongArray),
+            Section(type: "popularAlbum", title: "Popular Album",
+                    items: presenter.popularAlbumArray),
+            Section(type: "recentlyplayed", title: "Recently played",
+                    items: presenter.recentlyPlayedArray)
+        ]
+        reloadData()
     }
     
     func failure() {

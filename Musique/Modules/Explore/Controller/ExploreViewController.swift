@@ -8,7 +8,7 @@ class ExploreViewController: UIViewController {
     var songCount = 1
     let CountRange = 1...9
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, SongModel>?
+    var dataSource: UICollectionViewDiffableDataSource<Section1, SongModel>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,19 +114,19 @@ class ExploreViewController: UIViewController {
 extension ExploreViewController {
     
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, SongModel>(collectionView: collectionView, cellProvider: {
+        dataSource = UICollectionViewDiffableDataSource<Section1, SongModel>(collectionView: collectionView, cellProvider: {
             collecitonView, indexPath, itemIdentifier in
             switch self.sections[indexPath.section].type {
-            case RecentlyMusicCell.id:
-                let cell = collecitonView.dequeueReusableCell(withReuseIdentifier: RecentlyMusicCell.id, for: indexPath) as? RecentlyMusicCell
-                cell?.configure(with: itemIdentifier)
-                if self.CountRange.contains(self.songCount) {
-                    cell?.number.text = "0" + "\(self.songCount)"
-                } else {
-                    cell?.number.text = "\(self.songCount)"
-                }
-                self.songCount += 1
-                return cell!
+//            case RecentlyMusicCell.id:
+//                let cell = collecitonView.dequeueReusableCell(withReuseIdentifier: RecentlyMusicCell.id, for: indexPath) as? RecentlyMusicCell
+//                cell?.configure(with: itemIdentifier)
+//                if self.CountRange.contains(self.songCount) {
+//                    cell?.number.text = "0" + "\(self.songCount)"
+//                } else {
+//                    cell?.number.text = "\(self.songCount)"
+//                }
+//                self.songCount += 1
+//                return cell!
             case TopTrendingCell.id:
                 let cell = collecitonView.dequeueReusableCell(withReuseIdentifier: TopTrendingCell.id, for: indexPath) as? TopTrendingCell
                 cell?.configure(with: itemIdentifier)
@@ -161,7 +161,7 @@ extension ExploreViewController {
         }
     }
     private func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, SongModel>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section1, SongModel>()
         snapshot.appendSections(exploreMOKSections)
         
         for section in exploreMOKSections {

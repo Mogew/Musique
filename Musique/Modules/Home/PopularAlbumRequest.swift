@@ -1,6 +1,4 @@
-import Foundation
-
-struct HomeRequest: DataRequest {
+struct PopularAlbumRequest: DataRequest {
     typealias Response = RealHomeModel
     
     var url: String {
@@ -13,8 +11,8 @@ struct HomeRequest: DataRequest {
         [
             "attribute": "ratingIndex",
             "entity": "song",
-            "country": "us",
-            "limit": "10"
+            "country": "jp",
+            "limit": "1"
         ]
     }
     

@@ -34,7 +34,7 @@ class TopTrendingCell: UICollectionViewCell {
     }
     
     func configure(with data: SongModel) {
-        image.image = data.image
+      //  image.image = data.artworkUrl100
         songNameLabel.text = data.name
         artistLabel.text = data.artist
     }

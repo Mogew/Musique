@@ -27,7 +27,7 @@ class TopicCell: UICollectionViewCell {
     }
     
     func configure(with data: SongModel) {
-        image.image = data.image
+        //image.image = data.artworkUrl100
         label.text = data.name
     }
     
