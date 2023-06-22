@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = UIColor.mDarkBlue
         setupButton()
         setupCollectionView()
+        self.createDataSource()
     }
     
 }
@@ -184,10 +185,7 @@ extension HomeViewController: HomeViewProtocol {
             Section(type: "recentlyplayed", title: "Recently played",
                     items: presenter.recentlyPlayedArray)
         ]
-        DispatchQueue.main.async(execute: {
-            self.createDataSource()
-            self.reloadData()
-        })
+        self.reloadData()
 
 
       

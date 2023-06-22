@@ -45,7 +45,7 @@ class RecentlyMusicCell: UICollectionViewCell {
     func configure(with data: RequestResult) {
         let url = URL(string: data.artworkUrl100)
         image.kf.setImage(with: url)
-        songName.text = data.trackName
+        songName.text = data.trackName.maxLength(length: 28)
         artist.text = data.artistName
     }
     
@@ -55,7 +55,6 @@ class RecentlyMusicCell: UICollectionViewCell {
         addSubview(playButton)
         addSubview(artist)
         addSubview(image)
-        
         NSLayoutConstraint.activate([
         // nuber
             number.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -90,3 +89,18 @@ class RecentlyMusicCell: UICollectionViewCell {
     
 }
 
+
+extension String {
+   func maxLength(length: Int) -> String {
+       var str = self
+       let nsString = str as NSString
+       if nsString.length >= length {
+           str = nsString.substring(with:
+               NSRange(
+                location: 0,
+                length: nsString.length > length ? length : nsString.length)
+           )
+       }
+       return  str
+   }
+}

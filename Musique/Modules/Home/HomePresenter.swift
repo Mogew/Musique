@@ -15,9 +15,9 @@ protocol HomePresenterProtocol: AnyObject {
 class HomePresenter: HomePresenterProtocol {
     weak var view: HomeViewProtocol?
     var networkService: NetworkService!
-    var newSongArray: [RequestResult] = []
-    var recentlyPlayedArray: [RequestResult] = []
-    var popularAlbumArray: [RequestResult] = []
+    var newSongArray: [RequestResult] = [RequestResult(artistName: "", trackName: "", artistViewUrl: "", previewUrl: "", artworkUrl100: "", releaseDate: "1")]
+    var recentlyPlayedArray: [RequestResult] = [RequestResult(artistName: "", trackName: "", artistViewUrl: "", previewUrl: "", artworkUrl100: "", releaseDate: "2")]
+    var popularAlbumArray: [RequestResult] = [RequestResult(artistName: "", trackName: "", artistViewUrl: "", previewUrl: "", artworkUrl100: "", releaseDate: "3")]
     
     required init(view: HomeViewProtocol, networkService: NetworkService) {
         self.view = view
@@ -33,9 +33,9 @@ class HomePresenter: HomePresenterProtocol {
             switch result {
             case .success(let songArray):
                 self?.newSongArray = songArray.results
-
+                self?.view?.succses()
             case .failure(_):
-
+                print("-------------------------------------------")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     self?.getNewSongs()
                 }
@@ -49,7 +49,9 @@ class HomePresenter: HomePresenterProtocol {
             switch result {
             case .success(let songArray):
                 self?.popularAlbumArray = songArray.results
+                self?.view?.succses()
             case .failure(_):
+                print("-------------------------------------------")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     self?.getPopularAlbum()
                 }
@@ -66,6 +68,7 @@ class HomePresenter: HomePresenterProtocol {
                 self?.view?.succses()
             case .failure(_):
                 self?.view?.failure()
+                print("-------------------------------------------")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     self?.getRecentlyPlayed()
                 }
