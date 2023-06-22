@@ -14,7 +14,7 @@ class TabBarController: UITabBarController {
                                   and: "Music", vc: Builder.getHomeModule())
         let explore = self.createNav(with: "Explore",
                                      and: UIImage(systemName: "sparkles.rectangle.stack"),
-                                     and: "Explore", vc: ExploreViewController())
+                                     and: "Explore", vc: HomeViewController())
         let favorites = self.createNav(with: "Favorites", and: UIImage(systemName: "heart"),
                                        and: "Favorites",vc: HomeViewController())
         let account = self.createNav(with: "Account", and: UIImage(systemName: "person"),

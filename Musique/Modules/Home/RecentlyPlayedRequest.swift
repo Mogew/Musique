@@ -13,7 +13,7 @@ struct RecentlyPlayedRequest: DataRequest {
         [
             "attribute": "ratingIndex",
             "entity": "song",
-            "country": "us",
+            "country": "ru",
             "limit": "5"
         ]
     }

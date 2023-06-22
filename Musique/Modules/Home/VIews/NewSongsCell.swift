@@ -47,7 +47,7 @@ class NewSongsCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             // image
-            image.widthAnchor.constraint(equalToConstant: 148),
+//            image.widthAnchor.constraint(equalToConstant: 148),
             image.heightAnchor.constraint(equalToConstant: 148),
             image.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             image.topAnchor.constraint(equalTo: self.topAnchor),

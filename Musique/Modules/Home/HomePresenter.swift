@@ -33,9 +33,9 @@ class HomePresenter: HomePresenterProtocol {
             switch result {
             case .success(let songArray):
                 self?.newSongArray = songArray.results
-                self?.view?.succses()
+
             case .failure(_):
-                self?.view?.failure()
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     self?.getNewSongs()
                 }
@@ -63,7 +63,9 @@ class HomePresenter: HomePresenterProtocol {
             switch result {
             case .success(let songArray):
                 self?.recentlyPlayedArray = songArray.results
+                self?.view?.succses()
             case .failure(_):
+                self?.view?.failure()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     self?.getRecentlyPlayed()
                 }
