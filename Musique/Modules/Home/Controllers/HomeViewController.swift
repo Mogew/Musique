@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
         reloadData()
         setupButton()
     }
+    
 }
 
 extension HomeViewController {

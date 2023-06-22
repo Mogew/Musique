@@ -11,6 +11,7 @@
 		94121AE12A3C673F00167042 /* ExploreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94121AE02A3C673F00167042 /* ExploreModel.swift */; };
 		94121AE32A3C688600167042 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94121AE22A3C688600167042 /* TopicCell.swift */; };
 		94121AE82A3C778F00167042 /* TopTrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94121AE72A3C778F00167042 /* TopTrendingCell.swift */; };
+		942C546F2A431B4700101E04 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C546E2A431B4700101E04 /* APIRequest.swift */; };
 		94756D3A2A41DC88006BF4F6 /* TopicDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94756D392A41DC88006BF4F6 /* TopicDetailsViewController.swift */; };
 		94756D3D2A41E2F8006BF4F6 /* TopicDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94756D3C2A41E2F8006BF4F6 /* TopicDetailsCell.swift */; };
 		94756D3F2A41E349006BF4F6 /* TempModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94756D3E2A41E349006BF4F6 /* TempModel.swift */; };
@@ -89,6 +90,7 @@
 		94121AE02A3C673F00167042 /* ExploreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreModel.swift; sourceTree = "<group>"; };
 		94121AE22A3C688600167042 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		94121AE72A3C778F00167042 /* TopTrendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTrendingCell.swift; sourceTree = "<group>"; };
+		942C546E2A431B4700101E04 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		94756D392A41DC88006BF4F6 /* TopicDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDetailsViewController.swift; sourceTree = "<group>"; };
 		94756D3C2A41E2F8006BF4F6 /* TopicDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDetailsCell.swift; sourceTree = "<group>"; };
 		94756D3E2A41E349006BF4F6 /* TempModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempModel.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				94EA028C2A386FC700959697 /* Model */,
 				94EA02832A383C5C00959697 /* Controllers */,
 				94EA02822A383C5700959697 /* VIews */,
+				942C546E2A431B4700101E04 /* APIRequest.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 			files = (
 				C8D6E0582A3A4B18000FACC9 /* TextFieldBuilder.swift in Sources */,
 				C822CAB52A36203200CAA5E0 /* AppDelegate.swift in Sources */,
+				942C546F2A431B4700101E04 /* APIRequest.swift in Sources */,
 				94121ADF2A3C66D800167042 /* ExploreViewController.swift in Sources */,
 				94121AE82A3C778F00167042 /* TopTrendingCell.swift in Sources */,
 				C86BD8BF2A36336F00FBD6FA /* UIColor+Extension.swift in Sources */,

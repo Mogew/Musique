@@ -1,6 +1,20 @@
 import UIKit
 
 
+struct RealHomeModel {
+    let results: [RequestResult]
+}
+
+struct RequestResult {
+    let artistName: String
+    let trackName: String
+    let artistViewUrl: String
+    let previewUrl: String
+    let artworkUrl100:String
+    let releaseDate: String
+}
+
+
 public struct Section: Hashable {
     let type: String
     let title: String
