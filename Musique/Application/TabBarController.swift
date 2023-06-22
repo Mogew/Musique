@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
         let home = self.createNav(with: "Home",
                                   and: UIImage(systemName: "house"),
                                   and: "Music",
-                                  vc: HomeViewController())
+                                  vc: Builder.getHomeModule())
         let explore = self.createNav(with: "Explore",
                                      and: UIImage(systemName: "sparkles.rectangle.stack"),
                                      and: "Explore", vc: HomeViewController())
