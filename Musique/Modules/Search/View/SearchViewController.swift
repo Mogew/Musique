@@ -9,8 +9,10 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    private let categoryCollectionView = SearchCategoryCollectionView()
+    var presenter: SearchPresenterProtocol!
+    let categoryCollectionView = SearchCategoryCollectionView()
     private let categoryTableView = SearchCategoryTableView()
+    var currentType: SearchType = .mix
     
     //MARK: - Searcbar config
     private lazy var searchBar: UISearchBar = {
@@ -22,6 +24,16 @@ class SearchViewController: UIViewController {
         searchbar.showsCancelButton = false
         return searchbar
     }()
+   //MARK: - Hide keyboard after tap on other place of screen
+    private lazy var tapGesture: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer()
+        tap.addTarget(self, action: #selector(dismissKeyboard(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
+    }()
+    @objc private func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        searchBar.resignFirstResponder()
+    }
     
     private func addViewLayout() {
         
@@ -52,7 +64,24 @@ class SearchViewController: UIViewController {
         
         addViewLayout()
         categoryCollectionView.set(cells: SearchCategoryModel.makeMockModel())
-        categoryTableView.setTableView(cells: SearchCategoryModel.makeMockModel())
+//        categoryTableView.setTableView(cells: SearchCategoryModel.makeMockModel())
+        
+        view.addGestureRecognizer(tapGesture)
+    }
+}
+
+//MARK: - ViewProtocol
+extension SearchViewController: SearchViewProtocol {
+    func succses() {
+        print("nice")
+        DispatchQueue.main.async {
+            self.categoryTableView.setTableView(cells: self.presenter.searchArray)
+            self.categoryTableView.reloadData()
+        }
+    }
+    
+    func failure() {
+        print("fail")
     }
 }
 
@@ -66,6 +95,13 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.text = nil
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // Вызываем поисковой запрос
+        presenter.request(term: searchBar.text ?? "", type: currentType)
+        // Скрываем клавиатуру
+        searchBar.resignFirstResponder()
     }
 }
 

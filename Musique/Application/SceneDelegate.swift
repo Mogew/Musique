@@ -11,7 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.overrideUserInterfaceStyle = .dark
         window?.rootViewController = TabBarController()
-        //window?.rootViewController = Builder.getSignUpModule()
         window?.makeKeyAndVisible()
     }
 }
