@@ -27,7 +27,7 @@ class SearchPresenter: SearchPresenterProtocol {
     }
     
     func request(term: String, type: SearchType) {
-        let request = SearchDataRequest(term: term, type: type)
+        let request = SearchDataRequest(term: convertSpacesToPlus(term), type: type)
         newtworkService?.request(request, completion: { [weak self] result in
             switch result {
             case .success(let arrayResponse):
@@ -39,5 +39,10 @@ class SearchPresenter: SearchPresenterProtocol {
                 print(error.localizedDescription)
             }
         })
+    }
+    
+    func convertSpacesToPlus(_ text: String) -> String {
+        let modifiedText = text.replacingOccurrences(of: " ", with: "+")
+        return modifiedText
     }
 }
