@@ -66,7 +66,7 @@ class SearchCategoryTableViewCell: UITableViewCell {
     func configureCell(model: SearchTracks) {
         artistNameLabel.text = model.artistName
         songNameLabel.text = model.trackName
-        guard let urlString = model.artworkUrl30 else {return}
+        guard let urlString = model.artworkUrl60 else {return}
         let url = URL(string: urlString)
         artistImage.kf.setImage(with: url)
     }
