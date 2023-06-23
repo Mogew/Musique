@@ -118,7 +118,7 @@ class AlbumCell: UITableViewCell {
         songLabel.text = song
         
         guard let url = URL(string: imageLink.artworkUrl100 ?? "") else { return }
-//        logoImage.sd_setImage(with: url)
+        logoImage.kf.setImage(with: url)
     }
     
 }

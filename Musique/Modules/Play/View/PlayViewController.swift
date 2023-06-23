@@ -464,7 +464,7 @@ extension PlayViewController: PlayViewProtocol {
         
         let urlImage = model?.artworkUrl100?.replacingOccurrences(of: "100x100", with: "250x250")
         guard let url = URL(string: urlImage ?? "") else { return }
-//        logoImage.sd_setImage(with: url)
+        logoImage.kf.setImage(with: url)
         
         logoImage.layer.cornerRadius = 150
         logoImage.layer.masksToBounds = true

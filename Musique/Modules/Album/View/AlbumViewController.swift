@@ -215,9 +215,7 @@ extension AlbumViewController: UITableViewDataSource {
             name: model.artistName!,
             song: model.trackName!,
             imageLink: model)
-        
-        presenter?.getBackgroundImage()
-        
+                
         return cell ?? UITableViewCell()
     }
     
@@ -228,10 +226,8 @@ extension AlbumViewController: UITableViewDataSource {
 extension AlbumViewController: AlbumViewProtocol {
     func setBackgroundImage(model: SearchTracks) {
         
-        let urlImage = model.artworkUrl100?.replacingOccurrences(of: "100x100", with: "1920x1080")
+        let urlImage = model.artworkUrl100?.replacingOccurrences(of: "100x100", with: "1080x1080")
         guard let url = URL(string: urlImage ?? "") else { return }
-//        backgroundView.sd_setImage(with: url)
-        
-        
+        backgroundView.kf.setImage(with: url)
     }
 }

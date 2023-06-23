@@ -10,14 +10,13 @@ import Foundation
 //MARK: - Protocols
 
 protocol AlbumViewProtocol: AnyObject {
-    func setBackgroundImage(model: SearchTracks)
+    
 }
 
 protocol AlbumPresenterProtocol: AnyObject {
     init(view: AlbumViewProtocol, networkService: NetworkService, avPlayer: AVplayerProtocol, indexPath: IndexPath?, tracksArray: [SearchTracks]?)
     var indexPath: IndexPath? { get set }
     var tracksArray: [SearchTracks]? { get set }
-    func getBackgroundImage()
 }
 
 
@@ -45,11 +44,5 @@ class AlbumPresenter: AlbumPresenterProtocol {
     }
     
     //MARK: - Methods
-    
-    func getBackgroundImage() {
-        guard let indexPath = indexPath?.row else { return }
-        guard let tracksArray = tracksArray else { return }
-        
-        view?.setBackgroundImage(model: tracksArray[indexPath])
-    }
+
 }
