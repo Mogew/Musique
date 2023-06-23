@@ -10,6 +10,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.overrideUserInterfaceStyle = .dark
+//        window?.rootViewController = UINavigationController(rootViewController: PlaylistViewController())
         window?.rootViewController = Builder.getSearchModule()
         //window?.rootViewController = Builder.getSignUpModule()
         window?.makeKeyAndVisible()

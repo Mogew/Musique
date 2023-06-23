@@ -14,6 +14,10 @@ class AlbumViewController: UIViewController {
     
     var presenter: AlbumPresenterProtocol?
     
+    private var indexPath: IndexPath?
+    
+    private var tracks: [SearchTracks]?
+    
     private let identifier = "tableCell"
     
     //MARK: - PageControl
@@ -22,7 +26,7 @@ class AlbumViewController: UIViewController {
         let page = UIPageControl()
         page.pageIndicatorTintColor = .lightGray
         page.currentPageIndicatorTintColor = .white
-        page.numberOfPages = 2
+        page.numberOfPages = 3
         page.currentPage = 1
         page.isUserInteractionEnabled = false
         page.preferredIndicatorImage = UIImage(named: "activePage")
@@ -33,7 +37,6 @@ class AlbumViewController: UIViewController {
     
     private lazy var backgroundView: UIImageView = {
         let view = UIImageView()
-//        view.image = UIImage(named: "brooks")!
         view.contentMode = .scaleAspectFill
         return view
     }()
@@ -113,10 +116,17 @@ class AlbumViewController: UIViewController {
     
     //MARK: - Swipe
     
-    private lazy var swipe: UISwipeGestureRecognizer = {
+    private lazy var swipeLeft: UISwipeGestureRecognizer = {
+        let swipe = UISwipeGestureRecognizer()
+        swipe.direction = .left
+        swipe.addTarget(self, action: #selector(tapLeftSwipe))
+        return swipe
+    }()
+    
+    private lazy var swipeRight: UISwipeGestureRecognizer = {
         let swipe = UISwipeGestureRecognizer()
         swipe.direction = .right
-        swipe.addTarget(self, action: #selector(tapPage))
+        swipe.addTarget(self, action: #selector(tapRightSwipe))
         return swipe
     }()
     
@@ -139,7 +149,8 @@ class AlbumViewController: UIViewController {
         stackView.addArrangedSubview(musicStackView)
         stackView.addArrangedSubview(textLabel)
         
-        view.addGestureRecognizer(swipe)
+        view.addGestureRecognizer(swipeLeft)
+        view.addGestureRecognizer(swipeRight)
         
         view.addSubview(backgroundView)
         
@@ -184,12 +195,18 @@ class AlbumViewController: UIViewController {
     
     //MARK: - Methods
     
-    @objc private func tapPage() {
-        dismiss(animated: true)
+    @objc private func tapLeftSwipe() {
+        guard let tracks = tracks, let indexPath = indexPath else { return }
+        let playlistVC = Builder.createPlaylist(track: tracks[indexPath.row], indexPath: indexPath)
+        playlistVC.modalPresentationStyle = .fullScreen
+        playlistVC.modalTransitionStyle = .crossDissolve
+        present(playlistVC, animated: true)
     }
     
+    @objc private func tapRightSwipe() {
+        dismiss(animated: true)
+    }
 }
-
 //MARK: - Extension UITableViewDelegate
 
 extension AlbumViewController: UITableViewDelegate {
@@ -198,7 +215,7 @@ extension AlbumViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        ;;;;;
+        //        ;;;;;
     }
 }
 
@@ -219,7 +236,7 @@ extension AlbumViewController: UITableViewDataSource {
             name: model.artistName!,
             song: model.trackName!,
             imageLink: model)
-                
+        
         return cell ?? UITableViewCell()
     }
     
@@ -229,13 +246,15 @@ extension AlbumViewController: UITableViewDataSource {
 
 extension AlbumViewController: AlbumViewProtocol {
     func setData(index: IndexPath?, trackArray: [SearchTracks]?) {
-        guard let indexPath = index, let tracks = trackArray else { return }
+        guard let safeIndexPath = index, let track = trackArray else { return }
+        indexPath = safeIndexPath
+        tracks = track
+  
+        songLabel.text = track[safeIndexPath.row].collectionName
+        albumLabel.text = track[safeIndexPath.row].trackName
+        textLabel.text = "This artist is \(track[safeIndexPath.row].artistName ?? ""), if you want to know more about that person you can look here"
         
-        songLabel.text = tracks[indexPath.row].collectionName
-        albumLabel.text = tracks[indexPath.row].trackName
-        textLabel.text = "This artist is \(tracks[indexPath.row].artistName ?? ""), if you want to know more about that person you can look here"
-        
-        let urlImage = tracks[indexPath.row].artworkUrl100!.replacingOccurrences(of: "100x100", with: "600x600")
+        let urlImage = track[safeIndexPath.row].artworkUrl100!.replacingOccurrences(of: "100x100", with: "600x600")
         guard let url = URL(string: urlImage) else { return }
         
         backgroundView.kf.setImage(with: url)

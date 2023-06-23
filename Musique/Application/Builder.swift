@@ -35,4 +35,12 @@ class Builder {
         view.presenter = presenter
         return view
     }
+    
+    static func createPlaylist(track: SearchTracks, indexPath: IndexPath?) -> UIViewController {
+        let view = PlaylistViewController()
+        let networkService = DefaultNetworkService()
+        let presenter = PlaylistPresenter(view: view, networkService: networkService, track: track, indexPath: indexPath)
+        view.presenter = presenter
+        return view
+    }
 }

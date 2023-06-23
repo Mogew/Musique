@@ -63,6 +63,8 @@
 		EB38BF522A44A5E80038AC91 /* AlbumPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38BF512A44A5E80038AC91 /* AlbumPresenter.swift */; };
 		EB38BF552A44A6330038AC91 /* AVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38BF542A44A6330038AC91 /* AVPlayer.swift */; };
 		EB38BF572A44A6430038AC91 /* CMTime + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38BF562A44A6430038AC91 /* CMTime + Extension.swift */; };
+		EB705AEF2A45E57B00154E3F /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB705AEE2A45E57B00154E3F /* PlaylistViewController.swift */; };
+		EB705AF12A45E58300154E3F /* PlaylistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB705AF02A45E58300154E3F /* PlaylistPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +146,8 @@
 		EB38BF512A44A5E80038AC91 /* AlbumPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPresenter.swift; sourceTree = "<group>"; };
 		EB38BF542A44A6330038AC91 /* AVPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayer.swift; sourceTree = "<group>"; };
 		EB38BF562A44A6430038AC91 /* CMTime + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime + Extension.swift"; sourceTree = "<group>"; };
+		EB705AEE2A45E57B00154E3F /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
+		EB705AF02A45E58300154E3F /* PlaylistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,9 +320,10 @@
 		C822CAE52A36205400CAA5E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				EB705AEB2A45E54100154E3F /* Playlist */,
 				EB38BF532A44A6200038AC91 /* AVPlayer */,
-				EB38BF492A44A5900038AC91 /* Album */,
 				EB38BF3E2A44A4D60038AC91 /* Play */,
+				EB38BF492A44A5900038AC91 /* Album */,
 				C8D6E0652A3A6313000FACC9 /* Search */,
 				C8D6E05B2A3A4C25000FACC9 /* Onboarding */,
 				C8D6E04F2A3A4B18000FACC9 /* Authentication */,
@@ -507,6 +512,31 @@
 			path = AVPlayer;
 			sourceTree = "<group>";
 		};
+		EB705AEB2A45E54100154E3F /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				EB705AEC2A45E55F00154E3F /* View */,
+				EB705AED2A45E56700154E3F /* Presenter */,
+			);
+			path = Playlist;
+			sourceTree = "<group>";
+		};
+		EB705AEC2A45E55F00154E3F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EB705AEE2A45E57B00154E3F /* PlaylistViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EB705AED2A45E56700154E3F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				EB705AF02A45E58300154E3F /* PlaylistPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -673,9 +703,11 @@
 				C8D6E0592A3A4B18000FACC9 /* ButtonBuilder.swift in Sources */,
 				C8D6E05F2A3A4C25000FACC9 /* OnboardingViewController.swift in Sources */,
 				C8D6E0572A3A4B18000FACC9 /* UserSignUpController.swift in Sources */,
+				EB705AEF2A45E57B00154E3F /* PlaylistViewController.swift in Sources */,
 				EB38BF432A44A5350038AC91 /* TrackModel.swift in Sources */,
 				C8D6E0712A3AFF0A000FACC9 /* UserSignUpPresenter.swift in Sources */,
 				C8D6E0632A3A5900000FACC9 /* UIButton+Extension.swift in Sources */,
+				EB705AF12A45E58300154E3F /* PlaylistPresenter.swift in Sources */,
 				94EA02852A383C8D00959697 /* SectionHeader.swift in Sources */,
 				C8D6E06E2A3A6313000FACC9 /* SearcCategoryCollectionViewCell.swift in Sources */,
 				C822CAB72A36203200CAA5E0 /* SceneDelegate.swift in Sources */,

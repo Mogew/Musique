@@ -119,7 +119,7 @@ class PlayViewController: UIViewController {
         let page = UIPageControl()
         page.pageIndicatorTintColor = .lightGray
         page.currentPageIndicatorTintColor = .white
-        page.numberOfPages = 2
+        page.numberOfPages = 3
         page.currentPage = 0
         page.isUserInteractionEnabled = false
         page.preferredIndicatorImage = UIImage(named: "activePage")
@@ -289,7 +289,7 @@ class PlayViewController: UIViewController {
         createButton(forwawrdButton, image: UIImage(named: "forward")!, stackView: playStackView, selector: #selector(secondTrack(sender:)))
         createButton(replayButton, image: UIImage(systemName: "repeat")!, stackView: playStackView, selector: #selector(tapReplay))
         createButton(sharedButton, image: UIImage(named: "shared")!, stackView: favoritesStackView, selector: #selector(tapShared))
-        createButton(addPlayListButton, image: UIImage(named: "addLibr")!, stackView: favoritesStackView, selector: #selector(tapButton))
+        createButton(addPlayListButton, image: UIImage(named: "addLibr")!, stackView: favoritesStackView, selector: #selector(addPlayList))
         createButton(favoritesButton, image: UIImage(systemName: "heart")!, stackView: favoritesStackView, selector: #selector(tapFavoriteButton))
         createButton(downloadButton, image: (UIImage(named: "download"))!, stackView: favoritesStackView, selector: #selector(tapDownloadButton))
         
@@ -396,6 +396,12 @@ class PlayViewController: UIViewController {
     //MARK: - Targets
     
     @objc private func tapButton() {
+        
+    }
+    
+    @objc private func addPlayList() {
+//        guard let track = trackArray, let index = indexPath?.row else { return }
+//        let playlistVC = Builder.createPlaylist(track: track[index])
         
     }
     
