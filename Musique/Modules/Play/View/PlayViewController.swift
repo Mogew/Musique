@@ -360,10 +360,11 @@ class PlayViewController: UIViewController {
     }
     
     @objc private func tapPage() {
-//        let albumVC = Builder.createAlbumVC(indexPath: indexPath, tracksArray: trackArray)
-//        albumVC.modalPresentationStyle = .fullScreen
-//        albumVC.modalTransitionStyle = .crossDissolve
-//        present(albumVC, animated: true)
+        guard let index = indexPath, let array = trackArray else { return }
+        let albumVC = Builder.createAlbumVC(indexPath: index, tracksArray: array)
+        albumVC.modalPresentationStyle = .fullScreen
+        albumVC.modalTransitionStyle = .crossDissolve
+        present(albumVC, animated: true)
     }
     
     @objc private func tapButton() {

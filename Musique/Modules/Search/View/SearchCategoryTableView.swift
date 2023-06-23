@@ -17,6 +17,8 @@ class SearchCategoryTableView: UITableView {
     var selectedIndexPath: IndexPath?
     weak var searchDelegate: SearchTableViewProtocol?
     
+    weak var myDelegate: PresentDelagate?
+    
     init() {
         super.init(frame: .zero, style: .plain)
         backgroundColor = .mBlack
@@ -77,7 +79,9 @@ extension SearchCategoryTableView: UITableViewDataSource{
 
 extension SearchCategoryTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        searchDelegate?.presentPlayer(track: cellsTableView, indexPath: indexPath)
+        
+        myDelegate?.presentVC(track: cellsTableView, indexPath: indexPath)
+        
         if let selectedIndexPath = selectedIndexPath, selectedIndexPath == indexPath {
             // Ячейка уже выбрана, нет необходимости повторно выделять её
             return

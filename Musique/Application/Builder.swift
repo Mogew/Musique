@@ -26,4 +26,13 @@ class Builder {
         view.presenter = presenter
         return view
     }
+    
+    static func createAlbumVC(indexPath: IndexPath, tracksArray: [SearchTracks]) -> UIViewController {
+        let view = AlbumViewController()
+        let networkService = DefaultNetworkService()
+        let player = AVPlayerClass()
+        let presenter = AlbumPresenter(view: view, networkService: networkService, avPlayer: player, indexPath: indexPath, tracksArray: tracksArray)
+        view.presenter = presenter
+        return view
+    }
 }

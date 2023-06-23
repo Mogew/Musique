@@ -7,8 +7,12 @@
 
 import UIKit
 
+protocol PresentDelagate: AnyObject {
+    func presentVC(track: [SearchTracks]?, indexPath: IndexPath?)
+}
+
 class SearchViewController: UIViewController {
-    
+
     var presenter: SearchPresenterProtocol!
     let categoryCollectionView = SearchCategoryCollectionView()
     private let categoryTableView = SearchCategoryTableView()
@@ -61,7 +65,9 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .mBlack
-        categoryTableView.searchDelegate = self
+        
+        categoryTableView.myDelegate = self
+        
         addViewLayout()
         categoryCollectionView.set(cells: SearchCategoryModel.makeMockModel())
 //        categoryTableView.setTableView(cells: SearchCategoryModel.makeMockModel())
@@ -74,7 +80,6 @@ class SearchViewController: UIViewController {
 //MARK: - ViewProtocol
 extension SearchViewController: SearchViewProtocol {
     func succses() {
-        print("nice")
         DispatchQueue.main.async {
             self.categoryTableView.setTableView(cells: self.presenter.searchArray)
             self.categoryTableView.reloadData()
@@ -109,5 +114,13 @@ extension SearchViewController: UISearchBarDelegate {
         presenter.request(term: searchBar.text ?? "", type: currentType)
         // Скрываем клавиатуру
         searchBar.resignFirstResponder()
+    }
+}
+
+extension SearchViewController: PresentDelagate {
+    func presentVC(track: [SearchTracks]?, indexPath: IndexPath?) {
+        let playVC = Builder.getPlayModule(track: track, indexPath: indexPath)
+        playVC.modalPresentationStyle = .fullScreen
+        present(playVC, animated: true)
     }
 }
