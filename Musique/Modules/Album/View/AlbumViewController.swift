@@ -18,6 +18,8 @@ class AlbumViewController: UIViewController {
     
     private var tracks: [SearchTracks]?
     
+    private var saveTracks: [SearchTracks]?
+    
     private let identifier = "tableCell"
     
     //MARK: - PageControl
@@ -196,8 +198,9 @@ class AlbumViewController: UIViewController {
     //MARK: - Methods
     
     @objc private func tapLeftSwipe() {
-        guard let tracks = tracks, let indexPath = indexPath else { return }
-        let playlistVC = Builder.createPlaylist(track: tracks[indexPath.row], indexPath: indexPath)
+        guard let tracks = tracks, let indexPath = indexPath, let saveTracks = saveTracks else { return }
+
+        let playlistVC = Builder.createPlaylist(track: tracks[indexPath.row], indexPath: indexPath, saveTracks: saveTracks)
         playlistVC.modalPresentationStyle = .fullScreen
         playlistVC.modalTransitionStyle = .crossDissolve
         present(playlistVC, animated: true)
@@ -245,10 +248,12 @@ extension AlbumViewController: UITableViewDataSource {
 //MARK: -  Extension AlbumViewProtocol
 
 extension AlbumViewController: AlbumViewProtocol {
-    func setData(index: IndexPath?, trackArray: [SearchTracks]?) {
-        guard let safeIndexPath = index, let track = trackArray else { return }
+    func setData(index: IndexPath?, trackArray: [SearchTracks]?, saveTrack: [SearchTracks]?) {
+                
+        guard let safeIndexPath = index, let track = trackArray, let saveTrack = saveTrack else { return }
         indexPath = safeIndexPath
         tracks = track
+        saveTracks = saveTrack
   
         songLabel.text = track[safeIndexPath.row].collectionName
         albumLabel.text = track[safeIndexPath.row].trackName

@@ -24,6 +24,8 @@ class PlayViewController: UIViewController {
     
     private var trackArray: [SearchTracks]?
     
+    private var saveTracks = [SearchTracks]()
+    
     //MARK: - UI Buttons
     
     private lazy var mixButton = UIButton()
@@ -51,7 +53,7 @@ class PlayViewController: UIViewController {
         button.backgroundColor = .mLime
         button.layer.cornerRadius = 10
         button.alpha = 0
-        button.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addPListButton), for: .touchUpInside)
         return button
     }()
     
@@ -289,7 +291,7 @@ class PlayViewController: UIViewController {
         createButton(forwawrdButton, image: UIImage(named: "forward")!, stackView: playStackView, selector: #selector(secondTrack(sender:)))
         createButton(replayButton, image: UIImage(systemName: "repeat")!, stackView: playStackView, selector: #selector(tapReplay))
         createButton(sharedButton, image: UIImage(named: "shared")!, stackView: favoritesStackView, selector: #selector(tapShared))
-        createButton(addPlayListButton, image: UIImage(named: "addLibr")!, stackView: favoritesStackView, selector: #selector(addPlayList))
+        createButton(addPlayListButton, image: UIImage(named: "addLibr")!, stackView: favoritesStackView, selector: #selector(addPListButton))
         createButton(favoritesButton, image: UIImage(systemName: "heart")!, stackView: favoritesStackView, selector: #selector(tapFavoriteButton))
         createButton(downloadButton, image: (UIImage(named: "download"))!, stackView: favoritesStackView, selector: #selector(tapDownloadButton))
         
@@ -399,9 +401,17 @@ class PlayViewController: UIViewController {
         
     }
     
-    @objc private func addPlayList() {
-//        guard let track = trackArray, let index = indexPath?.row else { return }
-//        let playlistVC = Builder.createPlaylist(track: track[index])
+    @objc private func addPListButton() {
+        guard let trackArray = trackArray, let indexPath = indexPath?.row else { return }
+        saveTracks.append(trackArray[indexPath])
+        favoritesButton.tag = 1
+        favoritesButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        favoritesButton.tintColor = .white
+        downloadButton.isEnabled = true
+        
+        UIView.animate(withDuration: 0.5) {
+            self.addFavoriteButton.alpha = 0
+        }
         
     }
     
@@ -411,7 +421,7 @@ class PlayViewController: UIViewController {
 
     @objc private func tapPage() {
         guard let index = indexPath, let array = trackArray else { return }
-        let albumVC = Builder.createAlbumVC(indexPath: index, tracksArray: array)
+        let albumVC = Builder.createAlbumVC(indexPath: index, tracksArray: array, saveTrack: saveTracks)
         albumVC.modalPresentationStyle = .fullScreen
         albumVC.modalTransitionStyle = .crossDissolve
         present(albumVC, animated: true)

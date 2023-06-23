@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class PlaylistViewController: UIViewController, PlaylistViewProtocol {
+class PlaylistViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -55,7 +55,7 @@ class PlaylistViewController: UIViewController, PlaylistViewProtocol {
         swipe.addTarget(self, action: #selector(tapPage))
         return swipe
     }()
-        
+    
     //MARK: - Init
     
     override func viewDidLoad() {
@@ -99,34 +99,44 @@ class PlaylistViewController: UIViewController, PlaylistViewProtocol {
     @objc private func tapPage() {
         dismiss(animated: true)
     }
-
+    
 }
 
 //MARK: - Extension UITableViewDelegate
 
 extension PlaylistViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
 }
 
 //MARK: - Extension UITableViewDataSource
 
 extension PlaylistViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return presenter?.saveTracks?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let tracks = presenter?.saveTracks?[indexPath.row] else { return UITableViewCell() }
+        guard let image = URL(string: (tracks.artworkUrl30)!) else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         cell.backgroundColor = .clear
-        cell.imageView?.image = UIImage(systemName: "swift")
+        cell.imageView?.kf.setImage(with: image)
         cell.textLabel?.numberOfLines = 2
-        cell.textLabel?.text = " Song name\n Atrist name"
+        cell.textLabel?.text = "\(tracks.trackName)\n \(tracks.artistName)"
+        
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
     }
     
 }
 
+
+//MARK: - Extension
+
+extension PlaylistViewController: PlaylistViewProtocol {
+    func setData(traks: [SearchTracks]?, indexPath: IndexPath?) {
+        
+    }
+}

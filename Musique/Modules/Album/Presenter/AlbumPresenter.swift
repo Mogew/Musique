@@ -10,11 +10,11 @@ import Foundation
 //MARK: - Protocols
 
 protocol AlbumViewProtocol: AnyObject {
-    func setData(index: IndexPath?, trackArray: [SearchTracks]?)
+    func setData(index: IndexPath?, trackArray: [SearchTracks]?, saveTrack: [SearchTracks]?)
 }
 
 protocol AlbumPresenterProtocol: AnyObject {
-    init(view: AlbumViewProtocol, networkService: NetworkService, avPlayer: AVplayerProtocol, indexPath: IndexPath?, tracksArray: [SearchTracks]?)
+    init(view: AlbumViewProtocol, networkService: NetworkService, avPlayer: AVplayerProtocol, indexPath: IndexPath?, tracksArray: [SearchTracks]?, saveTracks: [SearchTracks]?)
     var indexPath: IndexPath? { get set }
     var tracksArray: [SearchTracks]? { get set }
     func getData()
@@ -35,19 +35,21 @@ class AlbumPresenter: AlbumPresenterProtocol {
     
     var tracksArray: [SearchTracks]?
     
-    required init(view: AlbumViewProtocol, networkService: NetworkService, avPlayer: AVplayerProtocol, indexPath: IndexPath?, tracksArray: [SearchTracks]?) {
+    var saveTracks: [SearchTracks]?
+    
+    required init(view: AlbumViewProtocol, networkService: NetworkService, avPlayer: AVplayerProtocol, indexPath: IndexPath?, tracksArray: [SearchTracks]?, saveTracks: [SearchTracks]?) {
         self.view = view
         self.networkService = networkService
         self.avPlayer = avPlayer
         self.indexPath = indexPath
         self.tracksArray = tracksArray
-        
+        self.saveTracks = saveTracks
         getData()
     }
     
     //MARK: - Methods
     
     func getData() {
-        view?.setData(index: indexPath, trackArray: tracksArray)
+        view?.setData(index: indexPath, trackArray: tracksArray, saveTrack: saveTracks)
     }
 }

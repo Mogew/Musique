@@ -10,11 +10,13 @@ import Foundation
 //MARK: - Protocols
 
 protocol PlaylistViewProtocol: AnyObject {
-    
+
 }
 
 protocol PlaylistPresenterProtocol: AnyObject {
-    init(view: PlaylistViewProtocol, networkService: NetworkService?, track: SearchTracks?, indexPath: IndexPath?)
+    init(view: PlaylistViewProtocol, networkService: NetworkService?, track: SearchTracks?, indexPath: IndexPath?, saveTracks: [SearchTracks]?)
+    func sendData() -> [SearchTracks]?
+    var saveTracks: [SearchTracks]? { get set }
 }
 
 
@@ -32,19 +34,21 @@ class PlaylistPresenter: PlaylistPresenterProtocol {
     
     var tracksPlaylist = [SearchTracks]()
     
+    var saveTracks: [SearchTracks]?
     
-    required init(view: PlaylistViewProtocol, networkService: NetworkService?, track: SearchTracks?, indexPath: IndexPath?) {
+    
+    required init(view: PlaylistViewProtocol, networkService: NetworkService?, track: SearchTracks?, indexPath: IndexPath?, saveTracks: [SearchTracks]?) {
         self.view = view
         self.track = track
         self.networkService = networkService
         self.indexPath = indexPath
-        addNewTrack()
+        self.saveTracks = saveTracks
     }
     
-    func addNewTrack() {
-        guard let track = track else { return }
-        tracksPlaylist.append(track)
+    //MARK: - Methods
+
+    func sendData() -> [SearchTracks]? {
+        return saveTracks
     }
-    
 }
 
