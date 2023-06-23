@@ -35,4 +35,5 @@ struct SearchTracks: Decodable {
     let artworkUrl30: String?
     let artworkUrl100: String?
     let previewUrl: String?
+    let artistViewUrl: String?
 }

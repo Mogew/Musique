@@ -28,6 +28,9 @@ protocol PlayPresenterProtocol: AnyObject {
     func changeVolume(_ value: Float)
     func findNextTrack(tag: Int)
     func sendData()
+    func shakeTrack()
+    func checkNextTrack()
+    func repeatTrack()
     var indexPath: IndexPath? { get set }
     var tracksArray: [SearchTracks]? { get set }
 }
@@ -80,7 +83,7 @@ class PlayPresenter: PlayPresenterProtocol {
         avPlayer?.monitorStartTime(completion: completion)
     }
     
-    func observPlayerCurrentTime(completion: @escaping (String, String) -> Void){
+    func observPlayerCurrentTime(completion: @escaping (String, String) -> Void) {
         avPlayer?.observPlayerCurrentTime(completion: completion)
     }
     
@@ -100,15 +103,7 @@ class PlayPresenter: PlayPresenterProtocol {
         guard let tracks = tracksArray, indexPath?.row != nil else { return }
         
         if tag == 1 {
-            if indexPath!.row + 1 == tracks.count {
-                indexPath!.row = 0
-                view?.getMusic(tracks[indexPath!.row])
-                avPlayer?.playTrack(tracks[indexPath!.row])
-            } else {
-                indexPath!.row += 1
-                view?.getMusic(tracks[indexPath!.row])
-                avPlayer?.playTrack(tracks[indexPath!.row])
-            }
+            checkNextTrack()
         } else {
             if indexPath!.row - 1 == -1 {
                 indexPath!.row = tracks.count - 1
@@ -120,6 +115,35 @@ class PlayPresenter: PlayPresenterProtocol {
                 avPlayer?.playTrack(tracks[indexPath!.row])
             }
         }
+    }
+    
+    func checkNextTrack() {
+        guard let tracks = tracksArray, indexPath?.row != nil else { return }
+        
+        if indexPath!.row + 1 == tracks.count {
+            indexPath!.row = 0
+            view?.getMusic(tracks[indexPath!.row])
+            avPlayer?.playTrack(tracks[indexPath!.row])
+        } else {
+            indexPath!.row += 1
+            view?.getMusic(tracks[indexPath!.row])
+            avPlayer?.playTrack(tracks[indexPath!.row])
+        }
+    }
+    
+    func shakeTrack() {
+        guard let tracksArray = tracksArray else { return }
+        let random = Int.random(in: 0...tracksArray.count - 1)
+        let randomTracks = tracksArray[random]
+        
+        view?.getMusic(randomTracks)
+        avPlayer?.playTrack(randomTracks)
+    }
+    
+    func repeatTrack() {
+        guard let tracks = tracksArray, indexPath?.row != nil else { return }
+        view?.getMusic(tracks[indexPath!.row])
+        avPlayer?.playTrack(tracks[indexPath!.row])
     }
     
     func sendData() {

@@ -196,6 +196,10 @@ extension AlbumViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 62
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        ;;;;;
+    }
 }
 
 //MARK: - Extension UITableViewDataSource
@@ -224,10 +228,17 @@ extension AlbumViewController: UITableViewDataSource {
 //MARK: -  Extension AlbumViewProtocol
 
 extension AlbumViewController: AlbumViewProtocol {
-    func setBackgroundImage(model: SearchTracks) {
+    func setData(index: IndexPath?, trackArray: [SearchTracks]?) {
+        guard let indexPath = index, let tracks = trackArray else { return }
         
-        let urlImage = model.artworkUrl100?.replacingOccurrences(of: "100x100", with: "1080x1080")
-        guard let url = URL(string: urlImage ?? "") else { return }
+        songLabel.text = tracks[indexPath.row].collectionName
+        albumLabel.text = tracks[indexPath.row].trackName
+        textLabel.text = "This artist is \(tracks[indexPath.row].artistName ?? ""), if you want to know more about that person you can look here"
+        
+        let urlImage = tracks[indexPath.row].artworkUrl100!.replacingOccurrences(of: "100x100", with: "600x600")
+        guard let url = URL(string: urlImage) else { return }
+        
         backgroundView.kf.setImage(with: url)
     }
+    
 }

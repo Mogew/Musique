@@ -10,13 +10,14 @@ import Foundation
 //MARK: - Protocols
 
 protocol AlbumViewProtocol: AnyObject {
-    
+    func setData(index: IndexPath?, trackArray: [SearchTracks]?)
 }
 
 protocol AlbumPresenterProtocol: AnyObject {
     init(view: AlbumViewProtocol, networkService: NetworkService, avPlayer: AVplayerProtocol, indexPath: IndexPath?, tracksArray: [SearchTracks]?)
     var indexPath: IndexPath? { get set }
     var tracksArray: [SearchTracks]? { get set }
+    func getData()
 }
 
 
@@ -41,8 +42,12 @@ class AlbumPresenter: AlbumPresenterProtocol {
         self.indexPath = indexPath
         self.tracksArray = tracksArray
         
+        getData()
     }
     
     //MARK: - Methods
-
+    
+    func getData() {
+        view?.setData(index: indexPath, trackArray: tracksArray)
+    }
 }

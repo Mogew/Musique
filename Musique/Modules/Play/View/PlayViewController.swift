@@ -16,6 +16,10 @@ class PlayViewController: UIViewController {
     
     private let identifier = "cell"
     
+    private var mixButtonSelector = false
+    
+    private var replayButtonSelector = false
+    
     private var indexPath: IndexPath?
     
     private var trackArray: [SearchTracks]?
@@ -24,13 +28,21 @@ class PlayViewController: UIViewController {
     
     private lazy var mixButton = UIButton()
     private lazy var backButton = UIButton()
-    private lazy var playPauseButton = UIButton()
     private lazy var forwawrdButton = UIButton()
     private lazy var replayButton = UIButton()
     private lazy var sharedButton = UIButton()
     private lazy var addPlayListButton = UIButton()
     private lazy var favoritesButton = UIButton()
     private lazy var downloadButton = UIButton()
+    
+    private lazy var playPauseButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named: "EllipsePlay"), for: .normal)
+        button.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(tapPlayPause), for: .touchUpInside)
+        return button
+    }()
     
     private lazy var addFavoriteButton: UIButton = {
         let button = UIButton()
@@ -61,7 +73,7 @@ class PlayViewController: UIViewController {
         label.text = "It is a long established fact that a reader"
         label.textColor = .mLime
         label.textAlignment = .center
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         return label
     }()
     
@@ -240,16 +252,16 @@ class PlayViewController: UIViewController {
         
     }
     
-    //MARK: - SetupViews
+    //MARK: - Setup Views
     
     private func setupViews() {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         
         view.addGestureRecognizer(swipe)
         
-        playPauseButton.setBackgroundImage(UIImage(named: "EllipsePlay"), for: .normal)
-        
         favoritesButton.tintColor = .white
+        mixButton.tintColor = .white
+        replayButton.tintColor = .white
         
         forwawrdButton.tag = 1
         backButton.tag = 2
@@ -263,11 +275,11 @@ class PlayViewController: UIViewController {
         generalStackView.addArrangedSubview(trackStackView)
         generalStackView.addArrangedSubview(textLabel)
         
-        createButton(mixButton, image: UIImage(named: "mix")!, stackView: playStackView, selector: #selector(tapButton))
+        createButton(mixButton, image: UIImage(systemName: "shuffle")!, stackView: playStackView, selector: #selector(tapShake))
         createButton(backButton, image: UIImage(named: "back")!, stackView: playStackView, selector: #selector(secondTrack(sender:)))
-        createButton(playPauseButton, image: UIImage(systemName: "play")!, stackView: playStackView, selector: #selector(tapPlayPause))
+        playStackView.addArrangedSubview(playPauseButton)
         createButton(forwawrdButton, image: UIImage(named: "forward")!, stackView: playStackView, selector: #selector(secondTrack(sender:)))
-        createButton(replayButton, image: UIImage(named: "repieat")!, stackView: playStackView, selector: #selector(tapButton))
+        createButton(replayButton, image: UIImage(systemName: "repeat")!, stackView: playStackView, selector: #selector(tapReplay))
         createButton(sharedButton, image: UIImage(named: "shared")!, stackView: favoritesStackView, selector: #selector(tapButton))
         createButton(addPlayListButton, image: UIImage(named: "addLibr")!, stackView: favoritesStackView, selector: #selector(tapButton))
         createButton(favoritesButton, image: UIImage(systemName: "heart")!, stackView: favoritesStackView, selector: #selector(tapFavoriteButton))
@@ -345,6 +357,20 @@ class PlayViewController: UIViewController {
             self.startTimeLabel.text = startTime
             self.endTimeLabel.text = "-\(endTime)"
             self.updateCurrentTimeSlider()
+            
+            if endTime == "00:00" {
+                
+                if mixButtonSelector {
+                    sleep(1)
+                    presenter?.shakeTrack()
+                } else if replayButtonSelector {
+                    sleep(1)
+                    presenter?.repeatTrack()
+                } else {
+                    sleep(1)
+                    presenter?.checkNextTrack()
+                }
+            }
         }
     }
     
@@ -352,11 +378,17 @@ class PlayViewController: UIViewController {
         songTimeSlider.value = presenter?.getCurrunetTime() ?? 0
     }
     
-    //MARK: - Methods
+    //MARK: - Monitoring Tracks
     
     private func trackSetups() {
         monitoringTime()
         observPlayerCurrentTime()
+    }
+    
+    //MARK: - Targets
+    
+    @objc private func tapButton() {
+        
     }
     
     @objc private func tapPage() {
@@ -367,8 +399,29 @@ class PlayViewController: UIViewController {
         present(albumVC, animated: true)
     }
     
-    @objc private func tapButton() {
+    @objc private func tapReplay() {
+        if replayButtonSelector {
+            replayButton.tintColor = .white
+            replayButtonSelector = false
+            mixButton.isEnabled = true
+        } else {
+            replayButton.tintColor = .mLime
+            replayButtonSelector = true
+            mixButton.isEnabled = false
+        }
+    }
+    
+    @objc private func tapShake() {
         
+        if mixButtonSelector {
+            mixButton.tintColor = .white
+            mixButtonSelector = false
+            replayButton.isEnabled = true
+        } else {
+            mixButton.tintColor = .mLime
+            mixButtonSelector = true
+            replayButton.isEnabled = false
+        }
     }
     
     @objc private func moveTrackSlider() {
@@ -381,18 +434,24 @@ class PlayViewController: UIViewController {
     
     @objc private func tapPlayPause() {
         if presenter?.playPause() == true {
-            playPauseButton.setImage(UIImage(systemName: "pause"), for: .normal)
+            playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             playPauseButton.tintColor = .black
             largeLogo()
         } else {
-            playPauseButton.setImage(UIImage(systemName: "play"), for: .normal)
+            playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
             playPauseButton.tintColor = .black
             reduceLogo()
         }
     }
     
     @objc private func secondTrack(sender: UIButton) {
-        presenter?.findNextTrack(tag: sender.tag)
+        if mixButtonSelector {
+            presenter?.shakeTrack()
+        } else if replayButtonSelector {
+            presenter?.repeatTrack()
+        } else {
+            presenter?.findNextTrack(tag: sender.tag)
+        }
     }
     
     @objc private func tapFavoriteButton() {
@@ -441,6 +500,8 @@ class PlayViewController: UIViewController {
         }
     }
     
+    //MARK: - Create Buttons
+    
     private func createButton(_ button: UIButton, image: UIImage, stackView: UIStackView, selector: Selector) {
         button.setImage(image, for: .normal)
         button.addTarget(self, action: selector, for: .touchUpInside)
@@ -461,6 +522,7 @@ extension PlayViewController: PlayViewProtocol {
         
         artistLabel.text = model?.artistName
         songLabel.text = model?.trackName
+        textLabel.text = model?.collectionName
         
         let urlImage = model?.artworkUrl100?.replacingOccurrences(of: "100x100", with: "250x250")
         guard let url = URL(string: urlImage ?? "") else { return }

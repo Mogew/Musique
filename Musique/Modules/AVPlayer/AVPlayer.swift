@@ -21,10 +21,7 @@ protocol AVplayerProtocol: AnyObject {
 //MARK: - AV Player
 
 class AVPlayerClass: AVplayerProtocol {
-    
-    var tracks: [SearchTracks]?
-    var currentTrack: SearchTracks?
-    
+        
     private let avPlayer: AVPlayer = {
         let player = AVPlayer()
         player.automaticallyWaitsToMinimizeStalling = false
@@ -49,7 +46,7 @@ class AVPlayerClass: AVplayerProtocol {
     }
     
     func monitorStartTime(completion: @escaping () -> Void) {
-        let time = CMTimeMake(value: 1, timescale: 3)
+        let time = CMTimeMakeWithSeconds(1, preferredTimescale: 1)
         let times = [NSValue(time: time)]
         avPlayer.addBoundaryTimeObserver(forTimes: times, queue: .main) {
             completion()
