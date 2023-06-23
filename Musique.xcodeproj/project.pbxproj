@@ -16,6 +16,9 @@
 		94EA02892A38416D00959697 /* PopularAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA02882A38416D00959697 /* PopularAlbumCell.swift */; };
 		94EA028B2A38418100959697 /* RecentlyMusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA028A2A38418100959697 /* RecentlyMusicCell.swift */; };
 		94EA028E2A386FF600959697 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA028D2A386FF500959697 /* SongModel.swift */; };
+		94F37A802A458FCE001FDADF /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F37A7F2A458FCE001FDADF /* Realm.swift */; };
+		94F37A822A45FFB0001FDADF /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F37A812A45FFB0001FDADF /* FavoritesViewController.swift */; };
+		94F37A862A460017001FDADF /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F37A852A460017001FDADF /* FavoritesPresenter.swift */; };
 		94F6750D2A39FEB30007576D /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F6750C2A39FEB30007576D /* DataRequest.swift */; };
 		94F6750F2A39FEC10007576D /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F6750E2A39FEC10007576D /* ErrorResponse.swift */; };
 		94F675112A39FECF0007576D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F675102A39FECF0007576D /* NetworkService.swift */; };
@@ -107,6 +110,9 @@
 		94EA02882A38416D00959697 /* PopularAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularAlbumCell.swift; sourceTree = "<group>"; };
 		94EA028A2A38418100959697 /* RecentlyMusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyMusicCell.swift; sourceTree = "<group>"; };
 		94EA028D2A386FF500959697 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
+		94F37A7F2A458FCE001FDADF /* Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
+		94F37A812A45FFB0001FDADF /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		94F37A852A460017001FDADF /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
 		94F6750C2A39FEB30007576D /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
 		94F6750E2A39FEC10007576D /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		94F675102A39FECF0007576D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -228,6 +234,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		94F37A7E2A458FB3001FDADF /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				94F37A7F2A458FCE001FDADF /* Realm.swift */,
+				94F37A812A45FFB0001FDADF /* FavoritesViewController.swift */,
+				94F37A852A460017001FDADF /* FavoritesPresenter.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		94F6750A2A39FE7C0007576D /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +347,7 @@
 		C822CAE52A36205400CAA5E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				94F37A7E2A458FB3001FDADF /* Favorites */,
 				C8E528382A44C4D40091DC82 /* Explore */,
 				C8D6E0652A3A6313000FACC9 /* Search */,
 				C8D6E05B2A3A4C25000FACC9 /* Onboarding */,
@@ -662,9 +679,12 @@
 			files = (
 				C81522AB2A3CA6DD00A470F6 /* SearchPresenter.swift in Sources */,
 				C8D6E0582A3A4B18000FACC9 /* TextFieldBuilder.swift in Sources */,
+				94F37A802A458FCE001FDADF /* Realm.swift in Sources */,
 				C822CAB52A36203200CAA5E0 /* AppDelegate.swift in Sources */,
 				942C546F2A431B4700101E04 /* HomeRequest.swift in Sources */,
+				94F37A862A460017001FDADF /* FavoritesPresenter.swift in Sources */,
 				C8E5284A2A44C4D40091DC82 /* TopicDetailsCell.swift in Sources */,
+				94F37A822A45FFB0001FDADF /* FavoritesViewController.swift in Sources */,
 				C86BD8BF2A36336F00FBD6FA /* UIColor+Extension.swift in Sources */,
 				94EA028B2A38418100959697 /* RecentlyMusicCell.swift in Sources */,
 				C8D6E06D2A3A6313000FACC9 /* SearchCategoryCollectionView.swift in Sources */,

@@ -14,7 +14,7 @@ struct HomeRequest: DataRequest {
             "attribute": "ratingIndex",
             "entity": "song",
             "country": "us",
-            "limit": "10"
+            "limit": "8"
         ]
     }
     

@@ -1,4 +1,5 @@
 import Foundation
+import RealmSwift
 
 protocol HomeViewProtocol: AnyObject {
     func succses()
@@ -10,14 +11,17 @@ protocol HomePresenterProtocol: AnyObject {
     var newSongArray: [RequestResult] {get}
     var recentlyPlayedArray: [RequestResult] {get}
     var popularAlbumArray: [RequestResult] {get}
+    
+    func writeInDataBase(songObject: RequestResult)
 }
 
 class HomePresenter: HomePresenterProtocol {
     weak var view: HomeViewProtocol?
     var networkService: NetworkService!
-    var newSongArray: [RequestResult] = [RequestResult(artistName: "", trackName: "", artistViewUrl: "", previewUrl: "", artworkUrl100: "", releaseDate: "1")]
-    var recentlyPlayedArray: [RequestResult] = [RequestResult(artistName: "", trackName: "", artistViewUrl: "", previewUrl: "", artworkUrl100: "", releaseDate: "2")]
-    var popularAlbumArray: [RequestResult] = [RequestResult(artistName: "", trackName: "", artistViewUrl: "", previewUrl: "", artworkUrl100: "", releaseDate: "3")]
+    let realm = try! Realm()
+    var newSongArray: [RequestResult] = [RequestResult(artistName: "", trackName: "", previewUrl: "1", artworkUrl100: "")]
+    var recentlyPlayedArray: [RequestResult] = [RequestResult(artistName: "", trackName: "", previewUrl: "2", artworkUrl100: "")]
+    var popularAlbumArray: [RequestResult] = [RequestResult(artistName: "", trackName: "", previewUrl: "3", artworkUrl100: "")]
     
     required init(view: HomeViewProtocol, networkService: NetworkService) {
         self.view = view
@@ -73,6 +77,20 @@ class HomePresenter: HomePresenterProtocol {
                     self?.getRecentlyPlayed()
                 }
             }
+        }
+    }
+    
+    func writeInDataBase(songObject: RequestResult) {
+        let song = FavoriteSong(songObject: songObject)
+        do {
+            // Open a thread-safe transaction.
+            try realm.write {
+                realm.add(song)
+                print("DB_Success")
+                print(song)
+            }
+        } catch _ as NSError {
+            // ... Handle error ...
         }
     }
     

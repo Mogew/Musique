@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView?.delegate = self
         view.backgroundColor = UIColor.mDarkBlue
         setupButton()
         setupCollectionView()
@@ -186,10 +187,6 @@ extension HomeViewController: HomeViewProtocol {
                     items: presenter.recentlyPlayedArray)
         ]
         self.reloadData()
-
-
-      
-
     }
     
     func failure() {
@@ -249,5 +246,17 @@ extension HomeViewController {
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
       showImage(true)
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let section = sections?[indexPath.section].type
+        switch section {
+        case NewSongsCell.id:
+            print(sections?[indexPath.section].items[indexPath.item])
+        default:
+            print(sections?[indexPath.section].items[indexPath.item])
+        }
     }
 }

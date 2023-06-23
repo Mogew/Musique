@@ -24,4 +24,11 @@ class Builder {
         view.categoryCollectionView.presenter = presenter
         return view
     }
+    
+    static func getFavoritesModule() -> UIViewController {
+        let view = FavoritesViewController()
+        let presenter = FavoritesPresenter(view: view)
+        view.presenter = presenter
+        return view
+    }
 }

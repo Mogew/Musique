@@ -19,7 +19,7 @@ class TabBarController: UITabBarController {
                                      and: "Explore", vc: HomeViewController())
         let favorites = self.createNav(with: "Favorites",
                                        and: UIImage(systemName: "heart"),
-                                       and: "Favorites",vc: HomeViewController())
+                                       and: "Favorites",vc: Builder.getFavoritesModule())
         let account = self.createNav(with: "Account",
                                      and: UIImage(systemName: "person"),
                                      and: "Account",
