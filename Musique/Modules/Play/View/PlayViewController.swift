@@ -135,6 +135,14 @@ class PlayViewController: UIViewController {
         return swipe
     }()
     
+    //MARK: - Shared Controller
+    
+    private lazy var sharedControl: UIActivityViewController = {
+        let dataArray = ["somethoing", "bla bla bla"]
+        let view = UIActivityViewController(activityItems: dataArray, applicationActivities: nil)
+        return view
+    }()
+    
     //MARK: - ImageViews
     
     private lazy var logoImage: UIImageView = {
@@ -280,7 +288,7 @@ class PlayViewController: UIViewController {
         playStackView.addArrangedSubview(playPauseButton)
         createButton(forwawrdButton, image: UIImage(named: "forward")!, stackView: playStackView, selector: #selector(secondTrack(sender:)))
         createButton(replayButton, image: UIImage(systemName: "repeat")!, stackView: playStackView, selector: #selector(tapReplay))
-        createButton(sharedButton, image: UIImage(named: "shared")!, stackView: favoritesStackView, selector: #selector(tapButton))
+        createButton(sharedButton, image: UIImage(named: "shared")!, stackView: favoritesStackView, selector: #selector(tapShared))
         createButton(addPlayListButton, image: UIImage(named: "addLibr")!, stackView: favoritesStackView, selector: #selector(tapButton))
         createButton(favoritesButton, image: UIImage(systemName: "heart")!, stackView: favoritesStackView, selector: #selector(tapFavoriteButton))
         createButton(downloadButton, image: (UIImage(named: "download"))!, stackView: favoritesStackView, selector: #selector(tapDownloadButton))
@@ -391,6 +399,10 @@ class PlayViewController: UIViewController {
         
     }
     
+    @objc private func tapShared() {
+        present(sharedControl, animated: true)
+    }
+
     @objc private func tapPage() {
         guard let index = indexPath, let array = trackArray else { return }
         let albumVC = Builder.createAlbumVC(indexPath: index, tracksArray: array)
@@ -522,7 +534,7 @@ extension PlayViewController: PlayViewProtocol {
         
         artistLabel.text = model?.artistName
         songLabel.text = model?.trackName
-        textLabel.text = model?.collectionName
+        textLabel.text = model?.collectionName ?? " "
         
         let urlImage = model?.artworkUrl100?.replacingOccurrences(of: "100x100", with: "250x250")
         guard let url = URL(string: urlImage ?? "") else { return }
