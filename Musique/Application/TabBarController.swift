@@ -23,7 +23,7 @@ class TabBarController: UITabBarController {
         let account = self.createNav(with: "Account",
                                      and: UIImage(systemName: "person"),
                                      and: "Account",
-                                     vc: HomeViewController())
+                                     vc: ProfileViewController())
         self.setViewControllers([home, explore, favorites, account], animated: true)
 
     }
