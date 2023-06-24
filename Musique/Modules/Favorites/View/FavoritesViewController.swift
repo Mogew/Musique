@@ -21,6 +21,8 @@ class FavoritesViewController: UIViewController {
         favoritesTableView.setTableView(cells: songs)
     }
     
+
+    
     func addViewLayout() {
         view.addSubview(favoritesTableView)
         
@@ -48,6 +50,18 @@ extension FavoritesViewController: FavoritesViewProtocol {
         let requestResult = realm.objects(FavoriteSong.self)
         for i in requestResult {
             songs.append(i)
+        }
+    }
+    
+    func deleteSongFromDB(with indexPath: Int) {
+        let song = realm.objects(FavoriteSong.self)[indexPath]
+        do {
+            // Open a thread-safe transaction.
+            try realm.write {
+                realm.delete(song)
+            }
+        } catch _ as NSError {
+            // ... Handle error ...
         }
     }
     

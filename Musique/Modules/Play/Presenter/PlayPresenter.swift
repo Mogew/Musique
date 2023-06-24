@@ -4,7 +4,7 @@
 //
 //  Created by sidzhe on 22.06.2023.
 //
-
+import RealmSwift
 import Foundation
 
 //MARK: - Protocol PlayViewProtocol
@@ -31,6 +31,8 @@ protocol PlayPresenterProtocol: AnyObject {
     func shakeTrack()
     func checkNextTrack()
     func repeatTrack()
+    func writeInDataBase(songObject: SearchTracks)
+    func deleteLastFromDB()
     var indexPath: IndexPath? { get set }
     var tracksArray: [SearchTracks]? { get set }
 }
@@ -40,6 +42,8 @@ protocol PlayPresenterProtocol: AnyObject {
 class PlayPresenter: PlayPresenterProtocol {
     
     //MARK: - Preperties
+    
+    let realm = try! Realm()
     
     weak var view: PlayViewProtocol?
     
@@ -148,5 +152,30 @@ class PlayPresenter: PlayPresenterProtocol {
     
     func sendData() {
         view?.setData(index: indexPath, model: tracksArray)
+    }
+    
+    func writeInDataBase(songObject: SearchTracks) {
+        let song = FavoriteSong(songObject: songObject)
+        do {
+            // Open a thread-safe transaction.
+            try realm.write {
+                realm.add(song)
+                print(song)
+            }
+        } catch _ as NSError {
+            // ... Handle error ...
+        }
+    }
+    
+    func deleteLastFromDB() {
+        let song = realm.objects(FavoriteSong.self).last
+        do {
+            // Open a thread-safe transaction.
+            try realm.write {
+                realm.delete(song!)
+            }
+        } catch _ as NSError {
+            // ... Handle error ...
+        }
     }
 }

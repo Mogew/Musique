@@ -396,7 +396,7 @@ class PlayViewController: UIViewController {
     //MARK: - Targets
     
     @objc private func tapButton() {
-        
+//
     }
     
     @objc private func addPlayList() {
@@ -475,6 +475,7 @@ class PlayViewController: UIViewController {
     @objc private func tapFavoriteButton() {
         
         if favoritesButton.tag == 1 {
+            presenter?.writeInDataBase(songObject: (trackArray?[indexPath!.item])!)
             favoritesButton.tag = 0
             favoritesButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             favoritesButton.tintColor = .mLime
@@ -484,6 +485,9 @@ class PlayViewController: UIViewController {
                 self.addFavoriteButton.alpha = 0.8
             }
         } else {
+            // temp bad decision
+            presenter?.deleteLastFromDB()
+            //
             favoritesButton.tag = 1
             favoritesButton.setImage(UIImage(systemName: "heart"), for: .normal)
             favoritesButton.tintColor = .white

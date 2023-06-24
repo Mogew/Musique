@@ -74,8 +74,23 @@ extension FavoritesTableView: UITableViewDelegate {
             cell.cellView.backgroundColor = UIColor.systemGray6// Выбранный цвет фона ячейки
         }
         if let selectedIndexPath = selectedIndexPath, let selectedCell = tableView.cellForRow(at: selectedIndexPath) as? SearchCategoryTableViewCell {
-            selectedCell.cellView.backgroundColor = .mBlack // Сброс цвета предыдущей выбранной ячейки
+            selectedCell.cellView.backgroundColor = .mDarkBlue // Сброс цвета предыдущей выбранной ячейки
         }
         selectedIndexPath = indexPath
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+           print("Deleted")
+           cellsTableView.remove(at: indexPath.row)
+            FavoritesViewController().deleteSongFromDB(with: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        }
     }
 }

@@ -277,6 +277,3 @@ extension HomeViewController: UICollectionViewDelegate {
         }
     }
 }
-
-// код для добаавления в избранное
-//presenter.writeInDataBase(songObject: (sections?[indexPath.section].items[indexPath.item])!)
