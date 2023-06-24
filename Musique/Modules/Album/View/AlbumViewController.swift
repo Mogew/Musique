@@ -91,7 +91,7 @@ class AlbumViewController: UIViewController {
         let view = UITableView(frame: .zero, style: .plain)
         view.separatorStyle = .none
         view.backgroundColor = .clear
-        view.allowsSelection = false
+        view.allowsSelection = true
         view.showsVerticalScrollIndicator = false
         view.dataSource = self
         view.delegate = self
@@ -218,7 +218,9 @@ extension AlbumViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        ;;;;;
+        guard let track = tracks?[indexPath.row] else { return }
+        print(track)
+        presenter?.play(track: track)
     }
 }
 

@@ -18,6 +18,7 @@ protocol AlbumPresenterProtocol: AnyObject {
     var indexPath: IndexPath? { get set }
     var tracksArray: [SearchTracks]? { get set }
     func getData()
+    func play(track: SearchTracks)
 }
 
 
@@ -51,5 +52,9 @@ class AlbumPresenter: AlbumPresenterProtocol {
     
     func getData() {
         view?.setData(index: indexPath, trackArray: tracksArray, saveTrack: saveTracks)
+    }
+    
+    func play(track: SearchTracks) {
+        avPlayer?.playTrack(track)
     }
 }
