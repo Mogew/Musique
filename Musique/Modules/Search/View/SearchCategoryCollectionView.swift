@@ -17,7 +17,7 @@ class SearchCategoryCollectionView: UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         super.init(frame: .zero, collectionViewLayout: layout)
-        backgroundColor = .mBlack
+        backgroundColor = .mDarkBlue
         delegate = self
         dataSource = self
         translatesAutoresizingMaskIntoConstraints = false

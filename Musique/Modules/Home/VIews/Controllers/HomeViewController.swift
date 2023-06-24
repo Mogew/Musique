@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
     var presenter: HomePresenterProtocol!
     
     // 1 par - section, 2 par - item
-    var dataSource: UICollectionViewDiffableDataSource<Section, RequestResult>?
+    var dataSource: UICollectionViewDiffableDataSource<Section, SearchTracks>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ extension HomeViewController {
     }
     
     func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, RequestResult>(collectionView: collectionView!, cellProvider: { collectionView, indexPath, itemIdentifier in
+        dataSource = UICollectionViewDiffableDataSource<Section, SearchTracks>(collectionView: collectionView!, cellProvider: { collectionView, indexPath, itemIdentifier in
             switch self.sections?[indexPath.section].type {
             case NewSongsCell.id:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewSongsCell.id, for: indexPath) as? NewSongsCell
@@ -86,7 +86,7 @@ extension HomeViewController {
     }
     
     func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, RequestResult>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, SearchTracks>()
         snapshot.appendSections(sections!)
         
         for section in sections! {
@@ -225,6 +225,10 @@ extension HomeViewController {
       // Initial setup for image for Large NavBar state since the the screen always has Large NavBar once it gets opened
       guard let navigationBar = self.navigationController?.navigationBar else { return }
 
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+            imageView.isUserInteractionEnabled = true
+            imageView.addGestureRecognizer(tapGestureRecognizer)
+        
       navigationBar.addSubview(imageView)
 
       // setup constraints
@@ -239,26 +243,40 @@ extension HomeViewController {
         imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
       ])
     }
+
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        navigationController?.pushViewController(Builder.getSearchModule(), animated: true)
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
       super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
       showImage(false)
     }
 
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        if navigationController!.tabBarController!.tabBar.isHidden {
+            navigationController?.tabBarController?.tabBar.isHidden = false
+        }
       showImage(true)
     }
 }
-
+//MARK: - Здесь нужно запускать плеер в таб баре
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let section = sections?[indexPath.section].type
         switch section {
-        case NewSongsCell.id:
-            presenter.writeInDataBase(songObject: (sections?[indexPath.section].items[indexPath.item])!)
+        case PopularAlbumCell.id:
+            navigationController?.pushViewController(Builder.getPlayModule(track: sections?[indexPath.section].items, indexPath: indexPath), animated: true)
         default:
-            print(sections?[indexPath.section].items[indexPath.item])
+            // вставить код запуска плеера
+            print("Вместо этого должен запуститься плеер")
         }
     }
 }
+
+// код для добаавления в избранное
+//presenter.writeInDataBase(songObject: (sections?[indexPath.section].items[indexPath.item])!)

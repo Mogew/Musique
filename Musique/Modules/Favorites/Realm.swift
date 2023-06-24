@@ -8,7 +8,7 @@ class FavoriteSong: Object {
     @Persisted var previewUrl: String?
     @Persisted var artworkUrl100: String?
     
-    convenience init(songObject: RequestResult) {
+    convenience init(songObject: SearchTracks) {
        self.init()
         self.artistName = songObject.artistName
         self.trackName = songObject.trackName

@@ -252,7 +252,7 @@ class PlayViewController: UIViewController {
         
         trackSetups()
         
-        navigationController?.navigationBar.isHidden = true
+        //navigationController?.navigationBar.isHidden = true
         navigationController?.tabBarController?.tabBar.isHidden = true
         
         let scale: CGFloat = 0.8
@@ -368,15 +368,15 @@ class PlayViewController: UIViewController {
             
             if endTime == "00:00" {
                 
-                if mixButtonSelector {
+                if self.mixButtonSelector {
                     sleep(1)
-                    presenter?.shakeTrack()
-                } else if replayButtonSelector {
+                    self.presenter?.shakeTrack()
+                } else if self.replayButtonSelector {
                     sleep(1)
-                    presenter?.repeatTrack()
+                    self.presenter?.repeatTrack()
                 } else {
                     sleep(1)
-                    presenter?.checkNextTrack()
+                    self.presenter?.checkNextTrack()
                 }
             }
         }

@@ -21,7 +21,7 @@ class SearchCategoryTableView: UITableView {
     
     init() {
         super.init(frame: .zero, style: .plain)
-        backgroundColor = .mBlack
+        backgroundColor = .mDarkBlue
         delegate = self
         dataSource = self
         translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +61,7 @@ extension SearchCategoryTableView: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
-        headerView.backgroundColor = .mBlack
+        headerView.backgroundColor = .mDarkBlue
         
         let headerLabel = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.frame.width - 20, height: headerView.frame.height))
         headerLabel.text = "Header Title"

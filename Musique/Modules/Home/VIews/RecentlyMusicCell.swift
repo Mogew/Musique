@@ -42,10 +42,10 @@ class RecentlyMusicCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with data: RequestResult) {
-        let url = URL(string: data.artworkUrl100)
+    func configure(with data: SearchTracks) {
+        let url = URL(string: data.artworkUrl100!)
         image.kf.setImage(with: url)
-        songName.text = data.trackName.maxLength(length: 28)
+        songName.text = data.trackName?.maxLength(length: 28)
         artist.text = data.artistName
     }
     

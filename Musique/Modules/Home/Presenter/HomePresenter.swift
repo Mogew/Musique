@@ -8,20 +8,21 @@ protocol HomeViewProtocol: AnyObject {
 
 protocol HomePresenterProtocol: AnyObject {
     init (view: HomeViewProtocol, networkService: NetworkService)
-    var newSongArray: [RequestResult] {get}
-    var recentlyPlayedArray: [RequestResult] {get}
-    var popularAlbumArray: [RequestResult] {get}
+    var newSongArray: [SearchTracks] {get}
+    var recentlyPlayedArray: [SearchTracks] {get}
+    var popularAlbumArray: [SearchTracks] {get}
     
-    func writeInDataBase(songObject: RequestResult)
+    func writeInDataBase(songObject: SearchTracks)
 }
 
 class HomePresenter: HomePresenterProtocol {
+    
     weak var view: HomeViewProtocol?
     var networkService: NetworkService!
     let realm = try! Realm()
-    var newSongArray: [RequestResult] = [RequestResult(artistName: "", trackName: "", previewUrl: "1", artworkUrl100: "")]
-    var recentlyPlayedArray: [RequestResult] = [RequestResult(artistName: "", trackName: "", previewUrl: "2", artworkUrl100: "")]
-    var popularAlbumArray: [RequestResult] = [RequestResult(artistName: "", trackName: "", previewUrl: "3", artworkUrl100: "")]
+    var newSongArray: [SearchTracks] = [SearchTracks(artistName: "", collectionName: "", trackName: "", previewUrl: "1", artworkUrl30: "", artworkUrl60: "", artworkUrl100: "")]
+    var recentlyPlayedArray: [SearchTracks] = [SearchTracks(artistName: "", collectionName: "", trackName: "", previewUrl: "2", artworkUrl30: "", artworkUrl60: "", artworkUrl100: "")]
+    var popularAlbumArray: [SearchTracks] = [SearchTracks(artistName: "", collectionName: "", trackName: "", previewUrl: "3", artworkUrl30: "", artworkUrl60: "", artworkUrl100: "")]
     
     required init(view: HomeViewProtocol, networkService: NetworkService) {
         self.view = view
@@ -80,7 +81,7 @@ class HomePresenter: HomePresenterProtocol {
         }
     }
     
-    func writeInDataBase(songObject: RequestResult) {
+    func writeInDataBase(songObject: SearchTracks) {
         let song = FavoriteSong(songObject: songObject)
         do {
             // Open a thread-safe transaction.

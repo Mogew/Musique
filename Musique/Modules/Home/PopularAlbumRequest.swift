@@ -9,9 +9,9 @@ struct PopularAlbumRequest: DataRequest {
     
     var queryItems: [String : String] {
         [
-            "attribute": "ratingIndex",
+            "term": "War of Change",
+            "attribute": "songTerm",
             "entity": "song",
-            "country": "jp",
             "limit": "1"
         ]
     }

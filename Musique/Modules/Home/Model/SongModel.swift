@@ -2,7 +2,7 @@ import UIKit
 
 
 struct RealHomeModel: Decodable {
-    let results: [RequestResult]
+    let results: [SearchTracks]
 }
 
 struct RequestResult: Decodable, Hashable {
@@ -16,7 +16,7 @@ struct RequestResult: Decodable, Hashable {
 struct Section: Hashable {
     let type: String
     let title: String
-    let items: [RequestResult]
+    let items: [SearchTracks]
 }
 
 //public var MOKSections: [Section] = [
