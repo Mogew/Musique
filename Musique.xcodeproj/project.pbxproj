@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F34A0302A44F9A300CB5E14 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34A02F2A44F9A300CB5E14 /* ProfileViewController.swift */; };
+		0F34A0332A462DF900CB5E14 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34A0322A462DF900CB5E14 /* EditViewController.swift */; };
+		0F34A0372A46675000CB5E14 /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34A0362A46675000CB5E14 /* EditButton.swift */; };
+		0F34A0392A46F50B00CB5E14 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34A0382A46F50B00CB5E14 /* ProfileButton.swift */; };
 		942C546F2A431B4700101E04 /* HomeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C546E2A431B4700101E04 /* HomeRequest.swift */; };
 		942C54732A4491F100101E04 /* PopularAlbumRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C54722A4491F100101E04 /* PopularAlbumRequest.swift */; };
 		942C54752A4493B400101E04 /* RecentlyPlayedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C54742A4493B400101E04 /* RecentlyPlayedRequest.swift */; };
@@ -85,6 +89,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F34A02F2A44F9A300CB5E14 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		0F34A0322A462DF900CB5E14 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		0F34A0362A46675000CB5E14 /* EditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
+		0F34A0382A46F50B00CB5E14 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		851B8C7F2A373C9700491863 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		851B8C812A3765D400491863 /* SearcCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		851B8C832A38928C00491863 /* SearchCategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryCollectionView.swift; sourceTree = "<group>"; };
@@ -187,6 +195,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F34A02C2A44F85300CB5E14 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				0F34A02F2A44F9A300CB5E14 /* ProfileViewController.swift */,
+				0F34A0382A46F50B00CB5E14 /* ProfileButton.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		0F34A0312A462DF900CB5E14 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				0F34A0322A462DF900CB5E14 /* EditViewController.swift */,
+				0F34A0362A46675000CB5E14 /* EditButton.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
 		94EA02812A3784DE00959697 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +357,8 @@
 		C822CAE52A36205400CAA5E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0F34A0312A462DF900CB5E14 /* Edit */,
+				0F34A02C2A44F85300CB5E14 /* Profile */,
 				C8E528382A44C4D40091DC82 /* Explore */,
 				C8D6E0652A3A6313000FACC9 /* Search */,
 				C8D6E05B2A3A4C25000FACC9 /* Onboarding */,
@@ -661,6 +689,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C81522AB2A3CA6DD00A470F6 /* SearchPresenter.swift in Sources */,
+				0F34A0392A46F50B00CB5E14 /* ProfileButton.swift in Sources */,
 				C8D6E0582A3A4B18000FACC9 /* TextFieldBuilder.swift in Sources */,
 				C822CAB52A36203200CAA5E0 /* AppDelegate.swift in Sources */,
 				942C546F2A431B4700101E04 /* HomeRequest.swift in Sources */,
@@ -670,6 +699,7 @@
 				C8D6E06D2A3A6313000FACC9 /* SearchCategoryCollectionView.swift in Sources */,
 				C8E528462A44C4D40091DC82 /* ExploreModel.swift in Sources */,
 				C8E5284B2A44C4D40091DC82 /* TopTrendingCell.swift in Sources */,
+				0F34A0372A46675000CB5E14 /* EditButton.swift in Sources */,
 				94EA02872A38415900959697 /* NewSongsCell.swift in Sources */,
 				94F6750D2A39FEB30007576D /* DataRequest.swift in Sources */,
 				942C54732A4491F100101E04 /* PopularAlbumRequest.swift in Sources */,
@@ -680,6 +710,7 @@
 				C8D6E0592A3A4B18000FACC9 /* ButtonBuilder.swift in Sources */,
 				C8D6E05F2A3A4C25000FACC9 /* OnboardingViewController.swift in Sources */,
 				C8D6E0572A3A4B18000FACC9 /* UserSignUpController.swift in Sources */,
+				0F34A0332A462DF900CB5E14 /* EditViewController.swift in Sources */,
 				C8D6E0712A3AFF0A000FACC9 /* UserSignUpPresenter.swift in Sources */,
 				C8D6E0632A3A5900000FACC9 /* UIButton+Extension.swift in Sources */,
 				94EA02852A383C8D00959697 /* SectionHeader.swift in Sources */,
@@ -700,6 +731,7 @@
 				94F6750F2A39FEC10007576D /* ErrorResponse.swift in Sources */,
 				C81522AD2A3CAA4A00A470F6 /* SearchDataRequest.swift in Sources */,
 				C8D6E05E2A3A4C25000FACC9 /* Constants.swift in Sources */,
+				0F34A0302A44F9A300CB5E14 /* ProfileViewController.swift in Sources */,
 				C8E528472A44C4D40091DC82 /* TopicCell.swift in Sources */,
 				C8D6E06B2A3A6313000FACC9 /* SearchViewController.swift in Sources */,
 			);
