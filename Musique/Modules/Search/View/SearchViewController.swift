@@ -7,8 +7,12 @@
 
 import UIKit
 
+protocol PresentDelagate: AnyObject {
+    func presentVC(track: [SearchTracks]?, indexPath: IndexPath?)
+}
+
 class SearchViewController: UIViewController {
-    
+
     var presenter: SearchPresenterProtocol!
     let categoryCollectionView = SearchCategoryCollectionView()
     private let categoryTableView = SearchCategoryTableView()
@@ -62,18 +66,20 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .mBlack
         
+        categoryTableView.myDelegate = self
+        
         addViewLayout()
         categoryCollectionView.set(cells: SearchCategoryModel.makeMockModel())
 //        categoryTableView.setTableView(cells: SearchCategoryModel.makeMockModel())
         
         view.addGestureRecognizer(tapGesture)
+        
     }
 }
 
 //MARK: - ViewProtocol
 extension SearchViewController: SearchViewProtocol {
     func succses() {
-        print("nice")
         DispatchQueue.main.async {
             self.categoryTableView.setTableView(cells: self.presenter.searchArray)
             self.categoryTableView.reloadData()
@@ -85,6 +91,12 @@ extension SearchViewController: SearchViewProtocol {
     }
 }
 
+extension SearchViewController: SearchTableViewProtocol {
+    func presentPlayer(track: [SearchTracks]?, indexPath: IndexPath?) {
+        let play = Builder.getPlayModule(track: track, indexPath: indexPath)
+        present(play, animated: true)
+    }
+}
 //MARK: - Searcbar config
 extension SearchViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -105,3 +117,10 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
+extension SearchViewController: PresentDelagate {
+    func presentVC(track: [SearchTracks]?, indexPath: IndexPath?) {
+        let playVC = Builder.getPlayModule(track: track, indexPath: indexPath)
+        playVC.modalPresentationStyle = .fullScreen
+        present(playVC, animated: true)
+    }
+}

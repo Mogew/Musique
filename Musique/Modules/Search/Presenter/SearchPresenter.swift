@@ -32,7 +32,6 @@ class SearchPresenter: SearchPresenterProtocol {
             switch result {
             case .success(let arrayResponse):
                 self?.searchArray = arrayResponse.results
-                print(arrayResponse.results, "sfasfasfasfafdasdfafdfsa")
                 self?.view?.succses()
             case .failure(let error):
                 self?.view?.failure()
