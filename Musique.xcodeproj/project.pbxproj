@@ -16,6 +16,7 @@
 		94EA02892A38416D00959697 /* PopularAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA02882A38416D00959697 /* PopularAlbumCell.swift */; };
 		94EA028B2A38418100959697 /* RecentlyMusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA028A2A38418100959697 /* RecentlyMusicCell.swift */; };
 		94EA028E2A386FF600959697 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA028D2A386FF500959697 /* SongModel.swift */; };
+		94ECAC542A46E31A00DC16D5 /* FavoritesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94ECAC532A46E31A00DC16D5 /* FavoritesTableView.swift */; };
 		94F37A802A458FCE001FDADF /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F37A7F2A458FCE001FDADF /* Realm.swift */; };
 		94F37A822A45FFB0001FDADF /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F37A812A45FFB0001FDADF /* FavoritesViewController.swift */; };
 		94F37A862A460017001FDADF /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F37A852A460017001FDADF /* FavoritesPresenter.swift */; };
@@ -88,28 +89,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		851B8C7F2A373C9700491863 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		851B8C812A3765D400491863 /* SearcCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
-		851B8C832A38928C00491863 /* SearchCategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryCollectionView.swift; sourceTree = "<group>"; };
-		851B8C852A38A42700491863 /* SearchCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryModel.swift; sourceTree = "<group>"; };
-		85804CFB2A3A045600E64713 /* SearchCategoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryTableView.swift; sourceTree = "<group>"; };
-		85804CFD2A3A05C400E64713 /* SearchCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryTableViewCell.swift; sourceTree = "<group>"; };
-		94121ADE2A3C66D800167042 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
-		94121AE02A3C673F00167042 /* ExploreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreModel.swift; sourceTree = "<group>"; };
-		94121AE22A3C688600167042 /* TopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
-		94121AE72A3C778F00167042 /* TopTrendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTrendingCell.swift; sourceTree = "<group>"; };
 		942C546E2A431B4700101E04 /* HomeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRequest.swift; sourceTree = "<group>"; };
 		942C54722A4491F100101E04 /* PopularAlbumRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularAlbumRequest.swift; sourceTree = "<group>"; };
 		942C54742A4493B400101E04 /* RecentlyPlayedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyPlayedRequest.swift; sourceTree = "<group>"; };
-		94756D392A41DC88006BF4F6 /* TopicDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDetailsViewController.swift; sourceTree = "<group>"; };
-		94756D3C2A41E2F8006BF4F6 /* TopicDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDetailsCell.swift; sourceTree = "<group>"; };
-		94756D3E2A41E349006BF4F6 /* TempModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempModel.swift; sourceTree = "<group>"; };
 		94EA027F2A3784D300959697 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		94EA02842A383C8D00959697 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		94EA02862A38415900959697 /* NewSongsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSongsCell.swift; sourceTree = "<group>"; };
 		94EA02882A38416D00959697 /* PopularAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularAlbumCell.swift; sourceTree = "<group>"; };
 		94EA028A2A38418100959697 /* RecentlyMusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyMusicCell.swift; sourceTree = "<group>"; };
 		94EA028D2A386FF500959697 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
+		94ECAC532A46E31A00DC16D5 /* FavoritesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableView.swift; sourceTree = "<group>"; };
 		94F37A7F2A458FCE001FDADF /* Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
 		94F37A812A45FFB0001FDADF /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		94F37A852A460017001FDADF /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
@@ -234,12 +223,29 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		94ECAC512A46DC9D00DC16D5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				94F37A852A460017001FDADF /* FavoritesPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		94ECAC522A46DCA700DC16D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				94F37A812A45FFB0001FDADF /* FavoritesViewController.swift */,
+				94ECAC532A46E31A00DC16D5 /* FavoritesTableView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		94F37A7E2A458FB3001FDADF /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
 				94F37A7F2A458FCE001FDADF /* Realm.swift */,
-				94F37A812A45FFB0001FDADF /* FavoritesViewController.swift */,
-				94F37A852A460017001FDADF /* FavoritesPresenter.swift */,
+				94ECAC522A46DCA700DC16D5 /* View */,
+				94ECAC512A46DC9D00DC16D5 /* Presenter */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -290,7 +296,6 @@
 				C822CACA2A36203500CAA5E0 /* MusiqueTests */,
 				C822CAD42A36203500CAA5E0 /* MusiqueUITests */,
 				C822CAB22A36203200CAA5E0 /* Products */,
-				C8D6E0642A3A62F4000FACC9 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -347,12 +352,12 @@
 		C822CAE52A36205400CAA5E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				94F37A7E2A458FB3001FDADF /* Favorites */,
 				C8E528382A44C4D40091DC82 /* Explore */,
 				C8D6E0652A3A6313000FACC9 /* Search */,
 				C8D6E05B2A3A4C25000FACC9 /* Onboarding */,
 				C8D6E04F2A3A4B18000FACC9 /* Authentication */,
 				94EA02812A3784DE00959697 /* Home */,
+				94F37A7E2A458FB3001FDADF /* Favorites */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -443,26 +448,6 @@
 				C8D6E05D2A3A4C25000FACC9 /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
-			sourceTree = "<group>";
-		};
-		C8D6E0642A3A62F4000FACC9 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				851B8C852A38A42700491863 /* SearchCategoryModel.swift */,
-				851B8C7F2A373C9700491863 /* SearchViewController.swift */,
-				851B8C812A3765D400491863 /* SearcCategoryCollectionViewCell.swift */,
-				851B8C832A38928C00491863 /* SearchCategoryCollectionView.swift */,
-				85804CFB2A3A045600E64713 /* SearchCategoryTableView.swift */,
-				85804CFD2A3A05C400E64713 /* SearchCategoryTableViewCell.swift */,
-				94121ADE2A3C66D800167042 /* ExploreViewController.swift */,
-				94121AE72A3C778F00167042 /* TopTrendingCell.swift */,
-				94756D392A41DC88006BF4F6 /* TopicDetailsViewController.swift */,
-				94121AE22A3C688600167042 /* TopicCell.swift */,
-				94121AE02A3C673F00167042 /* ExploreModel.swift */,
-				94756D3E2A41E349006BF4F6 /* TempModel.swift */,
-				94756D3C2A41E2F8006BF4F6 /* TopicDetailsCell.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		C8D6E0652A3A6313000FACC9 /* Search */ = {
@@ -700,6 +685,7 @@
 				C8D6E0592A3A4B18000FACC9 /* ButtonBuilder.swift in Sources */,
 				C8D6E05F2A3A4C25000FACC9 /* OnboardingViewController.swift in Sources */,
 				C8D6E0572A3A4B18000FACC9 /* UserSignUpController.swift in Sources */,
+				94ECAC542A46E31A00DC16D5 /* FavoritesTableView.swift in Sources */,
 				C8D6E0712A3AFF0A000FACC9 /* UserSignUpPresenter.swift in Sources */,
 				C8D6E0632A3A5900000FACC9 /* UIButton+Extension.swift in Sources */,
 				94EA02852A383C8D00959697 /* SectionHeader.swift in Sources */,

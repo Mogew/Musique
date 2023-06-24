@@ -2,14 +2,23 @@ import UIKit
 import RealmSwift
 
 class FavoritesViewController: UIViewController {
+    // temp solution
+    let realm = try! Realm()
+    var songs = [FavoriteSong]()
     
     var presenter: FavoritesPresenterProtocol!
-    private let favoritesTableView = SearchCategoryTableView()
+    private let favoritesTableView = FavoritesTableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .mDarkBlue
         addViewLayout()
+    }
+    // temp solution
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getDataFromDataBase()
+        favoritesTableView.setTableView(cells: songs)
     }
     
     func addViewLayout() {
@@ -34,6 +43,12 @@ extension FavoritesViewController: FavoritesViewProtocol {
     func failure() {
         print("fail")
     }
-    
+    // temp solution
+    func getDataFromDataBase() {
+        let requestResult = realm.objects(FavoriteSong.self)
+        for i in requestResult {
+            songs.append(i)
+        }
+    }
     
 }

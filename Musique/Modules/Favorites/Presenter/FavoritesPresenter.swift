@@ -8,23 +8,26 @@ protocol FavoritesViewProtocol: AnyObject {
 }
 
 protocol FavoritesPresenterProtocol: AnyObject {
-    init (view: FavoritesViewController)
-    
+    init (view: FavoritesViewProtocol)
+    var songs: [FavoriteSong] {set get}
     func getDataFromDataBase()
 }
 
 class FavoritesPresenter: FavoritesPresenterProtocol {
-
-    weak var view: FavoritesViewController?
+    weak var view: FavoritesViewProtocol?
     let realm = try! Realm()
+    var songs = [FavoriteSong]()
     
-    required init(view: FavoritesViewController) {
+    required init(view: FavoritesViewProtocol) {
         self.view = view
         getDataFromDataBase()
     }
     
     func getDataFromDataBase() {
-        print("Path: \(String(describing: realm.configuration.fileURL?.path))")
+        let requestResult = realm.objects(FavoriteSong.self)
+        for i in requestResult {
+            songs.append(i)
+        }
         view?.succses()
     }
     

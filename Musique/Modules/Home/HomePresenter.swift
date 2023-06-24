@@ -86,7 +86,6 @@ class HomePresenter: HomePresenterProtocol {
             // Open a thread-safe transaction.
             try realm.write {
                 realm.add(song)
-                print("DB_Success")
                 print(song)
             }
         } catch _ as NSError {
