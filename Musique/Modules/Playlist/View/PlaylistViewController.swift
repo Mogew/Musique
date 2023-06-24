@@ -119,13 +119,13 @@ extension PlaylistViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let tracks = presenter?.saveTracks?[indexPath.row] else { return UITableViewCell() }
-        guard let image = URL(string: (tracks.artworkUrl30)!) else { return UITableViewCell() }
+        guard let tracks = presenter?.saveTracks else { return UITableViewCell() }
+        guard let image = URL(string: tracks[indexPath.row].artworkUrl30 ?? "") else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         cell.backgroundColor = .clear
         cell.imageView?.kf.setImage(with: image)
         cell.textLabel?.numberOfLines = 2
-        cell.textLabel?.text = "\(tracks.trackName)\n \(tracks.artistName)"
+        cell.textLabel?.text = " \(tracks[indexPath.row].trackName ?? "")\n\(tracks[indexPath.row].artistName ?? "")"
         
         return cell
     }
@@ -135,8 +135,4 @@ extension PlaylistViewController: UITableViewDataSource {
 
 //MARK: - Extension
 
-extension PlaylistViewController: PlaylistViewProtocol {
-    func setData(traks: [SearchTracks]?, indexPath: IndexPath?) {
-        
-    }
-}
+extension PlaylistViewController: PlaylistViewProtocol {}

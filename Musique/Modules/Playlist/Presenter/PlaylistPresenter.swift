@@ -15,7 +15,6 @@ protocol PlaylistViewProtocol: AnyObject {
 
 protocol PlaylistPresenterProtocol: AnyObject {
     init(view: PlaylistViewProtocol, networkService: NetworkService?, track: SearchTracks?, indexPath: IndexPath?, saveTracks: [SearchTracks]?)
-    func sendData() -> [SearchTracks]?
     var saveTracks: [SearchTracks]? { get set }
 }
 
@@ -37,6 +36,8 @@ class PlaylistPresenter: PlaylistPresenterProtocol {
     var saveTracks: [SearchTracks]?
     
     
+    
+    
     required init(view: PlaylistViewProtocol, networkService: NetworkService?, track: SearchTracks?, indexPath: IndexPath?, saveTracks: [SearchTracks]?) {
         self.view = view
         self.track = track
@@ -47,8 +48,5 @@ class PlaylistPresenter: PlaylistPresenterProtocol {
     
     //MARK: - Methods
 
-    func sendData() -> [SearchTracks]? {
-        return saveTracks
-    }
 }
 

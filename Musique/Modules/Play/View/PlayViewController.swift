@@ -403,7 +403,9 @@ class PlayViewController: UIViewController {
     
     @objc private func addPListButton() {
         guard let trackArray = trackArray, let indexPath = indexPath?.row else { return }
+        
         saveTracks.append(trackArray[indexPath])
+        
         favoritesButton.tag = 1
         favoritesButton.setImage(UIImage(systemName: "heart"), for: .normal)
         favoritesButton.tintColor = .white
@@ -540,6 +542,10 @@ class PlayViewController: UIViewController {
 //MARK: - Extension PlayViewProtocol
 
 extension PlayViewController: PlayViewProtocol {
+    func updateIndexPath(index: IndexPath) {
+        indexPath = index
+    }
+    
     
     func setData(index: IndexPath?, model: [SearchTracks]?) {
         indexPath = index
