@@ -11,7 +11,7 @@ protocol UserSignUpPresenterProtocol: AnyObject {
     func createUser(email: String?, password: String?)
 }
 
-class UserSignUpPresenter: UserSignUpPresenterProtocol {
+final class UserSignUpPresenter: UserSignUpPresenterProtocol {
     weak var view: UserSignUpViewProtocol?
     
     required init(view: UserSignUpViewProtocol) {
@@ -19,13 +19,14 @@ class UserSignUpPresenter: UserSignUpPresenterProtocol {
     }
     
     func createUser(email: String?, password: String?) {
-        if let email, let password {
-            Auth.auth().createUser(withEmail: email, password: password) { [unowned self] authResult, error in
-                if error != nil {
-                    view?.failure(error!)
-                } else {
-                    view?.succses()
-                }
+        guard let email = email, !email.isEmpty, let password = password, !password.isEmpty else {
+            return
+        }
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+            if let error = error {
+                self?.view?.failure(error)
+            } else {
+                self?.view?.succses()
             }
         }
     }

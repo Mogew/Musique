@@ -9,6 +9,28 @@ class Builder {
         view.presenter = presenter
         return view
     }
+    
+    static func getSignInModule() -> UIViewController {
+        let view = SignInViewController()
+        let presenter = SignInPresenter(view: view)
+        view.presenter = presenter
+        return view
+    }
+    
+    static func getForgotPassModule() -> UIViewController {
+        let view = ForgotPassViewController()
+        let presenter = ForgotPassPresenter(view: view)
+        view.presenter = presenter
+        return view
+    }
+    
+    static func getChangePassModule() -> UIViewController {
+        let view = ChangePasswordViewController()
+        let presenter = ChangePassPresenter(view: view)
+        view.presenter = presenter
+        return view
+    }
+    
     static func getHomeModule() -> UIViewController {
         let view = HomeViewController()
         let networkService = DefaultNetworkService()
