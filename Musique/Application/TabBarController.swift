@@ -3,10 +3,10 @@ import UIKit
 class TabBarController: UITabBarController {
     
     //MARK: - UI Elements
+ 
+    lazy var miniPlayer = UIView()
     
-    private lazy var miniPlayer = UIView()
-    
-    private var player = Builder.player
+    private let player = Builder.player
     
     private lazy var playButton: UIButton = {
         let button = UIButton()
@@ -21,10 +21,11 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         self.setupTabs()
         customizeTabBar()
         setupMiniPlayer()
+
     }
     //MARK: - Tab Setup
     
@@ -102,10 +103,7 @@ class TabBarController: UITabBarController {
     //MARK: - Targets
     
     @objc private func tap() {
-        let playVC = Builder.getPlayModule(track: nil, indexPath: nil)
-        playVC.modalPresentationStyle = .fullScreen
-        playVC.modalTransitionStyle = .crossDissolve
-        present(playVC, animated: true)
+        player.playPause()
     }
-    
 }
+
