@@ -39,6 +39,14 @@
 		C822CAD62A36203500CAA5E0 /* MusiqueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CAD52A36203500CAA5E0 /* MusiqueUITests.swift */; };
 		C822CAD82A36203500CAA5E0 /* MusiqueUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C822CAD72A36203500CAA5E0 /* MusiqueUITestsLaunchTests.swift */; };
 		C822CAEB2A362CD200CAA5E0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C822CAEA2A362CD200CAA5E0 /* Kingfisher */; };
+		C84BA7EB2A483A34003D91BB /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BA7E22A483A34003D91BB /* SignInPresenter.swift */; };
+		C84BA7EC2A483A34003D91BB /* UserSignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BA7E32A483A34003D91BB /* UserSignUpPresenter.swift */; };
+		C84BA7ED2A483A34003D91BB /* ForgotPassPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BA7E42A483A34003D91BB /* ForgotPassPresenter.swift */; };
+		C84BA7EE2A483A34003D91BB /* ChangePassPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BA7E52A483A34003D91BB /* ChangePassPresenter.swift */; };
+		C84BA7EF2A483A34003D91BB /* ForgotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BA7E72A483A34003D91BB /* ForgotPassViewController.swift */; };
+		C84BA7F02A483A34003D91BB /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BA7E82A483A34003D91BB /* ChangePasswordViewController.swift */; };
+		C84BA7F12A483A34003D91BB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BA7E92A483A34003D91BB /* SignInViewController.swift */; };
+		C84BA7F22A483A34003D91BB /* UserSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84BA7EA2A483A34003D91BB /* UserSignUpController.swift */; };
 		C86BD8B82A362EFD00FBD6FA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C86BD8B72A362EFD00FBD6FA /* FirebaseAuth */; };
 		C86BD8BA2A3630E700FBD6FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8B92A3630E700FBD6FA /* GoogleService-Info.plist */; };
 		C86BD8BD2A36334B00FBD6FA /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8BC2A36334B00FBD6FA /* UIFont+Extension.swift */; };
@@ -52,10 +60,6 @@
 		C86BD8D02A366A9600FBD6FA /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C72A36624900FBD6FA /* Roboto-Medium.ttf */; };
 		C86BD8D12A366A9900FBD6FA /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C82A36625500FBD6FA /* Roboto-Regular.ttf */; };
 		C86BD8D32A37189100FBD6FA /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8D22A37189100FBD6FA /* Builder.swift */; };
-		C8D6E0572A3A4B18000FACC9 /* UserSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0512A3A4B18000FACC9 /* UserSignUpController.swift */; };
-		C8D6E0582A3A4B18000FACC9 /* TextFieldBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0532A3A4B18000FACC9 /* TextFieldBuilder.swift */; };
-		C8D6E0592A3A4B18000FACC9 /* ButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0542A3A4B18000FACC9 /* ButtonBuilder.swift */; };
-		C8D6E05A2A3A4B18000FACC9 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0562A3A4B18000FACC9 /* AccountViewController.swift */; };
 		C8D6E05E2A3A4C25000FACC9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E05C2A3A4C25000FACC9 /* Constants.swift */; };
 		C8D6E05F2A3A4C25000FACC9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E05D2A3A4C25000FACC9 /* OnboardingViewController.swift */; };
 		C8D6E0632A3A5900000FACC9 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0622A3A5900000FACC9 /* UIButton+Extension.swift */; };
@@ -64,7 +68,6 @@
 		C8D6E06D2A3A6313000FACC9 /* SearchCategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0682A3A6313000FACC9 /* SearchCategoryCollectionView.swift */; };
 		C8D6E06E2A3A6313000FACC9 /* SearcCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0692A3A6313000FACC9 /* SearcCategoryCollectionViewCell.swift */; };
 		C8D6E06F2A3A6313000FACC9 /* SearchCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E06A2A3A6313000FACC9 /* SearchCategoryTableViewCell.swift */; };
-		C8D6E0712A3AFF0A000FACC9 /* UserSignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0702A3AFF09000FACC9 /* UserSignUpPresenter.swift */; };
 		C8E528372A44776B0091DC82 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E528362A44776B0091DC82 /* HomePresenter.swift */; };
 		C8E528452A44C4D40091DC82 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E5283A2A44C4D40091DC82 /* ExploreViewController.swift */; };
 		C8E528462A44C4D40091DC82 /* ExploreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E5283C2A44C4D40091DC82 /* ExploreModel.swift */; };
@@ -139,6 +142,14 @@
 		C822CAD12A36203500CAA5E0 /* MusiqueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusiqueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C822CAD52A36203500CAA5E0 /* MusiqueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusiqueUITests.swift; sourceTree = "<group>"; };
 		C822CAD72A36203500CAA5E0 /* MusiqueUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusiqueUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C84BA7E22A483A34003D91BB /* SignInPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
+		C84BA7E32A483A34003D91BB /* UserSignUpPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignUpPresenter.swift; sourceTree = "<group>"; };
+		C84BA7E42A483A34003D91BB /* ForgotPassPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassPresenter.swift; sourceTree = "<group>"; };
+		C84BA7E52A483A34003D91BB /* ChangePassPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePassPresenter.swift; sourceTree = "<group>"; };
+		C84BA7E72A483A34003D91BB /* ForgotPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassViewController.swift; sourceTree = "<group>"; };
+		C84BA7E82A483A34003D91BB /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		C84BA7E92A483A34003D91BB /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		C84BA7EA2A483A34003D91BB /* UserSignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignUpController.swift; sourceTree = "<group>"; };
 		C86BD8B92A3630E700FBD6FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C86BD8BC2A36334B00FBD6FA /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		C86BD8BE2A36336E00FBD6FA /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -149,10 +160,6 @@
 		C86BD8CA2A36636A00FBD6FA /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		C86BD8CB2A36637400FBD6FA /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		C86BD8D22A37189100FBD6FA /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
-		C8D6E0512A3A4B18000FACC9 /* UserSignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignUpController.swift; sourceTree = "<group>"; };
-		C8D6E0532A3A4B18000FACC9 /* TextFieldBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldBuilder.swift; sourceTree = "<group>"; };
-		C8D6E0542A3A4B18000FACC9 /* ButtonBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBuilder.swift; sourceTree = "<group>"; };
-		C8D6E0562A3A4B18000FACC9 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		C8D6E05C2A3A4C25000FACC9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C8D6E05D2A3A4C25000FACC9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C8D6E0622A3A5900000FACC9 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -161,7 +168,6 @@
 		C8D6E0682A3A6313000FACC9 /* SearchCategoryCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCategoryCollectionView.swift; sourceTree = "<group>"; };
 		C8D6E0692A3A6313000FACC9 /* SearcCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearcCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		C8D6E06A2A3A6313000FACC9 /* SearchCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCategoryTableViewCell.swift; sourceTree = "<group>"; };
-		C8D6E0702A3AFF09000FACC9 /* UserSignUpPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignUpPresenter.swift; sourceTree = "<group>"; };
 		C8E528362A44776B0091DC82 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		C8E5283A2A44C4D40091DC82 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		C8E5283C2A44C4D40091DC82 /* ExploreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreModel.swift; sourceTree = "<group>"; };
@@ -445,6 +451,28 @@
 			name = Plist;
 			sourceTree = "<group>";
 		};
+		C84BA7E12A483A34003D91BB /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				C84BA7E22A483A34003D91BB /* SignInPresenter.swift */,
+				C84BA7E32A483A34003D91BB /* UserSignUpPresenter.swift */,
+				C84BA7E42A483A34003D91BB /* ForgotPassPresenter.swift */,
+				C84BA7E52A483A34003D91BB /* ChangePassPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		C84BA7E62A483A34003D91BB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C84BA7E72A483A34003D91BB /* ForgotPassViewController.swift */,
+				C84BA7E82A483A34003D91BB /* ChangePasswordViewController.swift */,
+				C84BA7E92A483A34003D91BB /* SignInViewController.swift */,
+				C84BA7EA2A483A34003D91BB /* UserSignUpController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		C86BD8BB2A36330800FBD6FA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,37 +499,10 @@
 		C8D6E04F2A3A4B18000FACC9 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				C8D6E0502A3A4B18000FACC9 /* Register */,
-				C8D6E0522A3A4B18000FACC9 /* View */,
-				C8D6E0552A3A4B18000FACC9 /* Account */,
+				C84BA7E62A483A34003D91BB /* Controllers */,
+				C84BA7E12A483A34003D91BB /* Presenters */,
 			);
 			path = Authentication;
-			sourceTree = "<group>";
-		};
-		C8D6E0502A3A4B18000FACC9 /* Register */ = {
-			isa = PBXGroup;
-			children = (
-				C8D6E0512A3A4B18000FACC9 /* UserSignUpController.swift */,
-				C8D6E0702A3AFF09000FACC9 /* UserSignUpPresenter.swift */,
-			);
-			path = Register;
-			sourceTree = "<group>";
-		};
-		C8D6E0522A3A4B18000FACC9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C8D6E0532A3A4B18000FACC9 /* TextFieldBuilder.swift */,
-				C8D6E0542A3A4B18000FACC9 /* ButtonBuilder.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C8D6E0552A3A4B18000FACC9 /* Account */ = {
-			isa = PBXGroup;
-			children = (
-				C8D6E0562A3A4B18000FACC9 /* AccountViewController.swift */,
-			);
-			path = Account;
 			sourceTree = "<group>";
 		};
 		C8D6E05B2A3A4C25000FACC9 /* Onboarding */ = {
@@ -822,7 +823,6 @@
 			files = (
 				C81522AB2A3CA6DD00A470F6 /* SearchPresenter.swift in Sources */,
 				0F34A0392A46F50B00CB5E14 /* ProfileButton.swift in Sources */,
-				C8D6E0582A3A4B18000FACC9 /* TextFieldBuilder.swift in Sources */,
 				94F37A802A458FCE001FDADF /* Realm.swift in Sources */,
 				C822CAB52A36203200CAA5E0 /* AppDelegate.swift in Sources */,
 				942C546F2A431B4700101E04 /* HomeRequest.swift in Sources */,
@@ -841,24 +841,28 @@
 				942C54732A4491F100101E04 /* PopularAlbumRequest.swift in Sources */,
 				C86BD8BD2A36334B00FBD6FA /* UIFont+Extension.swift in Sources */,
 				C8E528452A44C4D40091DC82 /* ExploreViewController.swift in Sources */,
+				C84BA7EF2A483A34003D91BB /* ForgotPassViewController.swift in Sources */,
 				94EA028E2A386FF600959697 /* SongModel.swift in Sources */,
+				C84BA7EE2A483A34003D91BB /* ChangePassPresenter.swift in Sources */,
 				EB38BF572A44A6430038AC91 /* CMTime + Extension.swift in Sources */,
+				C84BA7F12A483A34003D91BB /* SignInViewController.swift in Sources */,
 				C81522A62A3B09DE00A470F6 /* SearchCategoryModel.swift in Sources */,
-				C8D6E0592A3A4B18000FACC9 /* ButtonBuilder.swift in Sources */,
 				C8D6E05F2A3A4C25000FACC9 /* OnboardingViewController.swift in Sources */,
-				C8D6E0572A3A4B18000FACC9 /* UserSignUpController.swift in Sources */,
+				C84BA7F22A483A34003D91BB /* UserSignUpController.swift in Sources */,
 				94ECAC542A46E31A00DC16D5 /* FavoritesTableView.swift in Sources */,
 				EB705AEF2A45E57B00154E3F /* PlaylistViewController.swift in Sources */,
 				EB38BF432A44A5350038AC91 /* TrackModel.swift in Sources */,
 				0F34A0332A462DF900CB5E14 /* EditViewController.swift in Sources */,
-				C8D6E0712A3AFF0A000FACC9 /* UserSignUpPresenter.swift in Sources */,
+				C84BA7F02A483A34003D91BB /* ChangePasswordViewController.swift in Sources */,
+				C84BA7ED2A483A34003D91BB /* ForgotPassPresenter.swift in Sources */,
 				C8D6E0632A3A5900000FACC9 /* UIButton+Extension.swift in Sources */,
 				EB705AF12A45E58300154E3F /* PlaylistPresenter.swift in Sources */,
+				C84BA7EC2A483A34003D91BB /* UserSignUpPresenter.swift in Sources */,
 				94EA02852A383C8D00959697 /* SectionHeader.swift in Sources */,
 				C8E528492A44C4D40091DC82 /* TopicDetailsViewController.swift in Sources */,
+				C84BA7EB2A483A34003D91BB /* SignInPresenter.swift in Sources */,
 				C8D6E06E2A3A6313000FACC9 /* SearcCategoryCollectionViewCell.swift in Sources */,
 				C822CAB72A36203200CAA5E0 /* SceneDelegate.swift in Sources */,
-				C8D6E05A2A3A4B18000FACC9 /* AccountViewController.swift in Sources */,
 				EB38BF502A44A5D00038AC91 /* AlbumCell.swift in Sources */,
 				EB38BF4E2A44A5BD0038AC91 /* AlbumViewController.swift in Sources */,
 				94F675112A39FECF0007576D /* NetworkService.swift in Sources */,
