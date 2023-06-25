@@ -2,13 +2,32 @@ import UIKit
 
 class TabBarController: UITabBarController {
     
+    //MARK: - UI Elements
+    
+    private lazy var miniPlayer = UIView()
+    
+    private var player = Builder.player
+    
+    private lazy var playButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named: "EllipsePlay"), for: .normal)
+        button.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(tap), for: .touchUpInside)
+        return button
+    }()
+    
+    //MARK: - Init
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupTabs()
         
+        self.setupTabs()
         customizeTabBar()
+        setupMiniPlayer()
     }
     //MARK: - Tab Setup
+    
     private func setupTabs() {
         let home = self.createNav(with: "Home",
                                   and: UIImage(systemName: "house"),
@@ -25,7 +44,7 @@ class TabBarController: UITabBarController {
                                      and: "Account",
                                      vc: ProfileViewController())
         self.setViewControllers([home, explore, favorites, account], animated: true)
-
+        
     }
     
     private func createNav(with title: String,
@@ -58,6 +77,35 @@ class TabBarController: UITabBarController {
         tabBar.barTintColor = .mDarkBlue
         self.tabBar.tintColor = .mLime
         self.tabBar.unselectedItemTintColor = .mGray
-
+        
     }
+    
+    private func setupMiniPlayer() {
+        miniPlayer.backgroundColor = .mLime
+        
+        miniPlayer.addSubview(playButton)
+        
+        view.insertSubview(miniPlayer, belowSubview: tabBar)
+        
+        miniPlayer.snp.makeConstraints { make in
+            make.bottom.equalTo(tabBar.snp.top)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(64)
+        }
+        
+        playButton.snp.makeConstraints { make in
+            make.size.equalTo(50)
+            make.center.equalToSuperview()
+        }
+    }
+    
+    //MARK: - Targets
+    
+    @objc private func tap() {
+        let playVC = Builder.getPlayModule(track: nil, indexPath: nil)
+        playVC.modalPresentationStyle = .fullScreen
+        playVC.modalTransitionStyle = .crossDissolve
+        present(playVC, animated: true)
+    }
+    
 }
