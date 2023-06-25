@@ -219,8 +219,8 @@ extension AlbumViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let track = tracks?[indexPath.row] else { return }
-        print(track)
-        presenter?.play(track: track)
+//        presenter?.play(track: track)
+        presenter?.avPlayer?.playTrack(track)
     }
 }
 

@@ -1,12 +1,15 @@
 import UIKit
+import SnapKit
 
 class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupTabs()
         
+        self.setupTabs()
         customizeTabBar()
+        setupMini()
+        
     }
     //MARK: - Tab Setup
     private func setupTabs() {
@@ -25,7 +28,7 @@ class TabBarController: UITabBarController {
                                      and: "Account",
                                      vc: HomeViewController())
         self.setViewControllers([home, explore, favorites, account], animated: true)
-
+        
     }
     
     private func createNav(with title: String,
@@ -58,6 +61,18 @@ class TabBarController: UITabBarController {
         tabBar.barTintColor = .mDarkBlue
         self.tabBar.tintColor = .mLime
         self.tabBar.unselectedItemTintColor = .mGray
-
+        
+    }
+    
+    private func setupMini() {
+        let miniPlayer = MiniPlayerViewController()
+        
+        view.insertSubview(miniPlayer, belowSubview: tabBar)
+        
+        miniPlayer.snp.makeConstraints { make in
+            make.bottom.equalTo(tabBar.snp.top)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(64)
+        }
     }
 }

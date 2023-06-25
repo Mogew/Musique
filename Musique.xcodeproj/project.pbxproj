@@ -65,6 +65,7 @@
 		EB38BF572A44A6430038AC91 /* CMTime + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38BF562A44A6430038AC91 /* CMTime + Extension.swift */; };
 		EB705AEF2A45E57B00154E3F /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB705AEE2A45E57B00154E3F /* PlaylistViewController.swift */; };
 		EB705AF12A45E58300154E3F /* PlaylistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB705AF02A45E58300154E3F /* PlaylistPresenter.swift */; };
+		EBE8FE0F2A4804BE0065E0A8 /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE8FE0E2A4804BE0065E0A8 /* MiniPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		EB38BF562A44A6430038AC91 /* CMTime + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime + Extension.swift"; sourceTree = "<group>"; };
 		EB705AEE2A45E57B00154E3F /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		EB705AF02A45E58300154E3F /* PlaylistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistPresenter.swift; sourceTree = "<group>"; };
+		EBE8FE0E2A4804BE0065E0A8 /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -449,6 +451,7 @@
 				EB38BF412A44A51C0038AC91 /* Model */,
 				EB38BF402A44A5140038AC91 /* View */,
 				EB38BF3F2A44A50A0038AC91 /* Presenter */,
+				EBE8FE0E2A4804BE0065E0A8 /* MiniPlayerViewController.swift */,
 			);
 			path = Play;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 				94F6750D2A39FEB30007576D /* DataRequest.swift in Sources */,
 				C86BD8BD2A36334B00FBD6FA /* UIFont+Extension.swift in Sources */,
 				94EA028E2A386FF600959697 /* SongModel.swift in Sources */,
+				EBE8FE0F2A4804BE0065E0A8 /* MiniPlayerViewController.swift in Sources */,
 				EB38BF572A44A6430038AC91 /* CMTime + Extension.swift in Sources */,
 				C81522A62A3B09DE00A470F6 /* SearchCategoryModel.swift in Sources */,
 				C8D6E0592A3A4B18000FACC9 /* ButtonBuilder.swift in Sources */,

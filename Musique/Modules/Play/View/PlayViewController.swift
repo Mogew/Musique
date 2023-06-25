@@ -137,6 +137,13 @@ class PlayViewController: UIViewController {
         return swipe
     }()
     
+    private lazy var swipeDown: UISwipeGestureRecognizer = {
+        let swipe = UISwipeGestureRecognizer()
+        swipe.direction = .down
+        swipe.addTarget(self, action: #selector(tapDown))
+        return swipe
+    }()
+    
     //MARK: - Shared Controller
     
     private lazy var sharedControl: UIActivityViewController = {
@@ -267,6 +274,7 @@ class PlayViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         
+        view.addGestureRecognizer(swipeDown)
         view.addGestureRecognizer(swipe)
         
         favoritesButton.tintColor = .white
@@ -401,6 +409,10 @@ class PlayViewController: UIViewController {
         
     }
     
+    @objc private func tapDown() {
+        
+    }
+    
     @objc private func addPListButton() {
         guard let trackArray = trackArray, let indexPath = indexPath?.row else { return }
         
@@ -420,7 +432,7 @@ class PlayViewController: UIViewController {
     @objc private func tapShared() {
         present(sharedControl, animated: true)
     }
-
+    
     @objc private func tapPage() {
         guard let index = indexPath, let array = trackArray else { return }
         let albumVC = Builder.createAlbumVC(indexPath: index, tracksArray: array, saveTrack: saveTracks)
@@ -546,7 +558,6 @@ extension PlayViewController: PlayViewProtocol {
         indexPath = index
     }
     
-    
     func setData(index: IndexPath?, model: [SearchTracks]?) {
         indexPath = index
         trackArray = model
@@ -562,7 +573,7 @@ extension PlayViewController: PlayViewProtocol {
         guard let url = URL(string: urlImage ?? "") else { return }
         logoImage.kf.setImage(with: url)
         
-        logoImage.layer.cornerRadius = 150
+        logoImage.layer.cornerRadius = 125
         logoImage.layer.masksToBounds = true
     }
 }

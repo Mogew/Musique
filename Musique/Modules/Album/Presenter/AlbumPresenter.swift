@@ -19,6 +19,7 @@ protocol AlbumPresenterProtocol: AnyObject {
     var tracksArray: [SearchTracks]? { get set }
     func getData()
     func play(track: SearchTracks)
+    var avPlayer: AVplayerProtocol? { get }
 }
 
 
