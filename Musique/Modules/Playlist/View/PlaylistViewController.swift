@@ -20,11 +20,11 @@ class PlaylistViewController: UIViewController {
         let view = UITableView(frame: .zero, style: .insetGrouped)
         view.separatorStyle = .none
         view.backgroundColor = .clear
-        view.allowsSelection = false
+        view.allowsSelection = true
         view.showsVerticalScrollIndicator = false
         view.dataSource = self
         view.delegate = self
-        view.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
+        view.register(PlaylistCell.self, forCellReuseIdentifier: identifier)
         return view
     }()
     
@@ -108,6 +108,10 @@ extension PlaylistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.playTrack()
+    }
 }
 
 //MARK: - Extension UITableViewDataSource
@@ -120,14 +124,15 @@ extension PlaylistViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let tracks = presenter?.saveTracks else { return UITableViewCell() }
-        guard let image = URL(string: tracks[indexPath.row].artworkUrl30 ?? "") else { return UITableViewCell() }
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        cell.backgroundColor = .clear
-        cell.imageView?.kf.setImage(with: image)
-        cell.textLabel?.numberOfLines = 2
-        cell.textLabel?.text = " \(tracks[indexPath.row].trackName ?? "")\n\(tracks[indexPath.row].artistName ?? "")"
+    
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? PlaylistCell
+        cell?.backgroundColor = .clear
+        cell?.configure(number: "\(indexPath.row + 1)",
+                        name: tracks[indexPath.row].artistName!,
+                        song: tracks[indexPath.row].trackName!,
+                        imageLink: tracks[indexPath.row])
         
-        return cell
+        return cell ?? UITableViewCell()
     }
     
 }

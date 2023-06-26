@@ -10,12 +10,13 @@ import Foundation
 //MARK: - Protocols
 
 protocol PlaylistViewProtocol: AnyObject {
-
+    
 }
 
 protocol PlaylistPresenterProtocol: AnyObject {
-    init(view: PlaylistViewProtocol, networkService: NetworkService?, track: SearchTracks?, indexPath: IndexPath?, saveTracks: [SearchTracks]?)
+    init(view: PlaylistViewProtocol, networkService: NetworkService?, track: SearchTracks?, indexPath: IndexPath?, saveTracks: [SearchTracks]?, avPlayer: AVplayerProtocol)
     var saveTracks: [SearchTracks]? { get set }
+    func playTrack()
 }
 
 
@@ -30,23 +31,26 @@ class PlaylistPresenter: PlaylistPresenterProtocol {
     var track: SearchTracks?
     
     var indexPath: IndexPath?
-    
-    var tracksPlaylist = [SearchTracks]()
-    
+        
     var saveTracks: [SearchTracks]?
     
+    var avPlayer: AVplayerProtocol?
     
-    
-    
-    required init(view: PlaylistViewProtocol, networkService: NetworkService?, track: SearchTracks?, indexPath: IndexPath?, saveTracks: [SearchTracks]?) {
+    required init(view: PlaylistViewProtocol, networkService: NetworkService?, track: SearchTracks?, indexPath: IndexPath?, saveTracks: [SearchTracks]?, avPlayer: AVplayerProtocol) {
         self.view = view
         self.track = track
         self.networkService = networkService
         self.indexPath = indexPath
         self.saveTracks = saveTracks
+        self.avPlayer = avPlayer
     }
     
     //MARK: - Methods
-
+    
+    func playTrack() {
+        guard let saveTracks = saveTracks, let index = indexPath?.row else { return }
+        print(index)
+        avPlayer?.playTrack(saveTracks[index])
+    }
 }
 

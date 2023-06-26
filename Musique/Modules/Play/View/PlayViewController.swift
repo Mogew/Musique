@@ -156,9 +156,10 @@ class PlayViewController: UIViewController {
     
     private lazy var logoImage: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
         view.image = UIImage(named: "Ellipse")
-        view.layer.cornerRadius = 20
+        view.layer.cornerRadius = 150
+        view.layer.masksToBounds = true
         return view
     }()
     
@@ -569,11 +570,8 @@ extension PlayViewController: PlayViewProtocol {
         songLabel.text = model?.trackName
         textLabel.text = model?.collectionName ?? " "
         
-        let urlImage = model?.artworkUrl100?.replacingOccurrences(of: "100x100", with: "250x250")
+        let urlImage = model?.artworkUrl100?.replacingOccurrences(of: "100x100", with: "300x300")
         guard let url = URL(string: urlImage ?? "") else { return }
         logoImage.kf.setImage(with: url)
-        
-        logoImage.layer.cornerRadius = 125
-        logoImage.layer.masksToBounds = true
     }
 }

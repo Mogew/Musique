@@ -63,6 +63,7 @@
 		EB38BF522A44A5E80038AC91 /* AlbumPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38BF512A44A5E80038AC91 /* AlbumPresenter.swift */; };
 		EB38BF552A44A6330038AC91 /* AVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38BF542A44A6330038AC91 /* AVPlayer.swift */; };
 		EB38BF572A44A6430038AC91 /* CMTime + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38BF562A44A6430038AC91 /* CMTime + Extension.swift */; };
+		EB5F15442A49869200EA452D /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5F15432A49869200EA452D /* PlaylistCell.swift */; };
 		EB705AEF2A45E57B00154E3F /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB705AEE2A45E57B00154E3F /* PlaylistViewController.swift */; };
 		EB705AF12A45E58300154E3F /* PlaylistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB705AF02A45E58300154E3F /* PlaylistPresenter.swift */; };
 		EBE8FE0F2A4804BE0065E0A8 /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE8FE0E2A4804BE0065E0A8 /* MiniPlayerViewController.swift */; };
@@ -147,6 +148,7 @@
 		EB38BF512A44A5E80038AC91 /* AlbumPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPresenter.swift; sourceTree = "<group>"; };
 		EB38BF542A44A6330038AC91 /* AVPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayer.swift; sourceTree = "<group>"; };
 		EB38BF562A44A6430038AC91 /* CMTime + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime + Extension.swift"; sourceTree = "<group>"; };
+		EB5F15432A49869200EA452D /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
 		EB705AEE2A45E57B00154E3F /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		EB705AF02A45E58300154E3F /* PlaylistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistPresenter.swift; sourceTree = "<group>"; };
 		EBE8FE0E2A4804BE0065E0A8 /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 		EB705AEC2A45E55F00154E3F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EB5F15432A49869200EA452D /* PlaylistCell.swift */,
 				EB705AEE2A45E57B00154E3F /* PlaylistViewController.swift */,
 			);
 			path = View;
@@ -697,6 +700,7 @@
 				94EA028B2A38418100959697 /* RecentlyMusicCell.swift in Sources */,
 				C8D6E06D2A3A6313000FACC9 /* SearchCategoryCollectionView.swift in Sources */,
 				EB38BF452A44A5450038AC91 /* PlayViewController.swift in Sources */,
+				EB5F15442A49869200EA452D /* PlaylistCell.swift in Sources */,
 				94EA02872A38415900959697 /* NewSongsCell.swift in Sources */,
 				94F6750D2A39FEB30007576D /* DataRequest.swift in Sources */,
 				C86BD8BD2A36334B00FBD6FA /* UIFont+Extension.swift in Sources */,
