@@ -133,7 +133,7 @@ final class ForgotPassViewController: UIViewController {
 
 extension ForgotPassViewController: ForgotPassViewProtocol {
     func success() {
-        let changePassViewController = ChangePasswordViewController()
+        let changePassViewController = Builder.getChangePassModule()
         self.navigationController?.pushViewController(changePassViewController, animated: true)
         print("win")
     }

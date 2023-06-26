@@ -169,12 +169,12 @@ final class SignInViewController: UIViewController {
     }
     
     @objc private func signUpButtonTapped() {
-        let userSignUpController = UserSignUpController()
+        let userSignUpController = Builder.getSignUpModule()
         navigationController?.pushViewController(userSignUpController, animated: true)
     }
     
     @objc private func forgotPassButtonTapped() {
-        let forgotPassViewController = ForgotPassViewController()
+        let forgotPassViewController = Builder.getForgotPassModule()
         navigationController?.pushViewController(forgotPassViewController, animated: true)
     }
     
@@ -274,7 +274,7 @@ extension SignInViewController: SignInViewProtocol {
     
     func success() {
         print("win")
-        let searchViewController = SearchViewController()
+        let searchViewController = TabBarController()
         navigationController?.pushViewController(searchViewController, animated: true)
     }
 }
