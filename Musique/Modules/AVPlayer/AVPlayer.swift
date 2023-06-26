@@ -16,6 +16,7 @@ protocol AVplayerProtocol: AnyObject {
     func getCurrunetTime() -> Float
     func moveTimeSlider(currentTime: Float)
     func changeVolume(_ value: Float)
+    
 }
 
 //MARK: - AV Player
@@ -39,7 +40,7 @@ class AVPlayerClass: AVplayerProtocol {
     }
     
     func playTrack(_ track: SearchTracks?) {
-        guard let urlTrack = URL(string: track?.previewUrl ?? "") else { return }
+        guard let urlTrack = URL(string: track?.previewUrl ?? Const.Text.empty) else { return }
         let playerItem = AVPlayerItem(url: urlTrack)
         avPlayer.replaceCurrentItem(with: playerItem)
         avPlayer.play()

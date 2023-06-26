@@ -14,7 +14,7 @@ class PlayViewController: UIViewController {
     
     var presenter: PlayPresenterProtocol?
     
-    private let identifier = "cell"
+    private let identifier = Const.Text.cell
     
     private var mixButtonSelector = false
     
@@ -39,8 +39,8 @@ class PlayViewController: UIViewController {
     
     private lazy var playPauseButton: UIButton = {
         let button = UIButton()
-        button.setBackgroundImage(UIImage(named: "EllipsePlay"), for: .normal)
-        button.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        button.setBackgroundImage(Const.Images.ellipsePlay, for: .normal)
+        button.setImage(Const.Images.pauseFill, for: .normal)
         button.tintColor = .black
         button.addTarget(self, action: #selector(tapPlayPause), for: .touchUpInside)
         return button
@@ -48,7 +48,7 @@ class PlayViewController: UIViewController {
     
     private lazy var addFavoriteButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Add this song to My Playlist", for: .normal)
+        button.setTitle(Const.Text.addSong, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .mLime
         button.layer.cornerRadius = 10
@@ -59,7 +59,7 @@ class PlayViewController: UIViewController {
     
     private lazy var addDownloadButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Downloading 128Kbps for this song", for: .normal)
+        button.setTitle(Const.Text.addSong, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .mLime
         button.layer.cornerRadius = 10
@@ -72,7 +72,7 @@ class PlayViewController: UIViewController {
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
-        label.text = "It is a long established fact that a reader"
+        label.text = Const.Text.itIsLong
         label.textColor = .mLime
         label.textAlignment = .center
         label.numberOfLines = 1
@@ -81,7 +81,6 @@ class PlayViewController: UIViewController {
     
     private lazy var artistLabel: UILabel = {
         let label = UILabel()
-        label.text = "Eminem"
         label.textAlignment = .center
         label.numberOfLines = 1
         label.font = .systemFont(ofSize: 18)
@@ -90,7 +89,6 @@ class PlayViewController: UIViewController {
     
     private lazy var songLabel: UILabel = {
         let label = UILabel()
-        label.text = "Without me"
         label.textAlignment = .center
         label.numberOfLines = 1
         label.font = .systemFont(ofSize: 36, weight: .semibold)
@@ -101,7 +99,7 @@ class PlayViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .left
         label.font = .systemFont(ofSize: 15)
-        label.text = "00:00"
+        label.text = Const.Text.zeroTime
         label.textColor = .white
         return label
     }()
@@ -110,7 +108,7 @@ class PlayViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .right
         label.font = .systemFont(ofSize: 15)
-        label.text = "--:--"
+        label.text = Const.Text.emptyTime
         label.textColor = .white
         return label
     }()
@@ -124,7 +122,7 @@ class PlayViewController: UIViewController {
         page.numberOfPages = 3
         page.currentPage = 0
         page.isUserInteractionEnabled = false
-        page.preferredIndicatorImage = UIImage(named: "activePage")
+        page.preferredIndicatorImage = Const.Images.pageImage
         return page
     }()
     
@@ -147,7 +145,7 @@ class PlayViewController: UIViewController {
     //MARK: - Shared Controller
     
     private lazy var sharedControl: UIActivityViewController = {
-        let dataArray = ["somethoing", "bla bla bla"]
+        let dataArray = []
         let view = UIActivityViewController(activityItems: dataArray, applicationActivities: nil)
         return view
     }()
@@ -157,7 +155,7 @@ class PlayViewController: UIViewController {
     private lazy var logoImage: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
-        view.image = UIImage(named: "Ellipse")
+        view.image = Const.Images.ellipse
         view.layer.cornerRadius = 150
         view.layer.masksToBounds = true
         return view
@@ -165,14 +163,14 @@ class PlayViewController: UIViewController {
     
     private lazy var minVolumeImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(systemName: "speaker")
+        image.image = Const.Images.speaker
         image.tintColor = .white
         return image
     }()
     
     private lazy var maxVolumeImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(systemName: "speaker.wave.3")
+        image.image = Const.Images.speakerWave
         image.tintColor = .white
         return image
     }()
@@ -183,7 +181,7 @@ class PlayViewController: UIViewController {
         let slider = UISlider()
         slider.minimumValue = 0
         slider.tintColor = .mLime
-        slider.setThumbImage(UIImage(named: "slider"), for: .normal)
+        slider.setThumbImage(Const.Images.slider, for: .normal)
         slider.addTarget(self, action: #selector(moveTrackSlider), for: .valueChanged)
         return slider
     }()
@@ -192,7 +190,7 @@ class PlayViewController: UIViewController {
         let slider = UISlider()
         slider.value = 0.5
         slider.tintColor = .mLime
-        slider.setThumbImage(UIImage(named: "slider"), for: .normal)
+        slider.setThumbImage(Const.Images.slider, for: .normal)
         slider.addTarget(self, action: #selector(moveVolumeSlider), for: .valueChanged)
         return slider
     }()
@@ -273,7 +271,7 @@ class PlayViewController: UIViewController {
     //MARK: - Setup Views
     
     private func setupViews() {
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        view.backgroundColor = UIColor(patternImage: Const.Images.background)
         
         view.addGestureRecognizer(swipeDown)
         view.addGestureRecognizer(swipe)
@@ -294,15 +292,15 @@ class PlayViewController: UIViewController {
         generalStackView.addArrangedSubview(trackStackView)
         generalStackView.addArrangedSubview(textLabel)
         
-        createButton(mixButton, image: UIImage(systemName: "shuffle")!, stackView: playStackView, selector: #selector(tapShake))
-        createButton(backButton, image: UIImage(named: "back")!, stackView: playStackView, selector: #selector(secondTrack(sender:)))
+        createButton(mixButton, image: Const.Images.shuffle, stackView: playStackView, selector: #selector(tapShake))
+        createButton(backButton, image: Const.Images.back, stackView: playStackView, selector: #selector(secondTrack(sender:)))
         playStackView.addArrangedSubview(playPauseButton)
-        createButton(forwawrdButton, image: UIImage(named: "forward")!, stackView: playStackView, selector: #selector(secondTrack(sender:)))
-        createButton(replayButton, image: UIImage(systemName: "repeat")!, stackView: playStackView, selector: #selector(tapReplay))
-        createButton(sharedButton, image: UIImage(named: "shared")!, stackView: favoritesStackView, selector: #selector(tapShared))
-        createButton(addPlayListButton, image: UIImage(named: "addLibr")!, stackView: favoritesStackView, selector: #selector(addPListButton))
-        createButton(favoritesButton, image: UIImage(systemName: "heart")!, stackView: favoritesStackView, selector: #selector(tapFavoriteButton))
-        createButton(downloadButton, image: (UIImage(named: "download"))!, stackView: favoritesStackView, selector: #selector(tapDownloadButton))
+        createButton(forwawrdButton, image: Const.Images.forward, stackView: playStackView, selector: #selector(secondTrack(sender:)))
+        createButton(replayButton, image: Const.Images.repeatImage, stackView: playStackView, selector: #selector(tapReplay))
+        createButton(sharedButton, image: Const.Images.shared, stackView: favoritesStackView, selector: #selector(tapShared))
+        createButton(addPlayListButton, image: Const.Images.addLibr, stackView: favoritesStackView, selector: #selector(addPListButton))
+        createButton(favoritesButton, image: Const.Images.heart, stackView: favoritesStackView, selector: #selector(tapFavoriteButton))
+        createButton(downloadButton, image: Const.Images.download, stackView: favoritesStackView, selector: #selector(tapDownloadButton))
         
         timeStackView.addArrangedSubview(startTimeLabel)
         timeStackView.addArrangedSubview(endTimeLabel)
@@ -377,7 +375,7 @@ class PlayViewController: UIViewController {
             self.endTimeLabel.text = "-\(endTime)"
             self.updateCurrentTimeSlider()
             
-            if endTime == "00:00" {
+            if endTime == Const.Text.zeroTime {
                 
                 if mixButtonSelector {
                     sleep(1)
@@ -420,7 +418,7 @@ class PlayViewController: UIViewController {
         saveTracks.append(trackArray[indexPath])
         
         favoritesButton.tag = 1
-        favoritesButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        favoritesButton.setImage(Const.Images.heart, for: .normal)
         favoritesButton.tintColor = .white
         downloadButton.isEnabled = true
         
@@ -477,11 +475,11 @@ class PlayViewController: UIViewController {
     
     @objc private func tapPlayPause() {
         if presenter?.playPause() == true {
-            playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            playPauseButton.setImage(Const.Images.pauseFill, for: .normal)
             playPauseButton.tintColor = .black
             largeLogo()
         } else {
-            playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            playPauseButton.setImage(Const.Images.playFill, for: .normal)
             playPauseButton.tintColor = .black
             reduceLogo()
         }
@@ -501,7 +499,7 @@ class PlayViewController: UIViewController {
         
         if favoritesButton.tag == 1 {
             favoritesButton.tag = 0
-            favoritesButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            favoritesButton.setImage(Const.Images.heartFill, for: .normal)
             favoritesButton.tintColor = .mLime
             downloadButton.isEnabled = false
             
@@ -510,7 +508,7 @@ class PlayViewController: UIViewController {
             }
         } else {
             favoritesButton.tag = 1
-            favoritesButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            favoritesButton.setImage(Const.Images.heart, for: .normal)
             favoritesButton.tintColor = .white
             downloadButton.isEnabled = true
             
@@ -524,7 +522,7 @@ class PlayViewController: UIViewController {
         
         if downloadButton.tag == 1 {
             downloadButton.tag = 0
-            downloadButton.setImage(UIImage(named: "download")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            downloadButton.setImage(Const.Images.download.withRenderingMode(.alwaysTemplate), for: .normal)
             downloadButton.tintColor = .mLime
             favoritesButton.isEnabled = false
             
@@ -533,7 +531,7 @@ class PlayViewController: UIViewController {
             }
         } else {
             downloadButton.tag = 1
-            downloadButton.setImage(UIImage(named: "download")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            downloadButton.setImage(Const.Images.download.withRenderingMode(.alwaysTemplate), for: .normal)
             downloadButton.tintColor = .white
             favoritesButton.isEnabled = true
             
@@ -568,10 +566,10 @@ extension PlayViewController: PlayViewProtocol {
         
         artistLabel.text = model?.artistName
         songLabel.text = model?.trackName
-        textLabel.text = model?.collectionName ?? " "
+        textLabel.text = model?.collectionName ?? Const.Text.empty
         
-        let urlImage = model?.artworkUrl100?.replacingOccurrences(of: "100x100", with: "300x300")
-        guard let url = URL(string: urlImage ?? "") else { return }
+        let urlImage = model?.artworkUrl100?.replacingOccurrences(of: Const.Text.size100, with: Const.Text.size300)
+        guard let url = URL(string: urlImage ?? Const.Text.empty) else { return }
         logoImage.kf.setImage(with: url)
     }
 }

@@ -65,7 +65,7 @@ class TabBarController: UITabBarController {
     }
     
     private func setupMini() {
-        let miniPlayer = MiniPlayerViewController()
+        let miniPlayer = MiniPlayerView()
         
         view.insertSubview(miniPlayer, belowSubview: tabBar)
         
