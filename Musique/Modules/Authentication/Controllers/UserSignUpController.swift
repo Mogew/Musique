@@ -242,7 +242,7 @@ final class UserSignUpController: UIViewController {
 
 extension UserSignUpController: UserSignUpViewProtocol {
     func succses() {
-        let searchViewController = SearchViewController()
+        let searchViewController = TabBarController()
         navigationController?.pushViewController(searchViewController, animated: true)
         print("win")
     }
