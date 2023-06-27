@@ -260,7 +260,7 @@ class PlayViewController: UIViewController {
         
         trackSetups()
         
-        navigationController?.navigationBar.isHidden = true
+        //navigationController?.navigationBar.isHidden = true
         navigationController?.tabBarController?.tabBar.isHidden = true
         
         let scale: CGFloat = 0.8
@@ -377,15 +377,15 @@ class PlayViewController: UIViewController {
             
             if endTime == Const.Text.zeroTime {
                 
-                if mixButtonSelector {
+                if self.mixButtonSelector {
                     sleep(1)
-                    presenter?.shakeTrack()
-                } else if replayButtonSelector {
+                    self.presenter?.shakeTrack()
+                } else if self.replayButtonSelector {
                     sleep(1)
-                    presenter?.repeatTrack()
+                    self.presenter?.repeatTrack()
                 } else {
                     sleep(1)
-                    presenter?.checkNextTrack()
+                    self.presenter?.checkNextTrack()
                 }
             }
         }
@@ -405,7 +405,7 @@ class PlayViewController: UIViewController {
     //MARK: - Targets
     
     @objc private func tapButton() {
-        
+//
     }
     
     @objc private func tapDown() {
@@ -498,6 +498,7 @@ class PlayViewController: UIViewController {
     @objc private func tapFavoriteButton() {
         
         if favoritesButton.tag == 1 {
+            presenter?.writeInDataBase(songObject: (trackArray?[indexPath!.item])!)
             favoritesButton.tag = 0
             favoritesButton.setImage(Const.Images.heartFill, for: .normal)
             favoritesButton.tintColor = .mLime
@@ -507,6 +508,9 @@ class PlayViewController: UIViewController {
                 self.addFavoriteButton.alpha = 0.8
             }
         } else {
+            // temp bad decision
+            presenter?.deleteLastFromDB()
+            //
             favoritesButton.tag = 1
             favoritesButton.setImage(Const.Images.heart, for: .normal)
             favoritesButton.tintColor = .white

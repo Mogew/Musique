@@ -15,7 +15,7 @@ class SearchCategoryTableViewCell: UITableViewCell {
     var cellView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .mBlack
+        view.backgroundColor = .mDarkBlue
         view.clipsToBounds = true
         return view
     }()
@@ -61,6 +61,14 @@ class SearchCategoryTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         artistImage.image = nil
+    }
+    
+    func configureCellForFavorites(with model: FavoriteSong) {
+        artistNameLabel.text = model.artistName
+        songNameLabel.text = model.trackName
+        guard let urlString = model.artworkUrl100 else {return}
+        let url = URL(string: urlString)
+        artistImage.kf.setImage(with: url)
     }
     
     func configureCell(model: SearchTracks) {

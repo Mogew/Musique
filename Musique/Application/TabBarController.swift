@@ -3,30 +3,48 @@ import SnapKit
 
 class TabBarController: UITabBarController {
     
+    //MARK: - UI Elements
+ 
+    lazy var miniPlayer = UIView()
+    
+    private let player = Builder.player
+    
+    private lazy var playButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named: "EllipsePlay"), for: .normal)
+        button.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(tap), for: .touchUpInside)
+        return button
+    }()
+    
+    //MARK: - Init
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         self.setupTabs()
         customizeTabBar()
-        setupMini()
-        
+        setupMiniPlayer()
+
     }
     //MARK: - Tab Setup
+    
     private func setupTabs() {
         let home = self.createNav(with: "Home",
                                   and: UIImage(systemName: "house"),
                                   and: "Music",
-                                  vc: HomeViewController())
+                                  vc: Builder.getHomeModule())
         let explore = self.createNav(with: "Explore",
                                      and: UIImage(systemName: "sparkles.rectangle.stack"),
                                      and: "Explore", vc: HomeViewController())
         let favorites = self.createNav(with: "Favorites",
                                        and: UIImage(systemName: "heart"),
-                                       and: "Favorites",vc: HomeViewController())
+                                       and: "Favorites",vc: Builder.getFavoritesModule())
         let account = self.createNav(with: "Account",
                                      and: UIImage(systemName: "person"),
                                      and: "Account",
-                                     vc: HomeViewController())
+                                     vc: ProfileViewController())
         self.setViewControllers([home, explore, favorites, account], animated: true)
         
     }
@@ -64,8 +82,10 @@ class TabBarController: UITabBarController {
         
     }
     
-    private func setupMini() {
-        let miniPlayer = MiniPlayerView()
+    private func setupMiniPlayer() {
+        miniPlayer.backgroundColor = .mLime
+        
+        miniPlayer.addSubview(playButton)
         
         view.insertSubview(miniPlayer, belowSubview: tabBar)
         
@@ -74,5 +94,17 @@ class TabBarController: UITabBarController {
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(64)
         }
+        
+        playButton.snp.makeConstraints { make in
+            make.size.equalTo(50)
+            make.center.equalToSuperview()
+        }
+    }
+    
+    //MARK: - Targets
+    
+    @objc private func tap() {
+        player.playPause()
     }
 }
+

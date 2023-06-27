@@ -10,6 +10,35 @@ class Builder {
         return view
     }
     
+    static func getSignInModule() -> UIViewController {
+        let view = SignInViewController()
+        let presenter = SignInPresenter(view: view)
+        view.presenter = presenter
+        return view
+    }
+    
+    static func getForgotPassModule() -> UIViewController {
+        let view = ForgotPassViewController()
+        let presenter = ForgotPassPresenter(view: view)
+        view.presenter = presenter
+        return view
+    }
+    
+    static func getChangePassModule() -> UIViewController {
+        let view = ChangePasswordViewController()
+        let presenter = ChangePassPresenter(view: view)
+        view.presenter = presenter
+        return view
+    }
+    
+    static func getHomeModule() -> UIViewController {
+        let view = HomeViewController()
+        let networkService = DefaultNetworkService()
+        let presenter = HomePresenter(view: view, networkService: networkService)
+        view.presenter = presenter
+        return view
+    }
+    
     static func getSearchModule() -> UIViewController {
         let view = SearchViewController()
         let networkService = DefaultNetworkService()
@@ -19,6 +48,13 @@ class Builder {
         return view
     }
     
+    static func getFavoritesModule() -> UIViewController {
+        let view = FavoritesViewController()
+        let presenter = FavoritesPresenter(view: view)
+        view.presenter = presenter
+        return view
+    }
+        
     static func getPlayModule(track: [SearchTracks]?, indexPath: IndexPath?) -> UIViewController {
         let view = PlayViewController()
         let networkService = DefaultNetworkService()
@@ -42,4 +78,5 @@ class Builder {
         view.presenter = presenter
         return view
     }
+
 }

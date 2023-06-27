@@ -28,12 +28,12 @@ struct SearchResponseModel: Decodable {
     let results: [SearchTracks]
 }
 
-struct SearchTracks: Decodable {
+struct SearchTracks: Decodable, Hashable {
     let artistName: String?
     let collectionName: String?
     let trackName: String?
-    let artworkUrl30: String?
-    let artworkUrl100: String?
     let previewUrl: String?
-    let artistViewUrl: String?
+    let artworkUrl30: String?
+    let artworkUrl60: String?
+    let artworkUrl100: String?
 }

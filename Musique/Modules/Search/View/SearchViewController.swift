@@ -23,7 +23,7 @@ class SearchViewController: UIViewController {
         let searchbar = UISearchBar()
         searchbar.translatesAutoresizingMaskIntoConstraints = false
         searchbar.delegate = self
-        searchbar.barTintColor = .mBlack
+        searchbar.barTintColor = .mDarkBlue
         searchbar.tintColor = .mLime
         searchbar.showsCancelButton = false
         return searchbar
@@ -64,7 +64,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .mBlack
+        view.backgroundColor = .mDarkBlue
         
         categoryTableView.myDelegate = self
         
@@ -121,6 +121,6 @@ extension SearchViewController: PresentDelagate {
     func presentVC(track: [SearchTracks]?, indexPath: IndexPath?) {
         let playVC = Builder.getPlayModule(track: track, indexPath: indexPath)
         playVC.modalPresentationStyle = .fullScreen
-        present(playVC, animated: true)
+        navigationController?.pushViewController(playVC, animated: true)
     }
 }
