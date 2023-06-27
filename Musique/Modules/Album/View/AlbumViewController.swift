@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SafariServices
 
 class AlbumViewController: UIViewController {
     
@@ -72,6 +73,9 @@ class AlbumViewController: UIViewController {
         label.textAlignment = .left
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 18)
+        label.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openLink(_:)))
+        label.addGestureRecognizer(tapGesture)
         return label
     }()
     
@@ -141,7 +145,6 @@ class AlbumViewController: UIViewController {
     //MARK: - Setup Views
     
     private func setupViews() {
-        
         musicStackView.addArrangedSubview(songLabel)
         musicStackView.addArrangedSubview(albumLabel)
         
@@ -206,6 +209,16 @@ class AlbumViewController: UIViewController {
     @objc private func tapRightSwipe() {
         dismiss(animated: true)
     }
+    
+    @objc func openLink(_ gestureRecognizer: UITapGestureRecognizer) {
+        if let label = gestureRecognizer.view as? UILabel,
+           let attributedString = label.attributedText,
+           let url = attributedString.attribute(.link, at: attributedString.length - 1, effectiveRange: nil) as? String,
+           let linkURL = URL(string: url) {
+            let safariViewController = SFSafariViewController(url: linkURL)
+            present(safariViewController, animated: true, completion: nil)
+        }
+    }
 }
 //MARK: - Extension UITableViewDelegate
 
@@ -256,7 +269,18 @@ extension AlbumViewController: AlbumViewProtocol {
         
         songLabel.text = track[safeIndexPath.row].collectionName
         albumLabel.text = track[safeIndexPath.row].trackName
-        textLabel.text = "\(Const.Text.cellTextPart1) \(track[safeIndexPath.row].artistName ?? Const.Text.empty)\(Const.Text.cellTextPart2)"
+        
+        let text = "\(Const.Text.cellTextPart1) \(track[safeIndexPath.row].artistName ?? Const.Text.empty)\(Const.Text.cellTextPart2)"
+        let linkText = Const.Text.lookHere
+        let urlString = track[safeIndexPath.row].artistViewUrl
+        let attributedString = NSMutableAttributedString(string: text)
+        
+        if let range = text.range(of: linkText) {
+            let nsRange = NSRange(range, in: text)
+            attributedString.addAttribute(.link, value: urlString, range: nsRange)
+        }
+        
+        textLabel.attributedText = attributedString
         
         let urlImage = track[safeIndexPath.row].artworkUrl100!.replacingOccurrences(of: Const.Text.size100, with: Const.Text.size600)
         guard let url = URL(string: urlImage) else { return }

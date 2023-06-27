@@ -26,6 +26,7 @@ enum Const {
         static let addSong = "Add this song to My Playlist"
         static let downloadSong = "Downloading 128Kbps for this song"
         static let itIsLong = "It is a long established fact that a reader"
+        static let lookHere = "look here"
     }
     
     enum Images {
@@ -49,6 +50,7 @@ enum Const {
         static let heartFill = UIImage(systemName: "heart.fill") ?? UIImage()
         static let line = UIImage(named: "line") ?? UIImage()
         static let point = UIImage(named: "point") ?? UIImage()
+        static let link = UIImage(systemName: "link.circle.fill") ?? UIImage()
         
     }
 }
