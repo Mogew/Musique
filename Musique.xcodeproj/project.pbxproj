@@ -90,6 +90,8 @@
 		EB38BF572A44A6430038AC91 /* CMTime + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38BF562A44A6430038AC91 /* CMTime + Extension.swift */; };
 		EB705AEF2A45E57B00154E3F /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB705AEE2A45E57B00154E3F /* PlaylistViewController.swift */; };
 		EB705AF12A45E58300154E3F /* PlaylistPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB705AF02A45E58300154E3F /* PlaylistPresenter.swift */; };
+		EBF174B22A4B542000BECAAA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF174B12A4B542000BECAAA /* MainTabBarController.swift */; };
+		EBF174B42A4B544100BECAAA /* MainTabBarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF174B32A4B544100BECAAA /* MainTabBarPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +192,8 @@
 		EB38BF562A44A6430038AC91 /* CMTime + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime + Extension.swift"; sourceTree = "<group>"; };
 		EB705AEE2A45E57B00154E3F /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		EB705AF02A45E58300154E3F /* PlaylistPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistPresenter.swift; sourceTree = "<group>"; };
+		EBF174B12A4B542000BECAAA /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		EBF174B32A4B544100BECAAA /* MainTabBarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -420,6 +424,7 @@
 		C822CAE52A36205400CAA5E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				EBF174AE2A4B539500BECAAA /* TabBarController */,
 				0F34A0312A462DF900CB5E14 /* Edit */,
 				0F34A02C2A44F85300CB5E14 /* Profile */,
 				C8E528382A44C4D40091DC82 /* Explore */,
@@ -670,6 +675,31 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		EBF174AE2A4B539500BECAAA /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				EBF174B02A4B540600BECAAA /* Presenter */,
+				EBF174AF2A4B540100BECAAA /* View */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		EBF174AF2A4B540100BECAAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EBF174B12A4B542000BECAAA /* MainTabBarController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EBF174B02A4B540600BECAAA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				EBF174B32A4B544100BECAAA /* MainTabBarPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -828,6 +858,7 @@
 				94F37A802A458FCE001FDADF /* Realm.swift in Sources */,
 				C822CAB52A36203200CAA5E0 /* AppDelegate.swift in Sources */,
 				942C546F2A431B4700101E04 /* HomeRequest.swift in Sources */,
+				EBF174B42A4B544100BECAAA /* MainTabBarPresenter.swift in Sources */,
 				94F37A862A460017001FDADF /* FavoritesPresenter.swift in Sources */,
 				C8E5284A2A44C4D40091DC82 /* TopicDetailsCell.swift in Sources */,
 				94F37A822A45FFB0001FDADF /* FavoritesViewController.swift in Sources */,
@@ -876,6 +907,7 @@
 				94EA02892A38416D00959697 /* PopularAlbumCell.swift in Sources */,
 				C8E528372A44776B0091DC82 /* HomePresenter.swift in Sources */,
 				EB38BF552A44A6330038AC91 /* AVPlayer.swift in Sources */,
+				EBF174B22A4B542000BECAAA /* MainTabBarController.swift in Sources */,
 				C8D6E06F2A3A6313000FACC9 /* SearchCategoryTableViewCell.swift in Sources */,
 				942C54752A4493B400101E04 /* RecentlyPlayedRequest.swift in Sources */,
 				EB38BF472A44A5610038AC91 /* PlayPresenter.swift in Sources */,

@@ -1,10 +1,21 @@
-import UIKit
-import SnapKit
-import Kingfisher
+//
+//  TabBarController.swift
+//  Musique
+//
+//  Created by sidzhe on 28.06.2023.
+//
 
-class TabBarController: UITabBarController {
+import UIKit
+
+protocol MusicDelegateProtocol: AnyObject {
+    func setMusic()
+}
+
+class MainTabBarController: UITabBarController, MainTabBarProtocol {
     
     //MARK: - Properties
+    
+    var presenter: MainTabBarPresenterProtocol?
     
     private lazy var miniPlayer = UIView()
     
@@ -43,79 +54,52 @@ class TabBarController: UITabBarController {
         return swipe
     }()
     
+    
     //MARK: - Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupTabs()
-        customizeTabBar()
+        setupControllers()
         setupMiniPlayer()
         
     }
     
-    //MARK: - Tab Setup
+    //MARK: - Setup Views, Controllers
     
-    private func setupTabs() {
-        let home = self.createNav(
-            with: "Home",
-            and: UIImage(systemName: "house"),
-            and: "Music",
-            vc: Builder.getHomeModule())
+    private func setupControllers() {
+        let home = Builder.getHomeModule()
+        let explore = UIViewController()
+        let favorites = Builder.getFavoritesModule()
+        let account = ProfileViewController()
         
-        let explore = self.createNav(
-            with: "Explore",
-            and: UIImage(systemName: "sparkles.rectangle.stack"),
-            and: "Explore", vc: UIViewController())
         
-        let favorites = self.createNav(
-            with: "Favorites",
-            and: UIImage(systemName: "heart"),
-            and: "Favorites",vc: Builder.getFavoritesModule())
-        
-        let account = self.createNav(
-            with: "Account",
-            and: UIImage(systemName: "person"),
-            and: "Account",
-            vc: ProfileViewController())
-        
-        self.setViewControllers([home, explore, favorites, account], animated: true)
+        viewControllers = [
+            //            createVC(vc: home, item: UITabBarItem(tabBarSystemItem: .topRated, tag: 0), title: "Home"),
+            createHome(vc: home as! HomeViewController, item: UITabBarItem(tabBarSystemItem: .topRated, tag: 4), title: "Home"),
+            createVC(vc: explore, item: UITabBarItem(tabBarSystemItem: .topRated, tag: 1), title: "Explore"),
+            createVC(vc: favorites, item: UITabBarItem(tabBarSystemItem: .topRated, tag: 2), title: "Favorites"),
+            createVC(vc: account, item: UITabBarItem(tabBarSystemItem: .topRated, tag: 3), title: "Account")
+        ]
     }
     
-    private func createNav(with title: String, and image: UIImage?, and largeTitle: String, vc: UIViewController) -> UINavigationController {
-        
-        let nav = UINavigationController(rootViewController: vc)
-        
-        nav.tabBarItem.title = title
-        nav.tabBarItem.image = image
-        
-        // font size
-        let attributes = [ NSAttributedString.Key.font: UIFont.robotoBold(ofSize: 48) ]
-        nav.navigationBar.largeTitleTextAttributes = attributes as [NSAttributedString.Key: Any]
-        
-        //navbar title
-        nav.viewControllers.first?.navigationItem.title = largeTitle
-        nav.navigationBar.prefersLargeTitles = true
-        nav.navigationItem.largeTitleDisplayMode = .automatic
-        
-        return nav
+    private func createVC(vc: UIViewController, item: UITabBarItem, title: String) -> UIViewController {
+        let navigationVC = UINavigationController(rootViewController: vc)
+        navigationVC.navigationBar.prefersLargeTitles = true
+        vc.tabBarItem = item
+        vc.navigationItem.title = title
+        tabBar.tintColor = .mLime
+        return navigationVC
     }
     
-    private func customizeTabBar() {
-        if #available(iOS 13.0, *) {
-            let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
-            tabBarAppearance.configureWithDefaultBackground()
-            
-            if #available(iOS 15.0, *) {
-                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-            }
-        }
-        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        tabBar.layer.masksToBounds = true
-        tabBar.barTintColor = .mDarkBlue
-        self.tabBar.tintColor = .mLime
-        self.tabBar.unselectedItemTintColor = .mGray
-        
+    private func createHome(vc: HomeViewController, item: UITabBarItem, title: String) -> UIViewController {
+        vc.musicDelegate = self
+        let navigationVC = UINavigationController(rootViewController: vc)
+        navigationVC.navigationBar.prefersLargeTitles = true
+        vc.tabBarItem = item
+        vc.navigationItem.title = title
+        tabBar.tintColor = .mLime
+        return navigationVC
     }
     
     //MARK: - Setup MiniPlayer
@@ -169,4 +153,18 @@ class TabBarController: UITabBarController {
         present(playVC, animated: true)
     }
     
+}
+
+//MARK: - Extension MusicDelegate
+
+extension MainTabBarController: MusicDelegateProtocol {
+    func setMusic() {
+        guard let track = self.player.tracks?[self.player.indexPath?.row ?? 0] else { return }
+        
+        self.songName.text = track.trackName
+        
+        let urlImage = track.artworkUrl30
+        guard let url = URL(string: urlImage ?? Const.Text.empty) else { return }
+        self.logoImage.kf.setImage(with: url)
+    }
 }

@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     
     var presenter: HomePresenterProtocol!
     
-    weak var musicDelegate: MusicDelegate?
+    weak var musicDelegate: MusicDelegateProtocol?
     
     // 1 par - section, 2 par - item
     var dataSource: UICollectionViewDiffableDataSource<Section, SearchTracks>?
@@ -278,19 +278,18 @@ extension HomeViewController: UICollectionViewDelegate {
         let section = sections?[indexPath.section].type
         switch section {
         case PopularAlbumCell.id:
+            musicDelegate?.setMusic()
             player.tracks = sections?[indexPath.section].items
             player.indexPath = indexPath
-            musicDelegate?.setTrack()
             player.playTrack(sections?[indexPath.section].items[indexPath.item])
         default:
+            musicDelegate?.setMusic()
             player.tracks = sections?[indexPath.section].items
             player.indexPath = indexPath
-            musicDelegate?.setTrack()
             player.playTrack(sections?[indexPath.section].items[indexPath.item])
         }
     }
 }
-
 
 
 

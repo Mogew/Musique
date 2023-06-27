@@ -78,5 +78,12 @@ class Builder {
         view.presenter = presenter
         return view
     }
+    
+    static func createTabBar() -> UIViewController {
+        let view = MainTabBarController()
+        let presenter = MainTabBarPresenter(view: view, avPlayer: player)
+        view.presenter = presenter
+        return view
+    }
 
 }
