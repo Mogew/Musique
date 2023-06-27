@@ -14,7 +14,9 @@ protocol PlaylistViewProtocol: AnyObject {
 }
 
 protocol PlaylistPresenterProtocol: AnyObject {
-    init(view: PlaylistViewProtocol, networkService: NetworkService?, track: SearchTracks?, indexPath: IndexPath?)
+    init(view: PlaylistViewProtocol, networkService: NetworkService?, track: SearchTracks?, indexPath: IndexPath?, saveTracks: [SearchTracks]?, avPlayer: AVplayerProtocol)
+    var saveTracks: [SearchTracks]? { get set }
+    func playTrack()
 }
 
 
@@ -29,22 +31,26 @@ class PlaylistPresenter: PlaylistPresenterProtocol {
     var track: SearchTracks?
     
     var indexPath: IndexPath?
+        
+    var saveTracks: [SearchTracks]?
     
-    var tracksPlaylist = [SearchTracks]()
+    var avPlayer: AVplayerProtocol?
     
-    
-    required init(view: PlaylistViewProtocol, networkService: NetworkService?, track: SearchTracks?, indexPath: IndexPath?) {
+    required init(view: PlaylistViewProtocol, networkService: NetworkService?, track: SearchTracks?, indexPath: IndexPath?, saveTracks: [SearchTracks]?, avPlayer: AVplayerProtocol) {
         self.view = view
         self.track = track
         self.networkService = networkService
         self.indexPath = indexPath
-        addNewTrack()
+        self.saveTracks = saveTracks
+        self.avPlayer = avPlayer
     }
     
-    func addNewTrack() {
-        guard let track = track else { return }
-        tracksPlaylist.append(track)
-    }
+    //MARK: - Methods
     
+    func playTrack() {
+        guard let saveTracks = saveTracks, let index = indexPath?.row else { return }
+        print(index)
+        avPlayer?.playTrack(saveTracks[index])
+    }
 }
 

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class PlaylistViewController: UIViewController, PlaylistViewProtocol {
+class PlaylistViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -20,11 +20,11 @@ class PlaylistViewController: UIViewController, PlaylistViewProtocol {
         let view = UITableView(frame: .zero, style: .insetGrouped)
         view.separatorStyle = .none
         view.backgroundColor = .clear
-        view.allowsSelection = false
+        view.allowsSelection = true
         view.showsVerticalScrollIndicator = false
         view.dataSource = self
         view.delegate = self
-        view.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
+        view.register(PlaylistCell.self, forCellReuseIdentifier: identifier)
         return view
     }()
     
@@ -55,7 +55,7 @@ class PlaylistViewController: UIViewController, PlaylistViewProtocol {
         swipe.addTarget(self, action: #selector(tapPage))
         return swipe
     }()
-        
+    
     //MARK: - Init
     
     override func viewDidLoad() {
@@ -99,34 +99,45 @@ class PlaylistViewController: UIViewController, PlaylistViewProtocol {
     @objc private func tapPage() {
         dismiss(animated: true)
     }
-
+    
 }
 
 //MARK: - Extension UITableViewDelegate
 
 extension PlaylistViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.playTrack()
+    }
 }
 
 //MARK: - Extension UITableViewDataSource
 
 extension PlaylistViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return presenter?.saveTracks?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        cell.backgroundColor = .clear
-        cell.imageView?.image = UIImage(systemName: "swift")
-        cell.textLabel?.numberOfLines = 2
-        cell.textLabel?.text = " Song name\n Atrist name"
-        return cell
-    }
+        
+        guard let tracks = presenter?.saveTracks else { return UITableViewCell() }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? PlaylistCell
+        cell?.backgroundColor = .clear
+        cell?.configure(number: "\(indexPath.row + 1)",
+                        name: tracks[indexPath.row].artistName!,
+                        song: tracks[indexPath.row].trackName!,
+                        imageLink: tracks[indexPath.row])
+        
+        return cell ?? UITableViewCell()
     }
     
 }
 
+
+//MARK: - Extension
+
+extension PlaylistViewController: PlaylistViewProtocol {}
