@@ -121,6 +121,7 @@ extension SearchViewController: PresentDelagate {
     func presentVC(track: [SearchTracks]?, indexPath: IndexPath?) {
         let playVC = Builder.getPlayModule(track: track, indexPath: indexPath)
         playVC.modalPresentationStyle = .fullScreen
-        navigationController?.pushViewController(playVC, animated: true)
+//        navigationController?.pushViewController(playVC, animated: true)
+        present(playVC, animated: true)
     }
 }

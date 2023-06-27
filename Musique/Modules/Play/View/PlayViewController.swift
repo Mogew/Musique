@@ -409,7 +409,7 @@ class PlayViewController: UIViewController {
     }
     
     @objc private func tapDown() {
-        
+        dismiss(animated: true)
     }
     
     @objc private func addPListButton() {
