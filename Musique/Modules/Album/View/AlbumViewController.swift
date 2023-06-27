@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SafariServices
 
 class AlbumViewController: UIViewController {
     
@@ -18,7 +19,9 @@ class AlbumViewController: UIViewController {
     
     private var tracks: [SearchTracks]?
     
-    private let identifier = "tableCell"
+    private var saveTracks: [SearchTracks]?
+    
+    private let identifier = Const.Text.tableCell
     
     //MARK: - PageControl
     
@@ -29,7 +32,7 @@ class AlbumViewController: UIViewController {
         page.numberOfPages = 3
         page.currentPage = 1
         page.isUserInteractionEnabled = false
-        page.preferredIndicatorImage = UIImage(named: "activePage")
+        page.preferredIndicatorImage = Const.Images.pageImage
         return page
     }()
     
@@ -43,7 +46,7 @@ class AlbumViewController: UIViewController {
     
     private lazy var lineImage: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "line")
+        view.image = Const.Images.line
         return view
     }()
     
@@ -51,7 +54,6 @@ class AlbumViewController: UIViewController {
     
     private lazy var songLabel: UILabel = {
         let label = UILabel()
-        label.text = "Come to me"
         label.textAlignment = .right
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 36, weight: .semibold)
@@ -60,7 +62,6 @@ class AlbumViewController: UIViewController {
     
     private lazy var albumLabel: UILabel = {
         let label = UILabel()
-        label.text = "Shawn Mendes"
         label.textAlignment = .left
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 18)
@@ -69,16 +70,18 @@ class AlbumViewController: UIViewController {
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
-        label.text = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it"
         label.textAlignment = .left
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 18)
+        label.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openLink(_:)))
+        label.addGestureRecognizer(tapGesture)
         return label
     }()
     
     private lazy var header: UILabel = {
         let label = UILabel()
-        label.text = "Suggestion"
+        label.text = Const.Text.suggestion
         label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
     }()
@@ -89,7 +92,7 @@ class AlbumViewController: UIViewController {
         let view = UITableView(frame: .zero, style: .plain)
         view.separatorStyle = .none
         view.backgroundColor = .clear
-        view.allowsSelection = false
+        view.allowsSelection = true
         view.showsVerticalScrollIndicator = false
         view.dataSource = self
         view.delegate = self
@@ -142,7 +145,6 @@ class AlbumViewController: UIViewController {
     //MARK: - Setup Views
     
     private func setupViews() {
-        
         musicStackView.addArrangedSubview(songLabel)
         musicStackView.addArrangedSubview(albumLabel)
         
@@ -196,8 +198,9 @@ class AlbumViewController: UIViewController {
     //MARK: - Methods
     
     @objc private func tapLeftSwipe() {
-        guard let tracks = tracks, let indexPath = indexPath else { return }
-        let playlistVC = Builder.createPlaylist(track: tracks[indexPath.row], indexPath: indexPath)
+        guard let tracks = tracks, let indexPath = indexPath, let saveTracks = saveTracks else { return }
+        
+        let playlistVC = Builder.createPlaylist(track: tracks[indexPath.row], indexPath: indexPath, saveTracks: saveTracks)
         playlistVC.modalPresentationStyle = .fullScreen
         playlistVC.modalTransitionStyle = .crossDissolve
         present(playlistVC, animated: true)
@@ -205,6 +208,16 @@ class AlbumViewController: UIViewController {
     
     @objc private func tapRightSwipe() {
         dismiss(animated: true)
+    }
+    
+    @objc func openLink(_ gestureRecognizer: UITapGestureRecognizer) {
+        if let label = gestureRecognizer.view as? UILabel,
+           let attributedString = label.attributedText,
+           let url = attributedString.attribute(.link, at: attributedString.length - 1, effectiveRange: nil) as? String,
+           let linkURL = URL(string: url) {
+            let safariViewController = SFSafariViewController(url: linkURL)
+            present(safariViewController, animated: true, completion: nil)
+        }
     }
 }
 //MARK: - Extension UITableViewDelegate
@@ -215,7 +228,9 @@ extension AlbumViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        ;;;;;
+        guard let track = tracks?[indexPath.row] else { return }
+        //        presenter?.play(track: track)
+        presenter?.avPlayer?.playTrack(track)
     }
 }
 
@@ -245,16 +260,29 @@ extension AlbumViewController: UITableViewDataSource {
 //MARK: -  Extension AlbumViewProtocol
 
 extension AlbumViewController: AlbumViewProtocol {
-    func setData(index: IndexPath?, trackArray: [SearchTracks]?) {
-        guard let safeIndexPath = index, let track = trackArray else { return }
+    func setData(index: IndexPath?, trackArray: [SearchTracks]?, saveTrack: [SearchTracks]?) {
+        
+        guard let safeIndexPath = index, let track = trackArray, let saveTrack = saveTrack else { return }
         indexPath = safeIndexPath
         tracks = track
-  
+        saveTracks = saveTrack
+        
         songLabel.text = track[safeIndexPath.row].collectionName
         albumLabel.text = track[safeIndexPath.row].trackName
-        textLabel.text = "This artist is \(track[safeIndexPath.row].artistName ?? ""), if you want to know more about that person you can look here"
         
-        let urlImage = track[safeIndexPath.row].artworkUrl100!.replacingOccurrences(of: "100x100", with: "600x600")
+        let text = "\(Const.Text.cellTextPart1) \(track[safeIndexPath.row].artistName ?? Const.Text.empty)\(Const.Text.cellTextPart2)"
+        let linkText = Const.Text.lookHere
+        let urlString = track[safeIndexPath.row].artistViewUrl
+        let attributedString = NSMutableAttributedString(string: text)
+        
+        if let range = text.range(of: linkText) {
+            let nsRange = NSRange(range, in: text)
+            attributedString.addAttribute(.link, value: urlString, range: nsRange)
+        }
+        
+        textLabel.attributedText = attributedString
+        
+        let urlImage = track[safeIndexPath.row].artworkUrl100!.replacingOccurrences(of: Const.Text.size100, with: Const.Text.size600)
         guard let url = URL(string: urlImage) else { return }
         
         backgroundView.kf.setImage(with: url)

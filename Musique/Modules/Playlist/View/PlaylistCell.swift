@@ -1,14 +1,14 @@
 //
-//  AlbumCell.swift
+//  PlaylistCell.swift
 //  Musique
 //
-//  Created by sidzhe on 22.06.2023.
+//  Created by sidzhe on 26.06.2023.
 //
 
 import UIKit
 
-class AlbumCell: UITableViewCell {
-        
+class PlaylistCell: UITableViewCell {
+    
     //MARK: - UI Elements
     
     private lazy var logoImage: UIImageView = {

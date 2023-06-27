@@ -14,7 +14,7 @@ final class DefaultNetworkService: NetworkService {
                 code: 404,
                 userInfo: nil
             )
-            
+        
             return completion(.failure(error))
         }
         

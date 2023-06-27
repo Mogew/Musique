@@ -20,9 +20,9 @@ class HomePresenter: HomePresenterProtocol {
     weak var view: HomeViewProtocol?
     var networkService: NetworkService!
     let realm = try! Realm()
-    var newSongArray: [SearchTracks] = [SearchTracks(artistName: "", collectionName: "", trackName: "", previewUrl: "1", artworkUrl30: "", artworkUrl60: "", artworkUrl100: "")]
-    var recentlyPlayedArray: [SearchTracks] = [SearchTracks(artistName: "", collectionName: "", trackName: "", previewUrl: "2", artworkUrl30: "", artworkUrl60: "", artworkUrl100: "")]
-    var popularAlbumArray: [SearchTracks] = [SearchTracks(artistName: "", collectionName: "", trackName: "", previewUrl: "3", artworkUrl30: "", artworkUrl60: "", artworkUrl100: "")]
+    var newSongArray: [SearchTracks] = [SearchTracks(artistName: "", collectionName: "", trackName: "", previewUrl: "1", artworkUrl30: "", artworkUrl60: "", artworkUrl100: "", artistViewUrl: "")]
+    var recentlyPlayedArray: [SearchTracks] = [SearchTracks(artistName: "", collectionName: "", trackName: "", previewUrl: "2", artworkUrl30: "", artworkUrl60: "", artworkUrl100: "", artistViewUrl: "")]
+    var popularAlbumArray: [SearchTracks] = [SearchTracks(artistName: "", collectionName: "", trackName: "", previewUrl: "3", artworkUrl30: "", artworkUrl60: "", artworkUrl100: "", artistViewUrl: "")]
     
     required init(view: HomeViewProtocol, networkService: NetworkService) {
         self.view = view

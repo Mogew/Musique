@@ -36,4 +36,5 @@ struct SearchTracks: Decodable, Hashable {
     let artworkUrl30: String?
     let artworkUrl60: String?
     let artworkUrl100: String?
+    let artistViewUrl: String?
 }
