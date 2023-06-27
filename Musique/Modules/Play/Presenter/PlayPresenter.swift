@@ -161,6 +161,7 @@ class PlayPresenter: PlayPresenterProtocol {
             try realm.write {
                 realm.add(song)
                 print(song)
+                print(realm.objects(FavoriteSong.self))
             }
         } catch _ as NSError {
             // ... Handle error ...

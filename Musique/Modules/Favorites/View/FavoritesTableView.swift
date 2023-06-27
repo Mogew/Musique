@@ -6,6 +6,7 @@ class FavoritesTableView: UITableView {
     
     var cellsTableView = [FavoriteSong]()
     var selectedIndexPath: IndexPath?
+    weak var dbDelegate: FavoriteDeleteFromDB?
     
     init() {
         super.init(frame: .zero, style: .plain)
@@ -22,6 +23,7 @@ class FavoritesTableView: UITableView {
     
     func setTableView(cells: [FavoriteSong]) {
         self.cellsTableView = cells
+        reloadData()
     }
 }
 
@@ -87,7 +89,7 @@ extension FavoritesTableView: UITableViewDelegate {
         if editingStyle == .delete {
            print("Deleted")
            cellsTableView.remove(at: indexPath.row)
-            FavoritesViewController().deleteSongFromDB(with: indexPath.row)
+            dbDelegate?.getIndexPathToDelete(indexPath: indexPath)
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()

@@ -1,10 +1,13 @@
 import UIKit
 import RealmSwift
 
+protocol FavoriteDeleteFromDB: AnyObject {
+    func getIndexPathToDelete(indexPath: IndexPath)
+}
+
 class FavoritesViewController: UIViewController {
     // temp solution
     let realm = try! Realm()
-    var songs = [FavoriteSong]()
     
     var presenter: FavoritesPresenterProtocol!
     private let favoritesTableView = FavoritesTableView()
@@ -13,15 +16,13 @@ class FavoritesViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .mDarkBlue
         addViewLayout()
+        favoritesTableView.dbDelegate = self
     }
     // temp solution
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getDataFromDataBase()
-        favoritesTableView.setTableView(cells: songs)
+        presenter.getDataFromDataBase()
     }
-    
-
     
     func addViewLayout() {
         view.addSubview(favoritesTableView)
@@ -39,30 +40,19 @@ class FavoritesViewController: UIViewController {
 
 extension FavoritesViewController: FavoritesViewProtocol {
     func succses() {
-        print("success")
+        favoritesTableView.setTableView(cells: presenter.songs)
     }
     
     func failure() {
         print("fail")
     }
     // temp solution
-    func getDataFromDataBase() {
-        let requestResult = realm.objects(FavoriteSong.self)
-        for i in requestResult {
-            songs.append(i)
-        }
-    }
     
-    func deleteSongFromDB(with indexPath: Int) {
-        let song = realm.objects(FavoriteSong.self)[indexPath]
-        do {
-            // Open a thread-safe transaction.
-            try realm.write {
-                realm.delete(song)
-            }
-        } catch _ as NSError {
-            // ... Handle error ...
-        }
-    }
+
     
+}
+extension FavoritesViewController: FavoriteDeleteFromDB {
+    func getIndexPathToDelete(indexPath: IndexPath){
+        presenter.deleteSongFromDB(with: indexPath.row)
+    }
 }
