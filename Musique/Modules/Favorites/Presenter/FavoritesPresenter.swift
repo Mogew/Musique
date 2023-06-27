@@ -25,9 +25,11 @@ class FavoritesPresenter: FavoritesPresenterProtocol {
     
     func getDataFromDataBase() {
         let requestResult = realm.objects(FavoriteSong.self)
+        var tempArray = [FavoriteSong]()
         for element in requestResult {
-            songs.append(element)
+            tempArray.append(element)
         }
+        songs = tempArray
         view?.succses()
     }
     
