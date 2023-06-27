@@ -35,6 +35,7 @@ protocol PlayPresenterProtocol: AnyObject {
     func writeInDataBase(songObject: SearchTracks)
     func deleteLastFromDB()
     func updateIndexPath(index: IndexPath?)
+    func currentData() 
     var indexPath: IndexPath? { get set }
     var tracksArray: [SearchTracks]? { get set }
 }
@@ -188,5 +189,10 @@ class PlayPresenter: PlayPresenterProtocol {
     func updateIndexPath(index: IndexPath?) {
         guard let index = index else { return }
         view?.updateIndexPath(index: index)
+    }
+    
+    func currentData() {
+        avPlayer?.indexPath = indexPath
+        avPlayer?.tracks = tracksArray
     }
 }

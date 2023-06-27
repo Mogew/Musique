@@ -405,10 +405,11 @@ class PlayViewController: UIViewController {
     //MARK: - Targets
     
     @objc private func tapButton() {
-//
+        //
     }
     
     @objc private func tapDown() {
+        presenter?.currentData()
         dismiss(animated: true)
     }
     

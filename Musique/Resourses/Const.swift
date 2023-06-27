@@ -51,6 +51,8 @@ enum Const {
         static let line = UIImage(named: "line") ?? UIImage()
         static let point = UIImage(named: "point") ?? UIImage()
         static let link = UIImage(systemName: "link.circle.fill") ?? UIImage()
+        static let playpauseFill = UIImage(systemName: "playpause.fill") ?? UIImage()
+        static let forwardFill = UIImage(systemName: "forward.fill") ?? UIImage()
         
     }
 }

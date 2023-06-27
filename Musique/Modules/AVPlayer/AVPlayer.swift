@@ -16,13 +16,22 @@ protocol AVplayerProtocol: AnyObject {
     func getCurrunetTime() -> Float
     func moveTimeSlider(currentTime: Float)
     func changeVolume(_ value: Float)
-    
+    var tracks: [SearchTracks]? { get set }
+    var indexPath: IndexPath? { get set }
 }
 
 //MARK: - AV Player
 
 class AVPlayerClass: AVplayerProtocol {
-        
+    
+    //MARK: - Properties
+    
+    var tracks: [SearchTracks]?
+    
+    var indexPath: IndexPath?
+    
+    //MARK: - Methods
+    
     private let avPlayer: AVPlayer = {
         let player = AVPlayer()
         player.automaticallyWaitsToMinimizeStalling = false
