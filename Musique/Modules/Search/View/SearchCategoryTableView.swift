@@ -37,6 +37,36 @@ class SearchCategoryTableView: UITableView {
     func setTableView(cells: [SearchTracks]) {
         self.cellsTableView = cells
     }
+    
+//    func switchCategoryCell(type: SearchType) -> UITableViewCell {
+//        switch type {
+//        case .mix:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: SearchCategoryTableViewCell.reuseID, for: indexPath) as! SearchCategoryTableViewCell
+//
+//            let track = cellsTableView[indexPath.row]
+//            cell.configureCell(model: track)
+//            return cell
+//
+//        case .musicArtist:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: SearchCategoryTableViewCell.reuseID, for: indexPath) as! SearchCategoryTableViewCell
+//
+//            let track = cellsTableView[indexPath.row]
+//            cell.configureCell(model: track)
+//            return cell
+//        case .album:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: SearchCategoryTableViewCell.reuseID, for: indexPath) as! SearchCategoryTableViewCell
+//
+//            let track = cellsTableView[indexPath.row]
+//            cell.configureCell(model: track)
+//            return cell
+//        case .song:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: SearchCategoryTableViewCell.reuseID, for: indexPath) as! SearchCategoryTableViewCell
+//
+//            let track = cellsTableView[indexPath.row]
+//            cell.configureCell(model: track)
+//            return cell
+//        }
+//    }
 }
 
 extension SearchCategoryTableView: UITableViewDataSource{
@@ -50,7 +80,12 @@ extension SearchCategoryTableView: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchCategoryTableViewCell.reuseID, for: indexPath) as! SearchCategoryTableViewCell
         
         let track = cellsTableView[indexPath.row]
-        cell.configureCell(model: track)
+        guard let name = track.artistName, let subtitle = track.trackName else {
+            return cell
+        }
+        cell.configureCell(title: name,
+                           subtitle: subtitle,
+                           imageUrlString: track.artworkUrl60)
         return cell
     }
     
