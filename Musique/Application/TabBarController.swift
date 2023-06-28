@@ -37,7 +37,7 @@ class TabBarController: UITabBarController {
                                   vc: Builder.getHomeModule())
         let explore = self.createNav(with: "Explore",
                                      and: UIImage(systemName: "sparkles.rectangle.stack"),
-                                     and: "Explore", vc: HomeViewController())
+                                     and: "Explore", vc: ProfileViewController())
         let favorites = self.createNav(with: "Favorites",
                                        and: UIImage(systemName: "heart"),
                                        and: "Favorites",vc: Builder.getFavoritesModule())

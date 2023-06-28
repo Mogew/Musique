@@ -19,12 +19,6 @@ struct Section: Hashable {
     let items: [SearchTracks]
 }
 
-//public var MOKSections: [Section] = [
-//    Section(type: "newSongs", title: "New Songs", items: []),
-//    Section(type: "popularAlbum", title: "Popular Album", items: []),
-//    Section(type: "recentlyplayed", title: "Recently played", items: [])
-//]
-
 struct SongModel1 {
     func check(with title: String) -> Bool {
         switch title {

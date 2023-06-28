@@ -16,7 +16,7 @@
 		942C546F2A431B4700101E04 /* HomeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C546E2A431B4700101E04 /* HomeRequest.swift */; };
 		942C54732A4491F100101E04 /* PopularAlbumRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C54722A4491F100101E04 /* PopularAlbumRequest.swift */; };
 		942C54752A4493B400101E04 /* RecentlyPlayedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C54742A4493B400101E04 /* RecentlyPlayedRequest.swift */; };
-		94473CEE2A4B1445008D04B0 /* RecentlyPlayedReam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94473CED2A4B1445008D04B0 /* RecentlyPlayedReam.swift */; };
+		94473CEE2A4B1445008D04B0 /* RecentlyPlayedRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94473CED2A4B1445008D04B0 /* RecentlyPlayedRealm.swift */; };
 		94EA02802A3784D300959697 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA027F2A3784D300959697 /* HomeViewController.swift */; };
 		94EA02852A383C8D00959697 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA02842A383C8D00959697 /* SectionHeader.swift */; };
 		94EA02872A38415900959697 /* NewSongsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA02862A38415900959697 /* NewSongsCell.swift */; };
@@ -120,7 +120,7 @@
 		942C546E2A431B4700101E04 /* HomeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRequest.swift; sourceTree = "<group>"; };
 		942C54722A4491F100101E04 /* PopularAlbumRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularAlbumRequest.swift; sourceTree = "<group>"; };
 		942C54742A4493B400101E04 /* RecentlyPlayedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyPlayedRequest.swift; sourceTree = "<group>"; };
-		94473CED2A4B1445008D04B0 /* RecentlyPlayedReam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyPlayedReam.swift; sourceTree = "<group>"; };
+		94473CED2A4B1445008D04B0 /* RecentlyPlayedRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyPlayedRealm.swift; sourceTree = "<group>"; };
 		94EA027F2A3784D300959697 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		94EA02842A383C8D00959697 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		94EA02862A38415900959697 /* NewSongsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSongsCell.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 				94EA02822A383C5700959697 /* VIews */,
 				94E250F42A4780E700C896BF /* Presenter */,
 				94473CEC2A4B1383008D04B0 /* NetworkRequests */,
-				94473CED2A4B1445008D04B0 /* RecentlyPlayedReam.swift */,
+				94473CED2A4B1445008D04B0 /* RecentlyPlayedRealm.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -844,7 +844,7 @@
 				94F37A822A45FFB0001FDADF /* FavoritesViewController.swift in Sources */,
 				C86BD8BF2A36336F00FBD6FA /* UIColor+Extension.swift in Sources */,
 				94EA028B2A38418100959697 /* RecentlyMusicCell.swift in Sources */,
-				94473CEE2A4B1445008D04B0 /* RecentlyPlayedReam.swift in Sources */,
+				94473CEE2A4B1445008D04B0 /* RecentlyPlayedRealm.swift in Sources */,
 				C8D6E06D2A3A6313000FACC9 /* SearchCategoryCollectionView.swift in Sources */,
 				C8E528462A44C4D40091DC82 /* ExploreModel.swift in Sources */,
 				C8E5284B2A44C4D40091DC82 /* TopTrendingCell.swift in Sources */,
