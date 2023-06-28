@@ -11,6 +11,7 @@ protocol FavoritesPresenterProtocol: AnyObject {
     init (view: FavoritesViewProtocol)
     var songs: [FavoriteSong] {set get}
     func getDataFromDataBase()
+    func deleteSongFromDB(with identifier: Int)
 }
 
 class FavoritesPresenter: FavoritesPresenterProtocol {
@@ -20,15 +21,29 @@ class FavoritesPresenter: FavoritesPresenterProtocol {
     
     required init(view: FavoritesViewProtocol) {
         self.view = view
-        getDataFromDataBase()
     }
     
     func getDataFromDataBase() {
         let requestResult = realm.objects(FavoriteSong.self)
-        for i in requestResult {
-            songs.append(i)
+        var tempArray = [FavoriteSong]()
+        for element in requestResult {
+            tempArray.append(element)
         }
+        songs = tempArray
         view?.succses()
+    }
+    
+    func deleteSongFromDB(with identifier: Int) {
+        let song = realm.objects(FavoriteSong.self)[identifier]
+        songs.remove(at: identifier)
+        do {
+            // Open a thread-safe transaction.
+            try realm.write {
+                realm.delete(song)
+            }
+        } catch _ as NSError {
+            // ... Handle error ...
+        }
     }
     
 }

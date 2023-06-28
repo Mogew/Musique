@@ -166,7 +166,6 @@ class PlayPresenter: PlayPresenterProtocol {
             // Open a thread-safe transaction.
             try realm.write {
                 realm.add(song)
-                print(song)
             }
         } catch _ as NSError {
             // ... Handle error ...
