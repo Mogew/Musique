@@ -26,6 +26,7 @@ class SearchViewController: UIViewController {
         let searchbar = UISearchBar()
         searchbar.translatesAutoresizingMaskIntoConstraints = false
         searchbar.delegate = self
+        searchbar.placeholder = "Type search"
         searchbar.barTintColor = .mBlack
         searchbar.tintColor = .mLime
         searchbar.showsCancelButton = false
@@ -61,7 +62,7 @@ class SearchViewController: UIViewController {
             categoryTableView.topAnchor.constraint(equalTo: categoryCollectionView.bottomAnchor, constant: 20),
             categoryTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             categoryTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            categoryTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            categoryTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
@@ -94,12 +95,6 @@ extension SearchViewController: SearchViewProtocol {
     }
 }
 
-extension SearchViewController: SearchTableViewProtocol {
-    func presentPlayer(track: [SearchTracks]?, indexPath: IndexPath?) {
-        let play = Builder.getPlayModule(track: track, indexPath: indexPath)
-        present(play, animated: true)
-    }
-}
 //MARK: - Searcbar config
 extension SearchViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -133,6 +128,8 @@ extension SearchViewController: PresentDelagate {
 extension SearchViewController: CollectionViewCategoryDelegate {
     func upateCategory(type: SearchType) {
         presenter.currentType = type
+        categoryTableView.currentType = type
+        categoryTableView.reloadData()
         presenter.request(term: searchBar.text ?? "")
     }
 }

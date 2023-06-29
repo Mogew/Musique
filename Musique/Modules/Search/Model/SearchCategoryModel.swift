@@ -14,7 +14,7 @@ struct SearchCategoryModel {
     var type: SearchType?
     
     static func makeMockModel() -> [SearchCategoryModel] {[
-        SearchCategoryModel(category: "All", type: nil),
+        SearchCategoryModel(category: "All", type: .song),
         SearchCategoryModel(category: "Artist", type: .musicArtist),
         SearchCategoryModel(category: "Album", type: .album),
         SearchCategoryModel(category: "Song", type: .song),
