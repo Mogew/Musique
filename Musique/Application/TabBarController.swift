@@ -2,6 +2,10 @@ import UIKit
 import SnapKit
 import Kingfisher
 
+protocol MusicDelegateProtocol: AnyObject {
+    func setMusic()
+}
+
 class TabBarController: UITabBarController {
     
     //MARK: - Properties
@@ -80,6 +84,12 @@ class TabBarController: UITabBarController {
             vc: ProfileViewController())
         
         self.setViewControllers([home, explore, favorites, account], animated: true)
+        
+        home.viewControllers.forEach { vc in
+            if let homeVC = vc as? HomeViewController {
+                homeVC.musicDelegate = self
+            }
+        }
     }
     
     private func createNav(with title: String, and image: UIImage?, and largeTitle: String, vc: UIViewController) -> UINavigationController {
@@ -168,5 +178,16 @@ class TabBarController: UITabBarController {
         playVC.modalTransitionStyle = .crossDissolve
         present(playVC, animated: true)
     }
-    
+}
+
+extension TabBarController: MusicDelegateProtocol {
+    func setMusic() {
+        guard let track = self.player.tracks?[self.player.indexPath?.row ?? 0] else { return }
+        
+        self.songName.text = track.trackName
+        
+        let urlImage = track.artworkUrl30
+        guard let url = URL(string: urlImage ?? Const.Text.empty) else { return }
+        self.logoImage.kf.setImage(with: url)
+    }
 }

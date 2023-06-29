@@ -278,15 +278,15 @@ extension HomeViewController: UICollectionViewDelegate {
         let section = sections?[indexPath.section].type
         switch section {
         case PopularAlbumCell.id:
-            musicDelegate?.setMusic()
             player.tracks = sections?[indexPath.section].items
             player.indexPath = indexPath
             player.playTrack(sections?[indexPath.section].items[indexPath.item])
+            musicDelegate?.setMusic()
         default:
-            musicDelegate?.setMusic()
             player.tracks = sections?[indexPath.section].items
             player.indexPath = indexPath
             player.playTrack(sections?[indexPath.section].items[indexPath.item])
+            musicDelegate?.setMusic()
         }
     }
 }
