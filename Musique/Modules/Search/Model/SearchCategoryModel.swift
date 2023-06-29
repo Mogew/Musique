@@ -29,8 +29,6 @@ struct SearchTracks: Decodable, Hashable {
     let artistName: String?
     let collectionName: String?
     let trackName: String?
-    let artworkUrl60: String?
-    let artworkUrl100: String?
     let previewUrl: String?
     let artworkUrl30: String?
     let artworkUrl60: String?

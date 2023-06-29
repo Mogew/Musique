@@ -38,7 +38,12 @@ extension FavoritesTableView: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchCategoryTableViewCell.reuseID, for: indexPath) as! SearchCategoryTableViewCell
         
         let track = cellsTableView[indexPath.row]
-        cell.configureCellForFavorites(with: track)
+        guard let trackName = track.trackName, let artistName = track.artistName else {
+            return cell
+        }
+        cell.configureCell(title: trackName,
+                           subtitle: artistName,
+                           imageUrlString: track.artworkUrl100)
         return cell
     }
     
