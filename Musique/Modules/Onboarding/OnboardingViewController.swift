@@ -109,6 +109,7 @@ class OnboardingViewController: UIViewController {
     
     @objc private func pushViewController() {
         print("lol")
+        navigationController?.pushViewController( Builder.getSignInModule(), animated: true)
     }
     
     //MARK: - Layout

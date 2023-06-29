@@ -10,7 +10,7 @@ import UIKit
 final class UserSignUpController: UIViewController {
     
     //MARK: - Property
-    var presenter: UserSignUpPresenterProtocol?
+    var presenter: UserSignUpPresenterProtocol!
     
     // MARK: - Outlets
     
@@ -153,8 +153,10 @@ final class UserSignUpController: UIViewController {
     
     // MARK:- Private Methods
     @objc private func signUpButtonTapped() {
-        if let email = emailTextField.text, let password = passwordTextField.text {
-            presenter?.createUser(email: email, password: password)
+        if let userName = nameTextField.text,
+           let email = emailTextField.text,
+           let password = passwordTextField.text {
+            presenter?.createUser(email: email, password: password, userName: userName)
         }
     }
     

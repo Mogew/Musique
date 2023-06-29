@@ -84,6 +84,9 @@
 		C8E528492A44C4D40091DC82 /* TopicDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E528422A44C4D40091DC82 /* TopicDetailsViewController.swift */; };
 		C8E5284A2A44C4D40091DC82 /* TopicDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E528432A44C4D40091DC82 /* TopicDetailsCell.swift */; };
 		C8E5284B2A44C4D40091DC82 /* TopTrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E528442A44C4D40091DC82 /* TopTrendingCell.swift */; };
+		E1A7DF892A4E233600881EA3 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A7DF882A4E233600881EA3 /* FirebaseManager.swift */; };
+		E1A7DF8C2A4E253100881EA3 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E1A7DF8B2A4E253100881EA3 /* FirebaseDatabaseSwift */; };
+		E1A7DF8E2A4E25EB00881EA3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A7DF8D2A4E25EB00881EA3 /* UserInfo.swift */; };
 		EB3116D42A44B09A001AB3F9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EB3116D32A44B09A001AB3F9 /* SnapKit */; };
 		EB38BF452A44A5450038AC91 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38BF442A44A5450038AC91 /* PlayViewController.swift */; };
 		EB38BF472A44A5610038AC91 /* PlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38BF462A44A5610038AC91 /* PlayPresenter.swift */; };
@@ -189,6 +192,8 @@
 		C8E528422A44C4D40091DC82 /* TopicDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDetailsViewController.swift; sourceTree = "<group>"; };
 		C8E528432A44C4D40091DC82 /* TopicDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDetailsCell.swift; sourceTree = "<group>"; };
 		C8E528442A44C4D40091DC82 /* TopTrendingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTrendingCell.swift; sourceTree = "<group>"; };
+		E1A7DF882A4E233600881EA3 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		E1A7DF8D2A4E25EB00881EA3 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		EB38BF442A44A5450038AC91 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		EB38BF462A44A5610038AC91 /* PlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPresenter.swift; sourceTree = "<group>"; };
 		EB38BF4D2A44A5BD0038AC91 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A7DF8C2A4E253100881EA3 /* FirebaseDatabaseSwift in Frameworks */,
 				C86BD8C42A36353400FBD6FA /* RealmSwift in Frameworks */,
 				C86BD8C22A36353400FBD6FA /* Realm in Frameworks */,
 				C84BA7F72A485396003D91BB /* GoogleSignInSwift in Frameworks */,
@@ -291,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				94473CF92A4CC90A008D04B0 /* ProfileModel.swift */,
+				E1A7DF8D2A4E25EB00881EA3 /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -416,6 +423,7 @@
 				C822CACA2A36203500CAA5E0 /* MusiqueTests */,
 				C822CAD42A36203500CAA5E0 /* MusiqueUITests */,
 				C822CAB22A36203200CAA5E0 /* Products */,
+				E1A7DF8A2A4E253100881EA3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -435,6 +443,7 @@
 				C822CAE42A36204100CAA5E0 /* Application */,
 				C822CAE52A36205400CAA5E0 /* Modules */,
 				94F6750A2A39FE7C0007576D /* Network */,
+				E1A7DF872A4E230D00881EA3 /* FirebaseManager */,
 				C822CAE62A36207300CAA5E0 /* Resourses */,
 				C822CAE72A36208300CAA5E0 /* Plist */,
 			);
@@ -636,6 +645,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E1A7DF872A4E230D00881EA3 /* FirebaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				E1A7DF882A4E233600881EA3 /* FirebaseManager.swift */,
+			);
+			path = FirebaseManager;
+			sourceTree = "<group>";
+		};
+		E1A7DF8A2A4E253100881EA3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EB38BF3E2A44A4D60038AC91 /* Play */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,6 +770,7 @@
 				EB3116D32A44B09A001AB3F9 /* SnapKit */,
 				C84BA7F42A485396003D91BB /* GoogleSignIn */,
 				C84BA7F62A485396003D91BB /* GoogleSignInSwift */,
+				E1A7DF8B2A4E253100881EA3 /* FirebaseDatabaseSwift */,
 			);
 			productName = Musique;
 			productReference = C822CAB12A36203200CAA5E0 /* Musique.app */;
@@ -941,7 +966,9 @@
 				0F34A0302A44F9A300CB5E14 /* ProfileViewController.swift in Sources */,
 				C8E528472A44C4D40091DC82 /* TopicCell.swift in Sources */,
 				C8D6E06B2A3A6313000FACC9 /* SearchViewController.swift in Sources */,
+				E1A7DF892A4E233600881EA3 /* FirebaseManager.swift in Sources */,
 				EB38BF522A44A5E80038AC91 /* AlbumPresenter.swift in Sources */,
+				E1A7DF8E2A4E25EB00881EA3 /* UserInfo.swift in Sources */,
 				942469A12A4AD908003DD040 /* PlaylistCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1354,6 +1381,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C86BD8C02A36353400FBD6FA /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		E1A7DF8B2A4E253100881EA3 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C86BD8B62A362EFD00FBD6FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
 		};
 		EB3116D32A44B09A001AB3F9 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

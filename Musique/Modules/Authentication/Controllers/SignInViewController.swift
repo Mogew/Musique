@@ -164,7 +164,7 @@ final class SignInViewController: UIViewController {
     // MARK:- Private Methods
     @objc private func signInButtonTapped() {
         if let email = emailTextField.text, let password = passwordTextField.text {
-            presenter?.authUser(email: email, password: password)
+            presenter?.signInUser(email: email, password: password)
         }
     }
     
