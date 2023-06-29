@@ -9,10 +9,11 @@ protocol HomeViewProtocol: AnyObject {
 protocol HomePresenterProtocol: AnyObject {
     init (view: HomeViewProtocol, networkService: NetworkService)
     var newSongArray: [SearchTracks] {get}
-    var recentlyPlayedArray: [SearchTracks] {get}
+    var recentlyPlayedArray: [SearchTracks] {get set}
     var popularAlbumArray: [SearchTracks] {get}
     
     func writeInDataBase(songObject: SearchTracks)
+    func getRecentlyPlayed()
 }
 
 class HomePresenter: HomePresenterProtocol {
@@ -33,6 +34,7 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func getNewSongs() {
+        
         let request = HomeRequest()
         networkService.request(request) { [weak self] result in
             switch result {
@@ -65,19 +67,15 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func getRecentlyPlayed() {
-        let request = RecentlyPlayedRequest()
-        networkService.request(request) { [weak self] result in
-            switch result {
-            case .success(let songArray):
-                self?.recentlyPlayedArray = songArray.results
-                self?.view?.succses()
-            case .failure(_):
-                self?.view?.failure()
-                print("-------------------------------------------")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    self?.getRecentlyPlayed()
-                }
+        
+        let realmObjects = realm.objects(RecentlySong.self)
+        if !realmObjects.isEmpty {
+            var recentlyPlayedArrayTemp = [SearchTracks]()
+            for object in realmObjects {
+                let track = SearchTracks(artistName: object.artistName, collectionName: "", trackName: object.trackName, previewUrl: object.previewUrl, artworkUrl30: object.artworkUrl100, artworkUrl60: object.artworkUrl100, artworkUrl100: object.artworkUrl100, artistViewUrl: "")
+                recentlyPlayedArrayTemp.append(track)
             }
+            recentlyPlayedArray = recentlyPlayedArrayTemp
         }
     }
     
@@ -87,11 +85,9 @@ class HomePresenter: HomePresenterProtocol {
             // Open a thread-safe transaction.
             try realm.write {
                 realm.add(song)
-                print(song)
             }
         } catch _ as NSError {
             // ... Handle error ...
         }
     }
-    
 }

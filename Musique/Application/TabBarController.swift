@@ -37,14 +37,14 @@ class TabBarController: UITabBarController {
                                   vc: Builder.getHomeModule())
         let explore = self.createNav(with: "Explore",
                                      and: UIImage(systemName: "sparkles.rectangle.stack"),
-                                     and: "Explore", vc: HomeViewController())
+                                     and: "Explore", vc: ProfileViewController())
         let favorites = self.createNav(with: "Favorites",
                                        and: UIImage(systemName: "heart"),
                                        and: "Favorites",vc: Builder.getFavoritesModule())
         let account = self.createNav(with: "Account",
                                      and: UIImage(systemName: "person"),
                                      and: "Account",
-                                     vc: ProfileViewController())
+                                     vc: Builder.getProfileModule())
         self.setViewControllers([home, explore, favorites, account], animated: true)
         
     }
@@ -83,22 +83,22 @@ class TabBarController: UITabBarController {
     }
     
     private func setupMiniPlayer() {
-        miniPlayer.backgroundColor = .mLime
-        
-        miniPlayer.addSubview(playButton)
-        
-        view.insertSubview(miniPlayer, belowSubview: tabBar)
-        
-        miniPlayer.snp.makeConstraints { make in
-            make.bottom.equalTo(tabBar.snp.top)
-            make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(64)
-        }
-        
-        playButton.snp.makeConstraints { make in
-            make.size.equalTo(50)
-            make.center.equalToSuperview()
-        }
+//        miniPlayer.backgroundColor = .mLime
+//        
+//        miniPlayer.addSubview(playButton)
+//        
+//        view.insertSubview(miniPlayer, belowSubview: tabBar)
+//        
+//        miniPlayer.snp.makeConstraints { make in
+//            make.bottom.equalTo(tabBar.snp.top)
+//            make.horizontalEdges.equalToSuperview()
+//            make.height.equalTo(64)
+//        }
+//        
+//        playButton.snp.makeConstraints { make in
+//            make.size.equalTo(50)
+//            make.center.equalToSuperview()
+//        }
     }
     
     //MARK: - Targets

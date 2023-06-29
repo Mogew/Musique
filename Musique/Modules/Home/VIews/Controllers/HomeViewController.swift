@@ -8,6 +8,7 @@ class HomeViewController: UIViewController {
     var model = SongModel1()
     var songCount = 1
     let CountRange = 1...9
+    var temp = 0
     
     var player = Builder.player
     
@@ -56,6 +57,10 @@ extension HomeViewController {
             default:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentlyMusicCell.id, for: indexPath) as? RecentlyMusicCell
                 cell?.configure(with: itemIdentifier)
+                if self.presenter.recentlyPlayedArray == [SearchTracks(artistName: "", collectionName: "", trackName: "", previewUrl: "2", artworkUrl30: "", artworkUrl60: "", artworkUrl100: "", artistViewUrl: "")]{
+                    cell?.number.isHidden = true
+                    cell?.playButton.isHidden = true
+                }
                 if self.CountRange.contains(self.songCount) {
                     cell?.number.text = "\(indexPath.row + 1)"
                 } else {
@@ -267,6 +272,11 @@ extension HomeViewController {
             navigationController?.tabBarController?.tabBar.isHidden = false
         }
         showImage(true)
+        if temp > 0 {
+            presenter.getRecentlyPlayed()
+            succses()
+        }
+        temp += 1
     }
 }
 //MARK: - Здесь нужно запускать плеер в таб баре
