@@ -1,14 +1,10 @@
 import UIKit
-import RealmSwift
 
 protocol FavoriteDeleteFromDB: AnyObject {
     func getIndexPathToDelete(indexPath: IndexPath)
 }
 
 class FavoritesViewController: UIViewController {
-    // temp solution
-    let realm = try! Realm()
-    
     var presenter: FavoritesPresenterProtocol!
     private let favoritesTableView = FavoritesTableView()
     
@@ -18,6 +14,7 @@ class FavoritesViewController: UIViewController {
         addViewLayout()
         favoritesTableView.dbDelegate = self
     }
+    
     // temp solution
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
