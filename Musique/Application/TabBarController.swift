@@ -44,7 +44,7 @@ class TabBarController: UITabBarController {
         let account = self.createNav(with: "Account",
                                      and: UIImage(systemName: "person"),
                                      and: "Account",
-                                     vc: ProfileViewController())
+                                     vc: Builder.getProfileModule())
         self.setViewControllers([home, explore, favorites, account], animated: true)
         
     }
@@ -83,22 +83,22 @@ class TabBarController: UITabBarController {
     }
     
     private func setupMiniPlayer() {
-        miniPlayer.backgroundColor = .mLime
-        
-        miniPlayer.addSubview(playButton)
-        
-        view.insertSubview(miniPlayer, belowSubview: tabBar)
-        
-        miniPlayer.snp.makeConstraints { make in
-            make.bottom.equalTo(tabBar.snp.top)
-            make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(64)
-        }
-        
-        playButton.snp.makeConstraints { make in
-            make.size.equalTo(50)
-            make.center.equalToSuperview()
-        }
+//        miniPlayer.backgroundColor = .mLime
+//        
+//        miniPlayer.addSubview(playButton)
+//        
+//        view.insertSubview(miniPlayer, belowSubview: tabBar)
+//        
+//        miniPlayer.snp.makeConstraints { make in
+//            make.bottom.equalTo(tabBar.snp.top)
+//            make.horizontalEdges.equalToSuperview()
+//            make.height.equalTo(64)
+//        }
+//        
+//        playButton.snp.makeConstraints { make in
+//            make.size.equalTo(50)
+//            make.center.equalToSuperview()
+//        }
     }
     
     //MARK: - Targets

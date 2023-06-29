@@ -79,4 +79,10 @@ class Builder {
         return view
     }
 
+    static func getProfileModule() -> UIViewController {
+        let view = ProfileViewController()
+        let presenter = ProfilePresenter(view: view)
+        view.presenter = presenter
+        return view
+    }
 }
