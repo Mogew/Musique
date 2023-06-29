@@ -11,19 +11,23 @@ protocol PresentDelagate: AnyObject {
     func presentVC(track: [SearchTracks]?, indexPath: IndexPath?)
 }
 
+protocol CollectionViewCategoryDelegate: AnyObject {
+    func upateCategory(type: SearchType)
+}
+
 class SearchViewController: UIViewController {
 
     var presenter: SearchPresenterProtocol!
     let categoryCollectionView = SearchCategoryCollectionView()
     private let categoryTableView = SearchCategoryTableView()
-    var currentType: SearchType = .mix
     
     //MARK: - Searcbar config
     private lazy var searchBar: UISearchBar = {
         let searchbar = UISearchBar()
         searchbar.translatesAutoresizingMaskIntoConstraints = false
         searchbar.delegate = self
-        searchbar.barTintColor = .mDarkBlue
+        searchbar.placeholder = "Type search"
+        searchbar.barTintColor = .mBlack
         searchbar.tintColor = .mLime
         searchbar.showsCancelButton = false
         return searchbar
@@ -58,7 +62,7 @@ class SearchViewController: UIViewController {
             categoryTableView.topAnchor.constraint(equalTo: categoryCollectionView.bottomAnchor, constant: 20),
             categoryTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             categoryTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            categoryTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            categoryTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
@@ -67,7 +71,7 @@ class SearchViewController: UIViewController {
         view.backgroundColor = .mDarkBlue
         
         categoryTableView.myDelegate = self
-        
+        categoryCollectionView.categoryDelegate = self
         addViewLayout()
         categoryCollectionView.set(cells: SearchCategoryModel.makeMockModel())
 //        categoryTableView.setTableView(cells: SearchCategoryModel.makeMockModel())
@@ -91,12 +95,6 @@ extension SearchViewController: SearchViewProtocol {
     }
 }
 
-extension SearchViewController: SearchTableViewProtocol {
-    func presentPlayer(track: [SearchTracks]?, indexPath: IndexPath?) {
-        let play = Builder.getPlayModule(track: track, indexPath: indexPath)
-        present(play, animated: true)
-    }
-}
 //MARK: - Searcbar config
 extension SearchViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -111,17 +109,27 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // Вызываем поисковой запрос
-        presenter.request(term: searchBar.text ?? "", type: currentType)
+        presenter.request(term: searchBar.text ?? "")
         // Скрываем клавиатуру
         searchBar.resignFirstResponder()
     }
 }
 
+//MARK: - PresentDelagate
 extension SearchViewController: PresentDelagate {
     func presentVC(track: [SearchTracks]?, indexPath: IndexPath?) {
         let playVC = Builder.getPlayModule(track: track, indexPath: indexPath)
         playVC.modalPresentationStyle = .fullScreen
-//        navigationController?.pushViewController(playVC, animated: true)
         present(playVC, animated: true)
+    }
+}
+
+//MARK: - CollectionViewCategoryDelegate
+extension SearchViewController: CollectionViewCategoryDelegate {
+    func upateCategory(type: SearchType) {
+        presenter.currentType = type
+        categoryTableView.currentType = type
+        categoryTableView.reloadData()
+        presenter.request(term: searchBar.text ?? "")
     }
 }

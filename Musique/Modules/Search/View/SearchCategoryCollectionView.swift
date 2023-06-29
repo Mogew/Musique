@@ -11,7 +11,7 @@ class SearchCategoryCollectionView: UICollectionView {
     
     var cells = [SearchCategoryModel]()
     var selectedIndexPath: IndexPath?
-    var presenter: SearchPresenterProtocol!
+    weak var categoryDelegate: CollectionViewCategoryDelegate?
     
     init() {
         let layout = UICollectionViewFlowLayout()
@@ -77,5 +77,7 @@ extension SearchCategoryCollectionView: UICollectionViewDelegate {
             cell.categoryCellView.backgroundColor = .mBlack
         }
         selectedIndexPath = indexPath
+        guard let currentCellType = cells[indexPath.row].type else { return }
+        categoryDelegate?.upateCategory(type: currentCellType)
     }
 }

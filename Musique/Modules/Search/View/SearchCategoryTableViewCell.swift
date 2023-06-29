@@ -22,6 +22,8 @@ class SearchCategoryTableViewCell: UITableViewCell {
     
     let artistImage: UIImageView = {
         let image = UIImageView()
+        image.layer.cornerRadius = 3
+        image.backgroundColor = .mGray
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -63,20 +65,14 @@ class SearchCategoryTableViewCell: UITableViewCell {
         artistImage.image = nil
     }
     
-    func configureCellForFavorites(with model: FavoriteSong) {
-        artistNameLabel.text = model.artistName
-        songNameLabel.text = model.trackName
-        guard let urlString = model.artworkUrl100 else {return}
-        let url = URL(string: urlString)
-        artistImage.kf.setImage(with: url)
-    }
-    
-    func configureCell(model: SearchTracks) {
-        artistNameLabel.text = model.artistName
-        songNameLabel.text = model.trackName
-        guard let urlString = model.artworkUrl30 else {return}
-        let url = URL(string: urlString)
-        artistImage.kf.setImage(with: url)
+    func configureCell(title: String,
+                       subtitle: String,
+                       imageUrlString: String?) {
+        artistNameLabel.text = subtitle
+        songNameLabel.text = title
+        
+        let url = URL(string: imageUrlString ?? "")
+        artistImage.kf.setImage(with: url, placeholder: UIImage(systemName: "person.fill")?.withTintColor(.mLime))
     }
     
     private func addviewLayout() {

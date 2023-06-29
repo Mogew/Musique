@@ -7,15 +7,11 @@
 
 import UIKit
 
-protocol SearchTableViewProtocol: AnyObject {
-    func presentPlayer(track: [SearchTracks]?, indexPath: IndexPath?)
-}
-
 class SearchCategoryTableView: UITableView {
     
     var cellsTableView = [SearchTracks]()
     var selectedIndexPath: IndexPath?
-    weak var searchDelegate: SearchTableViewProtocol?
+    var currentType: SearchType = .mix
     
     weak var myDelegate: PresentDelagate?
     
@@ -37,6 +33,51 @@ class SearchCategoryTableView: UITableView {
     func setTableView(cells: [SearchTracks]) {
         self.cellsTableView = cells
     }
+    
+    func switchCategoryCell(indexPath: IndexPath) -> UITableViewCell {
+        print(currentType)
+        switch currentType {
+        case .mix:
+            let cell = dequeueReusableCell(withIdentifier: SearchCategoryTableViewCell.reuseID, for: indexPath) as! SearchCategoryTableViewCell
+            
+            let track = cellsTableView[indexPath.row]
+            guard let trackName = track.trackName, let artistName = track.artistName else { return cell }
+            cell.configureCell(title: trackName,
+                               subtitle: artistName,
+                               imageUrlString: track.artworkUrl60)
+            return cell
+        case .musicArtist:
+            let cell = dequeueReusableCell(withIdentifier: SearchCategoryTableViewCell.reuseID, for: indexPath) as! SearchCategoryTableViewCell
+            
+            let track = cellsTableView[indexPath.row]
+            guard let trackName = track.trackName, let artistName = track.artistName else { return cell }
+            cell.configureCell(title: artistName,
+                               subtitle: trackName,
+                               imageUrlString: track.artworkUrl60)
+            return cell
+        case .album:
+            let cell = dequeueReusableCell(withIdentifier: SearchCategoryTableViewCell.reuseID, for: indexPath) as! SearchCategoryTableViewCell
+            
+            let track = cellsTableView[indexPath.row]
+            guard let collectionName = track.collectionName,
+                  let artistName = track.artistName else {
+                return cell
+            }
+            cell.configureCell(title: collectionName,
+                               subtitle: artistName,
+                               imageUrlString: track.artworkUrl60)
+            return cell
+        case .song:
+            let cell = dequeueReusableCell(withIdentifier: SearchCategoryTableViewCell.reuseID, for: indexPath) as! SearchCategoryTableViewCell
+            
+            let track = cellsTableView[indexPath.row]
+            guard let trackName = track.trackName, let artistName = track.artistName else { return cell }
+            cell.configureCell(title: trackName,
+                               subtitle: artistName,
+                               imageUrlString: track.artworkUrl60)
+            return cell
+        }
+    }
 }
 
 extension SearchCategoryTableView: UITableViewDataSource{
@@ -46,12 +87,7 @@ extension SearchCategoryTableView: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchCategoryTableViewCell.reuseID, for: indexPath) as! SearchCategoryTableViewCell
-        
-        let track = cellsTableView[indexPath.row]
-        cell.configureCell(model: track)
-        return cell
+        return switchCategoryCell(indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -59,21 +95,21 @@ extension SearchCategoryTableView: UITableViewDataSource{
     }
     //MARK: - Header
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
-        headerView.backgroundColor = .mDarkBlue
-        
-        let headerLabel = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.frame.width - 20, height: headerView.frame.height))
-        headerLabel.text = "Header Title"
-        headerLabel.font = UIFont.systemFont(ofSize: 18)
-        headerView.addSubview(headerLabel)
-        
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
+//        headerView.backgroundColor = .clear
+//        
+//        let headerLabel = UILabel(frame: CGRect(x: 20, y: 0, width: tableView.frame.width - 20, height: headerView.frame.height))
+//        headerLabel.text = "Results"
+//        headerLabel.font = UIFont.systemFont(ofSize: 18)
+//        headerView.addSubview(headerLabel)
+//        
+//        return headerView
+//    }
+//    
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 50
+//    }
     
 }
 
@@ -86,7 +122,7 @@ extension SearchCategoryTableView: UITableViewDelegate {
             // Ячейка уже выбрана, нет необходимости повторно выделять её
             return
         }
-
+        
         if let cell = tableView.cellForRow(at: indexPath) as? SearchCategoryTableViewCell {
             cell.cellView.backgroundColor = UIColor.systemGray6// Выбранный цвет фона ячейки
         }

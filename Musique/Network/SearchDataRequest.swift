@@ -21,7 +21,7 @@ struct SearchDataRequest: DataRequest {
     var queryItems: [String : String] {
         [
             "term": term,
-//            "entity": "",
+            "entity": type.rawValue,
             "limit": "15",
             "media": "music"
         ]
@@ -33,8 +33,8 @@ struct SearchDataRequest: DataRequest {
 }
 
 //MARK: - SearchType
-enum SearchType {
-    case mix
+enum SearchType: String {
+    case mix = ""
     case musicArtist
     case album
     case song

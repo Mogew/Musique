@@ -8,11 +8,13 @@ protocol SearchViewProtocol: AnyObject {
 protocol SearchPresenterProtocol: AnyObject {
     init(view: SearchViewProtocol, networkService: NetworkService)
     func getTracks()
-    func request(term: String, type: SearchType)
+    func request(term: String)
     var searchArray: [SearchTracks] { get }
+    var currentType: SearchType { get set }
 }
 
 class SearchPresenter: SearchPresenterProtocol {
+    var currentType: SearchType = .mix
     weak var view: SearchViewProtocol?
     var searchArray: [SearchTracks] = []
     var newtworkService: NetworkService?
@@ -26,8 +28,8 @@ class SearchPresenter: SearchPresenterProtocol {
         view?.succses()
     }
     
-    func request(term: String, type: SearchType) {
-        let request = SearchDataRequest(term: convertSpacesToPlus(term), type: type)
+    func request(term: String) {
+        let request = SearchDataRequest(term: convertSpacesToPlus(term), type: currentType)
         newtworkService?.request(request, completion: { [weak self] result in
             switch result {
             case .success(let arrayResponse):
