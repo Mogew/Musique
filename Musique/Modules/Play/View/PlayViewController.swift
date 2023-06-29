@@ -74,6 +74,7 @@ class PlayViewController: UIViewController {
         let label = UILabel()
         label.text = Const.Text.itIsLong
         label.textColor = .mLime
+        label.font = UIFont.robotoRegular(ofSize: 14)
         label.textAlignment = .center
         label.numberOfLines = 1
         return label
@@ -83,7 +84,7 @@ class PlayViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 1
-        label.font = .systemFont(ofSize: 18)
+        label.font = UIFont.robotoMedium(ofSize: 18)
         return label
     }()
     
@@ -91,14 +92,14 @@ class PlayViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 1
-        label.font = .systemFont(ofSize: 36, weight: .semibold)
+        label.font = UIFont.robotoBold(ofSize: 36)
         return label
     }()
     
     private lazy var startTimeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 15)
+        label.font = UIFont.robotoRegular(ofSize: 14)
         label.text = Const.Text.zeroTime
         label.textColor = .white
         return label
@@ -107,7 +108,7 @@ class PlayViewController: UIViewController {
     private lazy var endTimeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = .systemFont(ofSize: 15)
+        label.font = UIFont.robotoRegular(ofSize: 14)
         label.text = Const.Text.emptyTime
         label.textColor = .white
         return label

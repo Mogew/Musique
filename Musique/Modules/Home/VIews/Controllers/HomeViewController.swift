@@ -282,11 +282,13 @@ extension HomeViewController: UICollectionViewDelegate {
             player.indexPath = indexPath
             player.playTrack(sections?[indexPath.section].items[indexPath.item])
             musicDelegate?.setMusic()
+            musicDelegate?.hidePlayer()
         default:
             player.tracks = sections?[indexPath.section].items
             player.indexPath = indexPath
             player.playTrack(sections?[indexPath.section].items[indexPath.item])
             musicDelegate?.setMusic()
+            musicDelegate?.hidePlayer()
         }
     }
 }

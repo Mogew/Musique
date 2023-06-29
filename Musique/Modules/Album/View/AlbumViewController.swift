@@ -56,7 +56,7 @@ class AlbumViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .right
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 36, weight: .semibold)
+        label.font = UIFont.robotoBold(ofSize: 36)
         return label
     }()
     
@@ -64,7 +64,7 @@ class AlbumViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 18)
+        label.font = UIFont.robotoMedium(ofSize: 22)
         return label
     }()
     
@@ -72,7 +72,7 @@ class AlbumViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 18)
+        label.font = UIFont.robotoRegular(ofSize: 18)
         label.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openLink(_:)))
         label.addGestureRecognizer(tapGesture)
@@ -82,7 +82,7 @@ class AlbumViewController: UIViewController {
     private lazy var header: UILabel = {
         let label = UILabel()
         label.text = Const.Text.suggestion
-        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.font = UIFont.robotoMedium(ofSize: 18)
         return label
     }()
     
@@ -229,7 +229,6 @@ extension AlbumViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let track = tracks?[indexPath.row] else { return }
-        //        presenter?.play(track: track)
         presenter?.avPlayer?.playTrack(track)
     }
 }
@@ -243,7 +242,7 @@ extension AlbumViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? AlbumCell
-        cell!.backgroundColor = .clear
+        cell?.backgroundColor = .clear
         
         guard let model = presenter?.tracksArray?[indexPath.row] else { return UITableViewCell() }
         cell?.configure(
@@ -251,7 +250,7 @@ extension AlbumViewController: UITableViewDataSource {
             name: model.artistName!,
             song: model.trackName!,
             imageLink: model)
-        
+
         return cell ?? UITableViewCell()
     }
     

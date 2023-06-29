@@ -21,18 +21,21 @@ class AlbumCell: UITableViewCell {
     private lazy var numberLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
+        label.font = UIFont.robotoRegular(ofSize: 14)
         return label
     }()
     
     private lazy var songLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
+        label.font = UIFont.robotoRegular(ofSize: 16)
         return label
     }()
     
     private lazy var artistLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
+        label.font = UIFont.robotoRegular(ofSize: 12)
         return label
     }()
     

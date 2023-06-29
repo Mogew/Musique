@@ -4,6 +4,7 @@ import Kingfisher
 
 protocol MusicDelegateProtocol: AnyObject {
     func setMusic()
+    func hidePlayer()
 }
 
 class TabBarController: UITabBarController {
@@ -19,14 +20,13 @@ class TabBarController: UITabBarController {
     private lazy var logoImage: UIImageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 15
-        view.image = UIImage(systemName: "swift")
         view.tintColor = .clear
         return view
     }()
     
     private lazy var songName: UILabel = {
         let label = UILabel()
-        label.text = "name name"
+        label.font = UIFont.robotoRegular(ofSize: 16)
         label.textColor = .black
         return label
     }()
@@ -131,8 +131,8 @@ class TabBarController: UITabBarController {
     //MARK: - Setup MiniPlayer
     
     private func setupMiniPlayer() {
-        
         miniPlayer.backgroundColor = .mLime
+        miniPlayer.alpha = 0
         
         miniPlayer.addSubview(logoImage)
         miniPlayer.addSubview(songName)
@@ -189,5 +189,12 @@ extension TabBarController: MusicDelegateProtocol {
         let urlImage = track.artworkUrl30
         guard let url = URL(string: urlImage ?? Const.Text.empty) else { return }
         self.logoImage.kf.setImage(with: url)
+    }
+    
+    func hidePlayer() {
+        UIView.animate(withDuration: 0.7) {
+            self.miniPlayer.alpha = 1
+            self.miniPlayer.isHidden = false
+        }
     }
 }
