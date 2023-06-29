@@ -4,7 +4,7 @@
 //
 //  Created by sidzhe on 22.06.2023.
 //
-
+import RealmSwift
 import Foundation
 
 //MARK: - Protocol PlayViewProtocol
@@ -12,6 +12,7 @@ import Foundation
 protocol PlayViewProtocol: AnyObject {
     func getMusic(_ model: SearchTracks?)
     func setData(index: IndexPath?, model: [SearchTracks]?)
+    func updateIndexPath(index: IndexPath)
 }
 
 //MARK: - Protocol PlayPresenterProtocol
@@ -31,6 +32,9 @@ protocol PlayPresenterProtocol: AnyObject {
     func shakeTrack()
     func checkNextTrack()
     func repeatTrack()
+    func writeInDataBase(songObject: SearchTracks)
+    func deleteLastFromDB()
+    func updateIndexPath(index: IndexPath?)
     var indexPath: IndexPath? { get set }
     var tracksArray: [SearchTracks]? { get set }
 }
@@ -40,6 +44,8 @@ protocol PlayPresenterProtocol: AnyObject {
 class PlayPresenter: PlayPresenterProtocol {
     
     //MARK: - Preperties
+    
+    let realm = try! Realm()
     
     weak var view: PlayViewProtocol?
     
@@ -122,10 +128,12 @@ class PlayPresenter: PlayPresenterProtocol {
         
         if indexPath!.row + 1 == tracks.count {
             indexPath!.row = 0
+            updateIndexPath(index: indexPath)
             view?.getMusic(tracks[indexPath!.row])
             avPlayer?.playTrack(tracks[indexPath!.row])
         } else {
             indexPath!.row += 1
+            updateIndexPath(index: indexPath)
             view?.getMusic(tracks[indexPath!.row])
             avPlayer?.playTrack(tracks[indexPath!.row])
         }
@@ -135,7 +143,9 @@ class PlayPresenter: PlayPresenterProtocol {
         guard let tracksArray = tracksArray else { return }
         let random = Int.random(in: 0...tracksArray.count - 1)
         let randomTracks = tracksArray[random]
-        
+        var index = IndexPath(row: 0, section: 0)
+        index.row = random
+        updateIndexPath(index: index)
         view?.getMusic(randomTracks)
         avPlayer?.playTrack(randomTracks)
     }
@@ -148,5 +158,34 @@ class PlayPresenter: PlayPresenterProtocol {
     
     func sendData() {
         view?.setData(index: indexPath, model: tracksArray)
+    }
+    
+    func writeInDataBase(songObject: SearchTracks) {
+        let song = FavoriteSong(songObject: songObject)
+        do {
+            // Open a thread-safe transaction.
+            try realm.write {
+                realm.add(song)
+            }
+        } catch _ as NSError {
+            // ... Handle error ...
+        }
+    }
+    
+    func deleteLastFromDB() {
+        let song = realm.objects(FavoriteSong.self).last
+        do {
+            // Open a thread-safe transaction.
+            try realm.write {
+                realm.delete(song!)
+            }
+        } catch _ as NSError {
+            // ... Handle error ...
+        }
+    }
+    
+    func updateIndexPath(index: IndexPath?) {
+        guard let index = index else { return }
+        view?.updateIndexPath(index: index)
     }
 }

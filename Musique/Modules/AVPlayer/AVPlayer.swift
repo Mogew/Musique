@@ -7,6 +7,7 @@
 
 import UIKit
 import AVKit
+import RealmSwift
 
 protocol AVplayerProtocol: AnyObject {
     func playPause() -> Bool
@@ -16,11 +17,14 @@ protocol AVplayerProtocol: AnyObject {
     func getCurrunetTime() -> Float
     func moveTimeSlider(currentTime: Float)
     func changeVolume(_ value: Float)
+    
 }
 
 //MARK: - AV Player
 
 class AVPlayerClass: AVplayerProtocol {
+    
+    let realm = try! Realm()
         
     private let avPlayer: AVPlayer = {
         let player = AVPlayer()
@@ -39,10 +43,24 @@ class AVPlayerClass: AVplayerProtocol {
     }
     
     func playTrack(_ track: SearchTracks?) {
-        guard let urlTrack = URL(string: track?.previewUrl ?? "") else { return }
+        guard let urlTrack = URL(string: track?.previewUrl ?? Const.Text.empty) else { return }
         let playerItem = AVPlayerItem(url: urlTrack)
         avPlayer.replaceCurrentItem(with: playerItem)
         avPlayer.play()
+        writeRecentlyToDB(songObject: track!)
+    }
+    // for recently played
+    func writeRecentlyToDB(songObject: SearchTracks) {
+        let song = RecentlySong(songObject: songObject)
+        do {
+            // Open a thread-safe transaction.
+            try realm.write {
+                realm.add(song)
+                print(song)
+            }
+        } catch _ as NSError {
+            // ... Handle error ...
+        }
     }
     
     func monitorStartTime(completion: @escaping () -> Void) {

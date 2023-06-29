@@ -42,10 +42,11 @@ class RecentlyMusicCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with data: SongModel) {
-        image.image = data.image
-        songName.text = data.name
-        artist.text = data.artist
+    func configure(with data: SearchTracks) {
+        let url = URL(string: data.artworkUrl100!)
+        image.kf.setImage(with: url)
+        songName.text = data.trackName?.maxLength(length: 28)
+        artist.text = data.artistName
     }
     
     func setupConstraints() {
@@ -54,7 +55,6 @@ class RecentlyMusicCell: UICollectionViewCell {
         addSubview(playButton)
         addSubview(artist)
         addSubview(image)
-        
         NSLayoutConstraint.activate([
         // nuber
             number.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -89,3 +89,18 @@ class RecentlyMusicCell: UICollectionViewCell {
     
 }
 
+
+extension String {
+   func maxLength(length: Int) -> String {
+       var str = self
+       let nsString = str as NSString
+       if nsString.length >= length {
+           str = nsString.substring(with:
+               NSRange(
+                location: 0,
+                length: nsString.length > length ? length : nsString.length)
+           )
+       }
+       return  str
+   }
+}

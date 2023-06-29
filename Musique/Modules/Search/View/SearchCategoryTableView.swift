@@ -17,7 +17,7 @@ class SearchCategoryTableView: UITableView {
     
     init() {
         super.init(frame: .zero, style: .plain)
-        backgroundColor = .mBlack
+        backgroundColor = .mDarkBlue
         delegate = self
         dataSource = self
         translatesAutoresizingMaskIntoConstraints = false

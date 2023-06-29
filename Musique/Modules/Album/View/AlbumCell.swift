@@ -13,7 +13,6 @@ class AlbumCell: UITableViewCell {
     
     private lazy var logoImage: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: "swift")
         view.layer.cornerRadius = 15
         view.layer.masksToBounds = true
         return view
@@ -22,27 +21,24 @@ class AlbumCell: UITableViewCell {
     private lazy var numberLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.text = "1"
         return label
     }()
     
     private lazy var songLabel: UILabel = {
         let label = UILabel()
-        label.text = "Song namenamenmename"
         label.numberOfLines = 1
         return label
     }()
     
     private lazy var artistLabel: UILabel = {
         let label = UILabel()
-        label.text = "Artist name"
         label.numberOfLines = 1
         return label
     }()
     
     private lazy var button: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "point"), for: .normal)
+        button.setImage(Const.Images.point, for: .normal)
         button.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
         return button
     }()
@@ -117,7 +113,7 @@ class AlbumCell: UITableViewCell {
         artistLabel.text = name
         songLabel.text = song
         
-        guard let url = URL(string: imageLink.artworkUrl100 ?? "") else { return }
+        guard let url = URL(string: imageLink.artworkUrl100 ?? Const.Text.empty) else { return }
         logoImage.kf.setImage(with: url)
     }
     

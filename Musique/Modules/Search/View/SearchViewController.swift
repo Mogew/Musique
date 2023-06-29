@@ -68,7 +68,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .mBlack
+        view.backgroundColor = .mDarkBlue
         
         categoryTableView.myDelegate = self
         categoryCollectionView.categoryDelegate = self
@@ -119,7 +119,7 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: PresentDelagate {
     func presentVC(track: [SearchTracks]?, indexPath: IndexPath?) {
         let playVC = Builder.getPlayModule(track: track, indexPath: indexPath)
-//        playVC.modalPresentationStyle = .fullScreen
+        playVC.modalPresentationStyle = .fullScreen
         present(playVC, animated: true)
     }
 }
