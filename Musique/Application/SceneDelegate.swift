@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if UserDefaults.standard.value(forKey: "onbording") as? String == "ok" {
             Auth.auth().addStateDidChangeListener { (auth, user) in
                 if user == nil {
-                    let welcome = OnboardingViewController()
+                    let welcome = Builder.getSignInModule()
                     self.window?.rootViewController = UINavigationController(rootViewController: welcome)
                 } else {
                     self.window?.rootViewController = TabBarController()
