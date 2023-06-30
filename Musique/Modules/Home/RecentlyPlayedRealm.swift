@@ -1,12 +1,12 @@
 import RealmSwift
 
 class RecentlySong: Object {
-    @Persisted(primaryKey: true) var _id: ObjectId = ObjectId.generate()
+//    @Persisted(primaryKey: true) var _id: ObjectId = ObjectId.generate()
     @Persisted var artistName: String?
     @Persisted var trackName: String?
-    @Persisted var previewUrl: String?
+    @Persisted(primaryKey: true) var previewUrl: String?
     @Persisted var artworkUrl100: String?
-    
+
     convenience init(songObject: SearchTracks) {
        self.init()
         self.artistName = songObject.artistName

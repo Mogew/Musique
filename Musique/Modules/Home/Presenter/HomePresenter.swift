@@ -73,7 +73,7 @@ class HomePresenter: HomePresenterProtocol {
             var recentlyPlayedArrayTemp = [SearchTracks]()
             for object in realmObjects {
                 let track = SearchTracks(artistName: object.artistName, collectionName: "", trackName: object.trackName, previewUrl: object.previewUrl, artworkUrl30: object.artworkUrl100, artworkUrl60: object.artworkUrl100, artworkUrl100: object.artworkUrl100, artistViewUrl: "")
-                recentlyPlayedArrayTemp.append(track)
+                recentlyPlayedArrayTemp.insert(track, at: 0)
             }
             recentlyPlayedArray = recentlyPlayedArrayTemp
         }

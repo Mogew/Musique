@@ -23,7 +23,7 @@ class ProfileButton: UIButton {
     }
     
     private func setupButton() {
-                
+           
             titleLabel1.textAlignment = .left
             titleLabel1.font = .robotoRegular(ofSize: 14)
             titleLabel1.textColor = .mGray

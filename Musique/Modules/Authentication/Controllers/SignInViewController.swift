@@ -121,27 +121,21 @@ final class SignInViewController: UIViewController {
     lazy var signUpLabel: UILabel = {
         let label = UILabel()
         label.text = "Don't have an account?"
-        label.textColor = .white
+        label.textColor = .mWhite
         label.font = .robotoBold(ofSize: 14)
+        label.textAlignment = .left
         return label
     }()
-    
+
     lazy var signUpButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("SIGN UP", for: .normal)
+        button.setTitle("Sign up", for: .normal)
         button.setTitleColor(.mLime, for: .normal)
         button.titleLabel?.font = .robotoBold(ofSize: 14)
-        button.addTarget(nil, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         return button
     }()
-    
-    lazy var signUpStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [signUpLabel, signUpButton])
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.spacing = 3
-        return stackView
-    }()
+
     
     let signInButton = UIButton(text: "SIGN IN", action: #selector(signInButtonTapped))
     
@@ -149,6 +143,9 @@ final class SignInViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.text = "test@reg.com"
+        passwordTextField.text = "1234567"
+        navigationItem.hidesBackButton = true
         setupHierarchy()
         setConstrains()
     }
@@ -164,7 +161,7 @@ final class SignInViewController: UIViewController {
     // MARK:- Private Methods
     @objc private func signInButtonTapped() {
         if let email = emailTextField.text, let password = passwordTextField.text {
-            presenter?.authUser(email: email, password: password)
+            presenter?.signInUser(email: email, password: password)
         }
     }
     
@@ -187,7 +184,8 @@ final class SignInViewController: UIViewController {
             passwordTextField,
             forgotPassButton,
             signInButton,
-            signUpStackView,
+            signUpLabel,
+            signUpButton,
             emailTextFieldImageLine,
             passwordTextFieldImageLine,
             emailTextFieldImage,
@@ -247,12 +245,14 @@ final class SignInViewController: UIViewController {
             signInButton.heightAnchor.constraint(equalToConstant: 46),
             signInButton.widthAnchor.constraint(equalToConstant: 295),
             
-            signUpButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -36),
-            signUpButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            signUpButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+
             
-            signUpStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signUpStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -36),
+           signUpLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -36),
+           signUpLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 88),
+            
+            signUpButton.topAnchor.constraint(equalTo: signUpLabel.topAnchor),
+            signUpButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -36),
+            signUpButton.leadingAnchor.constraint(equalTo: signUpLabel.trailingAnchor, constant: 5)
             
             
         ])

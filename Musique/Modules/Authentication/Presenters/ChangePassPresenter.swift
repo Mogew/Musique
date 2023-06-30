@@ -8,7 +8,7 @@ protocol ChangePassViewProtocol: AnyObject {
 
 protocol ChangePassPresenterProtocol: AnyObject {
     init(view: ChangePassViewProtocol)
-    func updatePassword(password: String?, code: String?)
+    func updatePassword(password: String?)
 }
 
 final class ChangePassPresenter: ChangePassPresenterProtocol {
@@ -18,13 +18,14 @@ final class ChangePassPresenter: ChangePassPresenterProtocol {
         self.view = view
     }
     
-    func updatePassword(password: String?, code: String?) {
-        if let password = password, let code = code {
-            Auth.auth().confirmPasswordReset(withCode: code, newPassword: password) { [weak self] error in
+    func updatePassword(password: String?) {
+        if let password = password {
+            FirebaseManager.shared.changePassword(password: password) { [weak self] error in
                 if let error = error {
                     self?.view?.failure(error)
                 } else {
                     self?.view?.success()
+                
                 }
             }
         }

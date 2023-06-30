@@ -28,7 +28,7 @@ class ProfileViewController: UIViewController {
                      rightImage: UIImage(systemName: "chevron.right"),
                      toggleIsHidden: true)
     ])
-
+    
     var selectedIndexPath: IndexPath?
     
     override func viewDidLoad() {
@@ -67,7 +67,7 @@ class ProfileViewController: UIViewController {
         avatarImageView.image = UIImage(named: "Test Image")
         avatarImageView.contentMode = .scaleAspectFill
     }
-
+    
     private func setupSignOutButton() {
         signOutButton.setTitle("SIGN OUT", for: .normal)
         signOutButton.setTitleColor(.mLime, for: .normal)
@@ -76,6 +76,7 @@ class ProfileViewController: UIViewController {
         signOutButton.layer.borderWidth = 1
         signOutButton.layer.borderColor = UIColor.mLime.cgColor
         signOutButton.layer.cornerRadius = 4
+        signOutButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     //MARK: - Layout
@@ -83,6 +84,17 @@ class ProfileViewController: UIViewController {
     private func setConstraints() {
         addSubViews()
         makeConstraints()
+    }
+    
+    @objc private func buttonTapped() {
+        FirebaseManager.shared.signOut {
+            print("Sing Out")
+            let startVC = SignInViewController()
+            startVC.hidesBottomBarWhenPushed = true
+            self.navigationItem.hidesBackButton = false
+            self.navigationController?.pushViewController(startVC, animated: true)
+        
+        }
     }
     
     private func addSubViews() {
@@ -115,11 +127,11 @@ class ProfileViewController: UIViewController {
         libraryLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             libraryLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor,
-                                             constant: 30),
+                                              constant: 30),
             libraryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,
-                                                 constant: 24),
+                                                  constant: 24),
             libraryLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                 constant:-24),
+                                                   constant:-24),
         ])
         profileTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -128,9 +140,9 @@ class ProfileViewController: UIViewController {
             profileTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor,
                                                       constant: 24),
             profileTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                      constant: -24),
+                                                       constant: -24),
             profileTableView.bottomAnchor.constraint(equalTo: signOutButton.topAnchor,
-                                                    constant: -20)
+                                                     constant: -20)
         ])
     }
 }
@@ -153,13 +165,13 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! ProfileTableViewCell
         cell.selectedBackgroundView?.backgroundColor = .mDarkBlue
-            UIView.animate(withDuration: 0.2, animations: {
-                cell.transform = CGAffineTransform(scaleX: 0.99, y: 0.99)
-                }, completion: { finished in
-                UIView.animate(withDuration: 0.2) {
-                    cell.transform = .identity
-                }
-            })
+        UIView.animate(withDuration: 0.2, animations: {
+            cell.transform = CGAffineTransform(scaleX: 0.99, y: 0.99)
+        }, completion: { finished in
+            UIView.animate(withDuration: 0.2) {
+                cell.transform = .identity
+            }
+        })
         if !cell.rightToggle.isOn {
             cell.rightToggle.setOn(true, animated: true)
         } else {

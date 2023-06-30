@@ -14,6 +14,8 @@ class HomeViewController: UIViewController {
     
     var presenter: HomePresenterProtocol!
     
+    weak var musicDelegate: MusicDelegateProtocol?
+    
     // 1 par - section, 2 par - item
     var dataSource: UICollectionViewDiffableDataSource<Section, SearchTracks>?
     
@@ -286,16 +288,20 @@ extension HomeViewController: UICollectionViewDelegate {
         let section = sections?[indexPath.section].type
         switch section {
         case PopularAlbumCell.id:
+            player.tracks = sections?[indexPath.section].items
+            player.indexPath = indexPath
             player.playTrack(sections?[indexPath.section].items[indexPath.item])
-            //            trackDelegate?.setTrack(track: sections?[indexPath.section].items[indexPath.item])
-//            navigationController?.pushViewController(Builder.getPlayModule(track: sections?[indexPath.section].items, indexPath: indexPath), animated: true)
+            musicDelegate?.setMusic()
+            musicDelegate?.hidePlayer()
         default:
-            // вставить код запуска плеера
+            player.tracks = sections?[indexPath.section].items
+            player.indexPath = indexPath
             player.playTrack(sections?[indexPath.section].items[indexPath.item])
+            musicDelegate?.setMusic()
+            musicDelegate?.hidePlayer()
         }
     }
 }
-
 
 
 

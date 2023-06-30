@@ -8,7 +8,7 @@ protocol SignInViewProtocol: AnyObject {
 
 protocol SignInPresenterProtocol: AnyObject {
     init(view: SignInViewProtocol)
-    func authUser(email: String?, password: String?)
+    func signInUser(email: String?, password: String?)
 }
 
 final class SignInPresenter: SignInPresenterProtocol {
@@ -16,13 +16,16 @@ final class SignInPresenter: SignInPresenterProtocol {
     required init(view: SignInViewProtocol) {
         self.view = view
     }
-    
-    func authUser(email: String?, password: String?) {
+   
+
+    func signInUser(email: String?, password: String?) {
         if let email = email, let password = password {
-            Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            FirebaseManager.shared.signIn(email: email, password: password) { [weak self] error in
                 if let error = error {
                     self?.view?.failure(error)
                 } else {
+                    print("Auth ok")
+                    UserDefaults.standard.set("ok", forKey: "onboarding")
                     self?.view?.success()
                 }
             }

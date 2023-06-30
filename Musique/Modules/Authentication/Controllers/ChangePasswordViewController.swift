@@ -156,7 +156,9 @@ final class ChangePasswordViewController: UIViewController {
     @objc private func changePassButtonTapped() {
         if let newPassword = passwordTextField.text, let confirmPassword = confirmPasswordTextField.text {
             if newPassword == confirmPassword {
-                presenter?.updatePassword(password: newPassword, code: code)
+                print("win")
+                presenter?.updatePassword(password: newPassword)
+                self.dismiss(animated: true)
             }
         }
     }

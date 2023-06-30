@@ -136,6 +136,7 @@ class EditViewController: UIViewController {
         changePasswordButton.titleLabel?.font = .robotoMedium(ofSize: 14)
         changePasswordButton.setTitleColor(.mLime, for: .normal)
         changePasswordButton.backgroundColor = .clear
+        changePasswordButton.addTarget(self, action: #selector(changePassButtonTapped), for: .touchUpInside)
     }
     
     private func setupBackgroundView() {
@@ -161,6 +162,13 @@ class EditViewController: UIViewController {
     private func setConstraints() {
         addSubViews()
         makeConstraints()
+    }
+    
+    @objc private func changePassButtonTapped() {
+        let changePasswordVC = ChangePasswordViewController()
+        changePasswordVC.hidesBottomBarWhenPushed = true
+        self.navigationItem.hidesBackButton = false
+        self.navigationController?.pushViewController(changePasswordVC, animated: true)
     }
     
     private func addSubViews() {

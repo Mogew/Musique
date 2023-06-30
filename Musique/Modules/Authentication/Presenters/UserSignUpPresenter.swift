@@ -8,7 +8,7 @@ protocol UserSignUpViewProtocol: AnyObject {
 
 protocol UserSignUpPresenterProtocol: AnyObject {
     init (view: UserSignUpViewProtocol)
-    func createUser(email: String?, password: String?)
+    func createUser(email: String?, password: String?, userName: String?)
 }
 
 final class UserSignUpPresenter: UserSignUpPresenterProtocol {
@@ -18,14 +18,20 @@ final class UserSignUpPresenter: UserSignUpPresenterProtocol {
         self.view = view
     }
     
-    func createUser(email: String?, password: String?) {
-        guard let email = email, !email.isEmpty, let password = password, !password.isEmpty else {
+    func createUser(email: String?, password: String?, userName: String?) {
+        guard let email = email, !email.isEmpty, let password = password, !password.isEmpty, let userName = userName else {
             return
         }
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+        FirebaseManager.shared.createAccount(
+            email: email,
+            password: password,
+            userName: userName) { [weak self] error in
             if let error = error {
                 self?.view?.failure(error)
             } else {
+                print("Registration ok")
+                
+                UserDefaults.standard.set("ok", forKey: "onboarding")
                 self?.view?.succses()
             }
         }

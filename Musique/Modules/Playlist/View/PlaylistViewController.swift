@@ -14,7 +14,9 @@ class PlaylistViewController: UIViewController {
     
     var presenter: PlaylistPresenterProtocol?
     
-    private let identifier = "cellList"
+    private let identifier = Const.Text.cellList
+    
+    //MARK: - UI Elements
     
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .insetGrouped)
@@ -30,7 +32,7 @@ class PlaylistViewController: UIViewController {
     
     private lazy var addButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Add new playlist", for: .normal)
+        button.setTitle(Const.Text.addNewPlist, for: .normal)
         button.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
         button.backgroundColor = .mLime
         button.setTitleColor(.black, for: .normal)
@@ -45,7 +47,7 @@ class PlaylistViewController: UIViewController {
         page.numberOfPages = 3
         page.currentPage = 2
         page.isUserInteractionEnabled = false
-        page.preferredIndicatorImage = UIImage(named: "activePage")
+        page.preferredIndicatorImage = Const.Images.pageImage
         return page
     }()
     
@@ -68,11 +70,11 @@ class PlaylistViewController: UIViewController {
     //MARK: - Methods
     
     private func setupViews() {
-        title = "Playlist"
+        title = Const.Text.playlist
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        view.backgroundColor = UIColor(patternImage: Const.Images.background)
         
         view.addGestureRecognizer(swipe)
         view.addSubview(tableView)
@@ -93,13 +95,12 @@ class PlaylistViewController: UIViewController {
     }
     
     @objc private func tapButton() {
-        
+        //add playlist
     }
     
     @objc private func tapPage() {
         dismiss(animated: true)
     }
-    
 }
 
 //MARK: - Extension UITableViewDelegate
@@ -110,7 +111,8 @@ extension PlaylistViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.playTrack()
+        guard let track = presenter?.saveTracks?[indexPath.row] else { return }
+        presenter?.playTrack(track: track)
     }
 }
 
@@ -124,7 +126,7 @@ extension PlaylistViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let tracks = presenter?.saveTracks else { return UITableViewCell() }
-    
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? PlaylistCell
         cell?.backgroundColor = .clear
         cell?.configure(number: "\(indexPath.row + 1)",
@@ -134,10 +136,9 @@ extension PlaylistViewController: UITableViewDataSource {
         
         return cell ?? UITableViewCell()
     }
-    
 }
 
 
-//MARK: - Extension
+//MARK: - Extension PlaylistViewProtocol
 
 extension PlaylistViewController: PlaylistViewProtocol {}

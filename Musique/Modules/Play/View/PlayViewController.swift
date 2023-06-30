@@ -30,7 +30,7 @@ class PlayViewController: UIViewController {
     
     private lazy var mixButton = UIButton()
     private lazy var backButton = UIButton()
-    private lazy var forwawrdButton = UIButton()
+    private lazy var forwardButton = UIButton()
     private lazy var replayButton = UIButton()
     private lazy var sharedButton = UIButton()
     private lazy var addPlayListButton = UIButton()
@@ -64,7 +64,7 @@ class PlayViewController: UIViewController {
         button.backgroundColor = .mLime
         button.layer.cornerRadius = 10
         button.alpha = 0
-        button.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tapAddDowndloadButton), for: .touchUpInside)
         return button
     }()
     
@@ -74,6 +74,7 @@ class PlayViewController: UIViewController {
         let label = UILabel()
         label.text = Const.Text.itIsLong
         label.textColor = .mLime
+        label.font = UIFont.robotoRegular(ofSize: 14)
         label.textAlignment = .center
         label.numberOfLines = 1
         return label
@@ -83,7 +84,7 @@ class PlayViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 1
-        label.font = .systemFont(ofSize: 18)
+        label.font = UIFont.robotoMedium(ofSize: 18)
         return label
     }()
     
@@ -91,14 +92,14 @@ class PlayViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 1
-        label.font = .systemFont(ofSize: 36, weight: .semibold)
+        label.font = UIFont.robotoBold(ofSize: 36)
         return label
     }()
     
     private lazy var startTimeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 15)
+        label.font = UIFont.robotoRegular(ofSize: 14)
         label.text = Const.Text.zeroTime
         label.textColor = .white
         return label
@@ -107,7 +108,7 @@ class PlayViewController: UIViewController {
     private lazy var endTimeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.font = .systemFont(ofSize: 15)
+        label.font = UIFont.robotoRegular(ofSize: 14)
         label.text = Const.Text.emptyTime
         label.textColor = .white
         return label
@@ -256,15 +257,13 @@ class PlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupButtons()
+        
         setupViews()
         
         trackSetups()
         
-        //navigationController?.navigationBar.isHidden = true
-        navigationController?.tabBarController?.tabBar.isHidden = true
-        
-        let scale: CGFloat = 0.8
-        logoImage.transform = CGAffineTransform(scaleX: scale, y: scale)
+        baseAnimationSettings()
         
     }
     
@@ -276,15 +275,6 @@ class PlayViewController: UIViewController {
         view.addGestureRecognizer(swipeDown)
         view.addGestureRecognizer(swipe)
         
-        favoritesButton.tintColor = .white
-        mixButton.tintColor = .white
-        replayButton.tintColor = .white
-        
-        forwawrdButton.tag = 1
-        backButton.tag = 2
-        favoritesButton.tag = 1
-        downloadButton.tag = 1
-        
         trackStackView.addArrangedSubview(songLabel)
         trackStackView.addArrangedSubview(artistLabel)
         
@@ -295,10 +285,10 @@ class PlayViewController: UIViewController {
         createButton(mixButton, image: Const.Images.shuffle, stackView: playStackView, selector: #selector(tapShake))
         createButton(backButton, image: Const.Images.back, stackView: playStackView, selector: #selector(secondTrack(sender:)))
         playStackView.addArrangedSubview(playPauseButton)
-        createButton(forwawrdButton, image: Const.Images.forward, stackView: playStackView, selector: #selector(secondTrack(sender:)))
+        createButton(forwardButton, image: Const.Images.forward, stackView: playStackView, selector: #selector(secondTrack(sender:)))
         createButton(replayButton, image: Const.Images.repeatImage, stackView: playStackView, selector: #selector(tapReplay))
         createButton(sharedButton, image: Const.Images.shared, stackView: favoritesStackView, selector: #selector(tapShared))
-        createButton(addPlayListButton, image: Const.Images.addLibr, stackView: favoritesStackView, selector: #selector(addPListButton))
+        createButton(addPlayListButton, image: Const.Images.addLibr, stackView: favoritesStackView, selector: #selector(addToPlayList))
         createButton(favoritesButton, image: Const.Images.heart, stackView: favoritesStackView, selector: #selector(tapFavoriteButton))
         createButton(downloadButton, image: Const.Images.download, stackView: favoritesStackView, selector: #selector(tapDownloadButton))
         
@@ -343,7 +333,31 @@ class PlayViewController: UIViewController {
         logoImage.snp.makeConstraints { make in
             make.height.equalTo(logoImage.snp.width)
         }
+    }
+    
+    private func setupButtons() {
+        favoritesButton.tintColor = .white
+        favoritesButton.tag = 1
         
+        mixButton.tintColor = .white
+        
+        replayButton.tintColor = .white
+        
+        addPlayListButton.setImage(Const.Images.addLibr.withRenderingMode(.alwaysTemplate), for: .highlighted)
+        addPlayListButton.tintColor = .mLime
+        
+        sharedButton.setImage(Const.Images.shared.withRenderingMode(.alwaysTemplate), for: .highlighted)
+        sharedButton.tintColor = .mLime
+        
+        forwardButton.tag = 1
+        backButton.tag = 2
+        
+        downloadButton.tag = 1
+    }
+    
+    private func baseAnimationSettings() {
+        let scale: CGFloat = 0.8
+        logoImage.transform = CGAffineTransform(scaleX: scale, y: scale)
     }
     
     //MARK: - Animations
@@ -404,19 +418,18 @@ class PlayViewController: UIViewController {
     
     //MARK: - Targets
     
-    @objc private func tapButton() {
-//
+    @objc private func addToPlayList() {
+        guard let trackArray = trackArray, let indexPath = indexPath?.row else { return }
+        saveTracks.append(trackArray[indexPath])
     }
     
     @objc private func tapDown() {
+        presenter?.currentData()
         dismiss(animated: true)
     }
     
     @objc private func addPListButton() {
-        guard let trackArray = trackArray, let indexPath = indexPath?.row else { return }
-        
-        saveTracks.append(trackArray[indexPath])
-        
+        presenter?.writeInDataBase(songObject: (trackArray?[indexPath!.item])!)
         favoritesButton.tag = 1
         favoritesButton.setImage(Const.Images.heart, for: .normal)
         favoritesButton.tintColor = .white
@@ -425,7 +438,6 @@ class PlayViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.addFavoriteButton.alpha = 0
         }
-        
     }
     
     @objc private func tapShared() {
@@ -453,7 +465,6 @@ class PlayViewController: UIViewController {
     }
     
     @objc private func tapShake() {
-        
         if mixButtonSelector {
             mixButton.tintColor = .white
             mixButtonSelector = false
@@ -496,9 +507,7 @@ class PlayViewController: UIViewController {
     }
     
     @objc private func tapFavoriteButton() {
-        
         if favoritesButton.tag == 1 {
-            presenter?.writeInDataBase(songObject: (trackArray?[indexPath!.item])!)
             favoritesButton.tag = 0
             favoritesButton.setImage(Const.Images.heartFill, for: .normal)
             favoritesButton.tintColor = .mLime
@@ -508,9 +517,6 @@ class PlayViewController: UIViewController {
                 self.addFavoriteButton.alpha = 0.8
             }
         } else {
-            // temp bad decision
-            presenter?.deleteLastFromDB()
-            //
             favoritesButton.tag = 1
             favoritesButton.setImage(Const.Images.heart, for: .normal)
             favoritesButton.tintColor = .white
@@ -543,6 +549,10 @@ class PlayViewController: UIViewController {
                 self.addDownloadButton.alpha = 0
             }
         }
+    }
+    
+    @objc private func tapAddDowndloadButton() {
+        //download track
     }
     
     //MARK: - Create Buttons
