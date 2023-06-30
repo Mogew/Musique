@@ -59,7 +59,7 @@ class AVPlayerClass: AVplayerProtocol {
     // for recently played
     func writeRecentlyToDB(songObject: SearchTracks) {
         let song = RecentlySong(songObject: songObject)
-        if realm.object(ofType: RecentlySong.self, forPrimaryKey: song.previewUrl) != nil {
+        if realm.object(ofType: RecentlySong.self, forPrimaryKey: song.previewUrl) == nil {
             do {
                 // Open a thread-safe transaction.
                 try realm.write {
