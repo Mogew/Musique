@@ -28,7 +28,7 @@ class AVPlayerClass: AVplayerProtocol {
     //MARK: - Properties
     
     var tracks: [SearchTracks]?
-    
+    let realm = try! Realm()
     var indexPath: IndexPath?
     
     //MARK: - Methods
@@ -59,14 +59,18 @@ class AVPlayerClass: AVplayerProtocol {
     // for recently played
     func writeRecentlyToDB(songObject: SearchTracks) {
         let song = RecentlySong(songObject: songObject)
-        do {
-            // Open a thread-safe transaction.
-            try realm.write {
-                realm.add(song)
-                print(song)
+        if realm.object(ofType: RecentlySong.self, forPrimaryKey: song.previewUrl) != nil {
+            do {
+                // Open a thread-safe transaction.
+                try realm.write {
+                    realm.add(song)
+                    print(song)
+                }
+            } catch _ as NSError {
+                // ... Handle error ...
             }
-        } catch _ as NSError {
-            // ... Handle error ...
+        } else {
+            print("object already exist")
         }
     }
     
