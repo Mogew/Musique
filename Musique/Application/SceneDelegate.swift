@@ -9,13 +9,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     //MARK: - Methods
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: windowScene)
-        setupWindow(with: scene)
+        setupWindow(windowScene: windowScene)
         checkAuthentication()
     }
     
-    private func setupWindow(with scene: UIScene) {
-        guard let windowScene = (scene as? UIWindowScene) else { return}
+    private func setupWindow(windowScene: UIWindowScene) {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         self.window?.overrideUserInterfaceStyle = .dark
