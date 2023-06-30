@@ -9,6 +9,7 @@ import UIKit
 
 class OnboardingViewController: UIViewController {
 
+    let defaults = UserDefaults.standard
     private var nextButton = UIButton(type: .system)
     private var onboardingScrollView = UIScrollView()
     private var onboardingPageControl = UIPageControl()
@@ -108,8 +109,11 @@ class OnboardingViewController: UIViewController {
     }
     
     @objc private func pushViewController() {
-        print("lol")
-        navigationController?.pushViewController( Builder.getSignInModule(), animated: true)
+        defaults.set("ok", forKey: "onbording")
+        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+            sceneDelegate.checkAuthentication()
+        }
+//        navigationController?.pushViewController( Builder.getSignInModule(), animated: true)
     }
     
     //MARK: - Layout
