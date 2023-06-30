@@ -17,7 +17,7 @@ final class FirebaseManager {
     let encoder = JSONEncoder()
     let decoder = JSONDecoder()
     
-    var userUid: String {
+    var userUID: String {
         get {
             if let uid = userDefaults.string(forKey: "UserUID") {
                 return uid
@@ -39,7 +39,7 @@ final class FirebaseManager {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
             if error == nil {
                 if let result = result {
-                    self?.userUid = result.user.uid
+                    self?.userUID = result.user.uid
                     let ref = Database.database().reference().child("users")
                     ref.child(result.user.uid).updateChildValues(["name" : userName])
                     ref.child(result.user.uid).updateChildValues(["email" : email])
@@ -55,10 +55,10 @@ final class FirebaseManager {
     
     // MARK: - Change profile info
     func changeProfileInfo(email: String, name: String, completion: @escaping (Error?) -> ()) {
-        if !userUid.isEmpty {
+        if !userUID.isEmpty {
             let ref = Database.database().reference().child("users")
-            ref.child(userUid).updateChildValues(["name" : name])
-            ref.child(userUid).updateChildValues(["email" : email])
+            ref.child(userUID).updateChildValues(["name" : name])
+            ref.child(userUID).updateChildValues(["email" : email])
             
             self.saveInUserDefaults(userInfo: UserInfo(name: name, email: email))
         }
@@ -71,7 +71,7 @@ final class FirebaseManager {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
             if error == nil {
                 if let result = result {
-                    self?.userUid = result.user.uid
+                    self?.userUID = result.user.uid
                     self?.fetchUserInfo(for: result.user.uid, complition: { info, error in
                         if error == nil {
                             self?.saveInUserDefaults(userInfo: info)
@@ -107,8 +107,8 @@ final class FirebaseManager {
         do {
             try Auth.auth().signOut()
             completion()
-        } catch {
-
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
         }
     }
     

@@ -202,13 +202,13 @@ extension OnboardingViewController: UIScrollViewDelegate {
             subtitle1.text = Onboarding.Subtitle1.third.getTitle
             titleLabel.text = Onboarding.Title.third.getTitle
             nextButton.setTitle("NEXT", for: .normal)
-            nextButton.addTarget(self, action: #selector(pushViewController), for: .touchUpInside)
+            nextButton.addTarget(self, action: #selector(nextPage), for: .touchUpInside)
             subtitle2.text = Onboarding.Subtitle2.third.getTitle
         case 3:
             subtitle1.text = Onboarding.Subtitle1.fourth.getTitle
             titleLabel.text = Onboarding.Title.fourth.getTitle
             nextButton.setTitle("NEXT", for: .normal)
-            nextButton.addTarget(self, action: #selector(pushViewController), for: .touchUpInside)
+            nextButton.addTarget(self, action: #selector(nextPage), for: .touchUpInside)
             subtitle2.text = Onboarding.Subtitle2.fourth.getTitle
 
         case 4:
