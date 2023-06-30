@@ -250,10 +250,9 @@ extension AlbumViewController: UITableViewDataSource {
             name: model.artistName!,
             song: model.trackName!,
             imageLink: model)
-
+        
         return cell ?? UITableViewCell()
     }
-    
 }
 
 //MARK: -  Extension AlbumViewProtocol
@@ -286,5 +285,4 @@ extension AlbumViewController: AlbumViewProtocol {
         
         backgroundView.kf.setImage(with: url)
     }
-    
 }

@@ -116,5 +116,4 @@ class PlaylistCell: UITableViewCell {
         guard let url = URL(string: imageLink.artworkUrl100 ?? Const.Text.empty) else { return }
         logoImage.kf.setImage(with: url)
     }
-    
 }

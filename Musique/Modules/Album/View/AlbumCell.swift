@@ -8,7 +8,7 @@
 import UIKit
 
 class AlbumCell: UITableViewCell {
-        
+    
     //MARK: - UI Elements
     
     private lazy var logoImage: UIImageView = {
@@ -108,7 +108,7 @@ class AlbumCell: UITableViewCell {
     //MARK: - Methods
     
     @objc private func tapButton() {
-        
+        //add playlist
     }
     
     public func configure(number: String, name: String, song: String, imageLink: SearchTracks) {
