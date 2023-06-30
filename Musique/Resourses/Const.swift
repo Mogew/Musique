@@ -20,6 +20,9 @@ enum Const {
         static let size600 = "600x600"
         static let zeroTime = "00:00"
         static let emptyTime = "--:--"
+        static let cellList = "cellList"
+        static let playlist = "Playlist"
+        static let addNewPlist = "Add new playlist"
         static let cellTextPart1 = "This artist is"
         static let cellTextPart2 = ", if you want to know more about that person you can look here"
         static let suggestion = "Suggestion"
@@ -51,6 +54,7 @@ enum Const {
         static let line = UIImage(named: "line") ?? UIImage()
         static let point = UIImage(named: "point") ?? UIImage()
         static let link = UIImage(systemName: "link.circle.fill") ?? UIImage()
-        
+        static let playpauseFill = UIImage(systemName: "playpause.fill") ?? UIImage()
+        static let forwardFill = UIImage(systemName: "forward.fill") ?? UIImage()
     }
 }

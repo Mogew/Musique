@@ -503,9 +503,9 @@
 				C86BD8C52A36622500FBD6FA /* Fonts */,
 				C86BD8BB2A36330800FBD6FA /* Extensions */,
 				C822CABD2A36203400CAA5E0 /* Assets.xcassets */,
+				9424699E2A4AD734003DD040 /* Const.swift */,
 				C8D6E05C2A3A4C25000FACC9 /* Constants.swift */,
 				C822CABF2A36203400CAA5E0 /* LaunchScreen.storyboard */,
-				9424699E2A4AD734003DD040 /* Const.swift */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";

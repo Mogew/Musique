@@ -33,8 +33,8 @@ protocol PlayPresenterProtocol: AnyObject {
     func checkNextTrack()
     func repeatTrack()
     func writeInDataBase(songObject: SearchTracks)
-    func deleteLastFromDB()
     func updateIndexPath(index: IndexPath?)
+    func currentData()
     var indexPath: IndexPath? { get set }
     var tracksArray: [SearchTracks]? { get set }
 }
@@ -162,30 +162,23 @@ class PlayPresenter: PlayPresenterProtocol {
     
     func writeInDataBase(songObject: SearchTracks) {
         let song = FavoriteSong(songObject: songObject)
+        
         do {
-            // Open a thread-safe transaction.
             try realm.write {
                 realm.add(song)
             }
-        } catch _ as NSError {
-            // ... Handle error ...
-        }
-    }
-    
-    func deleteLastFromDB() {
-        let song = realm.objects(FavoriteSong.self).last
-        do {
-            // Open a thread-safe transaction.
-            try realm.write {
-                realm.delete(song!)
-            }
-        } catch _ as NSError {
-            // ... Handle error ...
+        } catch let error as NSError {
+            print(error.localizedDescription)
         }
     }
     
     func updateIndexPath(index: IndexPath?) {
         guard let index = index else { return }
         view?.updateIndexPath(index: index)
+    }
+    
+    func currentData() {
+        avPlayer?.indexPath = indexPath
+        avPlayer?.tracks = tracksArray
     }
 }
