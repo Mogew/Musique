@@ -1,10 +1,3 @@
-//
-//  FirebaseManager.swift
-//  Musique
-//
-//  Created by Келлер Дмитрий on 29.06.2023.
-//
-
 import Foundation
 import Firebase
 import FirebaseDatabase

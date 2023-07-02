@@ -1,6 +1,6 @@
 import UIKit
 
-class ExploreViewController: UIViewController {
+final class ExploreViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     let sections = exploreMOKSections

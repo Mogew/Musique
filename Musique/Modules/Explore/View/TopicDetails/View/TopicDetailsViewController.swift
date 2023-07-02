@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class TopicDetailsViewController : UIViewController {
+final class TopicDetailsViewController : UIViewController {
     
     let source = MOKGEnres
     var collectionView: UICollectionView!

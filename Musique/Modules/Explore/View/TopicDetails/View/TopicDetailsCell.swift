@@ -1,6 +1,6 @@
 import UIKit
 
-class TopicDetailsCell: UICollectionViewCell {
+final class TopicDetailsCell: UICollectionViewCell {
     static var id = "topicDetails"
     
     override init(frame: CGRect) {

@@ -1,15 +1,8 @@
-//
-//  AlbumViewController.swift
-//  Musique
-//
-//  Created by sidzhe on 22.06.2023.
-//
-
 import UIKit
 import SnapKit
 import SafariServices
 
-class AlbumViewController: UIViewController {
+final class AlbumViewController: UIViewController {
     
     //MARK: - Properties
     

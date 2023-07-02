@@ -1,10 +1,3 @@
-//
-//  UserSignUpController.swift
-//  Musique
-//
-//  Created by Келлер Дмитрий on 12.06.2023.
-//
-
 import UIKit
 
 final class UserSignUpController: UIViewController {

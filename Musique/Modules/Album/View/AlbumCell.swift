@@ -1,13 +1,6 @@
-//
-//  AlbumCell.swift
-//  Musique
-//
-//  Created by sidzhe on 22.06.2023.
-//
-
 import UIKit
 
-class AlbumCell: UITableViewCell {
+final class AlbumCell: UITableViewCell {
     
     //MARK: - UI Elements
     

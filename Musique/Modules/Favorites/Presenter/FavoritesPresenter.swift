@@ -14,7 +14,7 @@ protocol FavoritesPresenterProtocol: AnyObject {
     func deleteSongFromDB(with identifier: Int)
 }
 
-class FavoritesPresenter: FavoritesPresenterProtocol {
+final class FavoritesPresenter: FavoritesPresenterProtocol {
     weak var view: FavoritesViewProtocol?
     let realm = try! Realm()
     var songs = [FavoriteSong]()

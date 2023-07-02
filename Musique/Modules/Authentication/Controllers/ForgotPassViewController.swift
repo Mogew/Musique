@@ -1,10 +1,3 @@
-//
-//  ForgotPassViewController.swift
-//  Musique
-//
-//  Created by Келлер Дмитрий on 16.06.2023.
-//
-
 import UIKit
 import Firebase
 

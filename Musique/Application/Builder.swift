@@ -1,6 +1,6 @@
 import UIKit
 
-class Builder {
+final class Builder {
     static let player = AVPlayerClass()
     
     static func getSignUpModule() -> UIViewController {

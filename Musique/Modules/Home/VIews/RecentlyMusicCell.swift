@@ -1,6 +1,6 @@
 import UIKit
 
-class RecentlyMusicCell: UICollectionViewCell {
+final class RecentlyMusicCell: UICollectionViewCell {
     
     static let id = "recentlyplayed"
     

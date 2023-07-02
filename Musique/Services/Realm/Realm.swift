@@ -1,7 +1,7 @@
 import RealmSwift
 import Foundation
 
-class FavoriteSong: Object {
+final class FavoriteSong: Object {
     @Persisted(primaryKey: true) var _id: ObjectId = ObjectId.generate()
     @Persisted var artistName: String?
     @Persisted var trackName: String?

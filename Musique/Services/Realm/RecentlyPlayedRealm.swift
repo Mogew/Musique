@@ -1,7 +1,6 @@
 import RealmSwift
 
-class RecentlySong: Object {
-//    @Persisted(primaryKey: true) var _id: ObjectId = ObjectId.generate()
+final class RecentlySong: Object {
     @Persisted var artistName: String?
     @Persisted var trackName: String?
     @Persisted(primaryKey: true) var previewUrl: String?

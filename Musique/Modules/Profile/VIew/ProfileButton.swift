@@ -1,13 +1,6 @@
-//
-//  ProfileButton.swift
-//  Musique
-//
-//  Created by Ольга Шовгенева on 24.06.2023.
-//
-
 import UIKit
 
-class ProfileButton: UIButton {
+final class ProfileButton: UIButton {
     let leftImage = UIImage()
     let titleLabel1 = UILabel()
     let rightImage = UIImage()

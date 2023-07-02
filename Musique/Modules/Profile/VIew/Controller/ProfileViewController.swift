@@ -1,13 +1,6 @@
-//
-//  ProfileViewController.swift
-//  Musique
-//
-//  Created by Ольга Шовгенева on 23.06.2023.
-//
-
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
     
     var presenter: ProfilePresenterProtocol?
     

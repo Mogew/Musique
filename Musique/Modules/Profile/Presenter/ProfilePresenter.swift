@@ -1,4 +1,3 @@
-
 import Firebase
 import FirebaseDatabase
 
@@ -12,7 +11,7 @@ protocol ProfilePresenterProtocol: AnyObject {
     init(view: ProfileViewProtocol)
 }
 
-class ProfilePresenter: ProfilePresenterProtocol{
+final class ProfilePresenter: ProfilePresenterProtocol{
     
     let uID = FirebaseManager.shared.userUID
     //let dbFirestore = Firestore.firestore()

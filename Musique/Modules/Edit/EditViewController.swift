@@ -1,13 +1,6 @@
-//
-//  EditViewController.swift
-//  Musique
-//
-//  Created by Ольга Шовгенева on 16.06.2023.
-//
-
 import UIKit
 
-class EditViewController: UIViewController {
+final class EditViewController: UIViewController {
     
     private var changePasswordButton = UIButton()
     private var backgroundView = UIView()

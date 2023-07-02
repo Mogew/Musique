@@ -1,6 +1,6 @@
 import UIKit
 
-class SectionHeaderView: UICollectionReusableView {
+final class SectionHeaderView: UICollectionReusableView {
     static let id = "SectionHeaderView"
     let title = UILabel()
     let viewAllLabel = UILabel()

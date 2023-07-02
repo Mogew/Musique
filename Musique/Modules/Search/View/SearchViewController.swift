@@ -1,10 +1,3 @@
-//
-//  SearchViewController.swift
-//  Musique
-//
-//  Created by Marat Guseynov on 12.06.2023.
-//
-
 import UIKit
 
 protocol PresentDelagate: AnyObject {
@@ -15,7 +8,7 @@ protocol CollectionViewCategoryDelegate: AnyObject {
     func upateCategory(type: SearchType)
 }
 
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
 
     var presenter: SearchPresenterProtocol!
     let categoryCollectionView = SearchCategoryCollectionView()

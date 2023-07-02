@@ -1,10 +1,3 @@
-//
-//  AlbumPresenter.swift
-//  Musique
-//
-//  Created by sidzhe on 22.06.2023.
-//
-
 import Foundation
 
 //MARK: - Protocols
@@ -25,7 +18,7 @@ protocol AlbumPresenterProtocol: AnyObject {
 
 //MARK: - Class AlbumPresenter
 
-class AlbumPresenter: AlbumPresenterProtocol {
+final class AlbumPresenter: AlbumPresenterProtocol {
     
     weak var view: AlbumViewProtocol?
     

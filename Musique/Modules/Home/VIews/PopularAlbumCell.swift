@@ -1,6 +1,6 @@
 import UIKit
 
-class PopularAlbumCell: UICollectionViewCell {
+final class PopularAlbumCell: UICollectionViewCell {
     static var id = "popularAlbum"
     
     let image: UIImageView = {

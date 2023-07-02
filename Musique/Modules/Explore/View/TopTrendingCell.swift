@@ -1,6 +1,6 @@
 import UIKit
 
-class TopTrendingCell: UICollectionViewCell {
+final class TopTrendingCell: UICollectionViewCell {
     static let id = "topTrending"
     
     

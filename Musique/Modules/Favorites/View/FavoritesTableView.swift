@@ -1,8 +1,6 @@
 import UIKit
 
-import UIKit
-
-class FavoritesTableView: UITableView {
+final class FavoritesTableView: UITableView {
     
     var cellsTableView = [FavoriteSong]()
     var selectedIndexPath: IndexPath?

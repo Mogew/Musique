@@ -1,13 +1,6 @@
-//
-//  SearchCategoryCollectionView.swift
-//  Musique
-//
-//  Created by Marat Guseynov on 13.06.2023.
-//
-
 import UIKit
 
-class SearchCategoryCollectionView: UICollectionView {
+final class SearchCategoryCollectionView: UICollectionView {
     
     var cells = [SearchCategoryModel]()
     var selectedIndexPath: IndexPath?

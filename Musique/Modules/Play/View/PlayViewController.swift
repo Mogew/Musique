@@ -1,14 +1,7 @@
-//
-//  PlayViewController.swift
-//  Musique
-//
-//  Created by sidzhe on 22.06.2023.
-//
-
 import UIKit
 import SnapKit
 
-class PlayViewController: UIViewController {
+final class PlayViewController: UIViewController {
     
     //MARK: - Properties
     

@@ -4,7 +4,7 @@ protocol FavoriteDeleteFromDB: AnyObject {
     func getIndexPathToDelete(indexPath: IndexPath)
 }
 
-class FavoritesViewController: UIViewController {
+final class FavoritesViewController: UIViewController {
     var presenter: FavoritesPresenterProtocol!
     private let favoritesTableView = FavoritesTableView()
     

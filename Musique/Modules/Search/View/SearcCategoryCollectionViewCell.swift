@@ -1,13 +1,6 @@
-//
-//  SearchCollectionViewCell.swift
-//  Musique
-//
-//  Created by Marat Guseynov on 12.06.2023.
-//
-
 import UIKit
 
-class SearcCategoryCollectionViewCell: UICollectionViewCell {
+final class SearcCategoryCollectionViewCell: UICollectionViewCell {
     
     static let reuseID = "SearcCategoryCollectionViewCell"
     

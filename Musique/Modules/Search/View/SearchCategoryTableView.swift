@@ -1,13 +1,6 @@
-//
-//  SearchCategoryTableView.swift
-//  Musique
-//
-//  Created by Marat Guseynov on 14.06.2023.
-//
-
 import UIKit
 
-class SearchCategoryTableView: UITableView {
+final class SearchCategoryTableView: UITableView {
     
     var cellsTableView = [SearchTracks]()
     var selectedIndexPath: IndexPath?

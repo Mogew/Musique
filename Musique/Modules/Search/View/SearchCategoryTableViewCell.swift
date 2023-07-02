@@ -1,14 +1,7 @@
-//
-//  SearchCategoryTableViewCell.swift
-//  Musique
-//
-//  Created by Marat Guseynov on 14.06.2023.
-//
-
 import UIKit
 import Kingfisher
 
-class SearchCategoryTableViewCell: UITableViewCell {
+final class SearchCategoryTableViewCell: UITableViewCell {
     
     static let reuseID = "SearchCategoryTableViewCell"
     

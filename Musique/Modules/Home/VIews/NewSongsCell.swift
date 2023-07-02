@@ -1,7 +1,7 @@
 import UIKit
 import Kingfisher
 
-class NewSongsCell: UICollectionViewCell {
+final class NewSongsCell: UICollectionViewCell {
     static var id = "newSongs"
     
     let image: UIImageView = {

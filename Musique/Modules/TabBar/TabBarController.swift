@@ -7,7 +7,7 @@ protocol MusicDelegateProtocol: AnyObject {
     func hidePlayer()
 }
 
-class TabBarController: UITabBarController {
+final class TabBarController: UITabBarController {
     
     //MARK: - Properties
     

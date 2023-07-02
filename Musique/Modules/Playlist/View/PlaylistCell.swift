@@ -1,13 +1,6 @@
-//
-//  PlaylistCell.swift
-//  Musique
-//
-//  Created by sidzhe on 26.06.2023.
-//
-
 import UIKit
 
-class PlaylistCell: UITableViewCell {
+final class PlaylistCell: UITableViewCell {
     
     //MARK: - UI Elements
     

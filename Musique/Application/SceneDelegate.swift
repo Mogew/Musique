@@ -1,7 +1,7 @@
 import UIKit
 import FirebaseAuth
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     //MARK: - Property
     var window: UIWindow?

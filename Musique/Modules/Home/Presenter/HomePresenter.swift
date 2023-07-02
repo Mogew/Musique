@@ -16,7 +16,7 @@ protocol HomePresenterProtocol: AnyObject {
     func getRecentlyPlayed()
 }
 
-class HomePresenter: HomePresenterProtocol {
+final class HomePresenter: HomePresenterProtocol {
     
     weak var view: HomeViewProtocol?
     var networkService: NetworkService!

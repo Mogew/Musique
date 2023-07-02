@@ -1,10 +1,3 @@
-//
-//  AVPlayer.swift
-//  Musique
-//
-//  Created by sidzhe on 22.06.2023.
-//
-
 import UIKit
 import AVKit
 import RealmSwift
@@ -23,7 +16,7 @@ protocol AVplayerProtocol: AnyObject {
 
 //MARK: - AV Player
 
-class AVPlayerClass: AVplayerProtocol {
+final class AVPlayerClass: AVplayerProtocol {
     
     //MARK: - Properties
     

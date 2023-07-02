@@ -1,13 +1,6 @@
-//
-//  OnboardingViewController.swift
-//  Musique
-//
-//  Created by Ольга Шовгенева on 14.06.2023.
-//
-
 import UIKit
 
-class OnboardingViewController: UIViewController {
+final class OnboardingViewController: UIViewController {
 
     let defaults = UserDefaults.standard
     private var nextButton = UIButton(type: .system)

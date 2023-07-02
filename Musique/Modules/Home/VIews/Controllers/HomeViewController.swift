@@ -1,6 +1,6 @@
 import UIKit
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
     
     var sections: [Section]?
     private var collectionView: UICollectionView?

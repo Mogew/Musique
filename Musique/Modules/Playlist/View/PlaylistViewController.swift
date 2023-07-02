@@ -1,14 +1,7 @@
-//
-//  PlaylistViewController.swift
-//  Musique
-//
-//  Created by sidzhe on 23.06.2023.
-//
-
 import UIKit
 import SnapKit
 
-class PlaylistViewController: UIViewController {
+final class PlaylistViewController: UIViewController {
     
     //MARK: - Properties
     

@@ -1,10 +1,3 @@
-//
-//  SearchCategoryModel.swift
-//  Musique
-//
-//  Created by Marat Guseynov on 13.06.2023.
-//
-
 import Foundation
 import UIKit
 

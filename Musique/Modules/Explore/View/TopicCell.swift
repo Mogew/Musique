@@ -1,6 +1,6 @@
 import UIKit
 
-class TopicCell: UICollectionViewCell {
+final class TopicCell: UICollectionViewCell {
     static let id = "topic"
     
     let image: UIImageView = {

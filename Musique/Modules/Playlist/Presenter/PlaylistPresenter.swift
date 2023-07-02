@@ -1,10 +1,3 @@
-//
-//  PlaylistPresenter.swift
-//  Musique
-//
-//  Created by sidzhe on 23.06.2023.
-//
-
 import Foundation
 
 //MARK: - Protocols
@@ -22,7 +15,7 @@ protocol PlaylistPresenterProtocol: AnyObject {
 
 //MARK: - Class PlaylistPresenter
 
-class PlaylistPresenter: PlaylistPresenterProtocol {
+final class PlaylistPresenter: PlaylistPresenterProtocol {
     
     weak var view: PlaylistViewProtocol?
     

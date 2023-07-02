@@ -1,13 +1,6 @@
-//
-//  EditButton.swift
-//  Musique
-//
-//  Created by Ольга Шовгенева on 24.06.2023.
-//
-
 import UIKit
 
-class EditButton: UIButton {
+final class EditButton: UIButton {
     
     let titleLabel1 = UILabel()
     let titleLabel2 = UILabel()

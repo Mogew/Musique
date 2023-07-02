@@ -68,6 +68,7 @@
 		C86BD8D02A366A9600FBD6FA /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C72A36624900FBD6FA /* Roboto-Medium.ttf */; };
 		C86BD8D12A366A9900FBD6FA /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C86BD8C82A36625500FBD6FA /* Roboto-Regular.ttf */; };
 		C86BD8D32A37189100FBD6FA /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD8D22A37189100FBD6FA /* Builder.swift */; };
+		C8A20A4D2A51C12800C52575 /* AuthSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A20A4C2A51C12800C52575 /* AuthSwitch.swift */; };
 		C8D6E05E2A3A4C25000FACC9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E05C2A3A4C25000FACC9 /* Constants.swift */; };
 		C8D6E05F2A3A4C25000FACC9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E05D2A3A4C25000FACC9 /* OnboardingViewController.swift */; };
 		C8D6E0632A3A5900000FACC9 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D6E0622A3A5900000FACC9 /* UIButton+Extension.swift */; };
@@ -176,6 +177,7 @@
 		C86BD8CA2A36636A00FBD6FA /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		C86BD8CB2A36637400FBD6FA /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		C86BD8D22A37189100FBD6FA /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
+		C8A20A4C2A51C12800C52575 /* AuthSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSwitch.swift; sourceTree = "<group>"; };
 		C8D6E05C2A3A4C25000FACC9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C8D6E05D2A3A4C25000FACC9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C8D6E0622A3A5900000FACC9 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -317,7 +319,6 @@
 				94EA02822A383C5700959697 /* VIews */,
 				94E250F42A4780E700C896BF /* Presenter */,
 				94473CEC2A4B1383008D04B0 /* NetworkRequests */,
-				94473CED2A4B1445008D04B0 /* RecentlyPlayedRealm.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -370,7 +371,6 @@
 		94F37A7E2A458FB3001FDADF /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				94F37A7F2A458FCE001FDADF /* Realm.swift */,
 				94ECAC522A46DCA700DC16D5 /* View */,
 				94ECAC512A46DC9D00DC16D5 /* Presenter */,
 			);
@@ -442,8 +442,7 @@
 			children = (
 				C822CAE42A36204100CAA5E0 /* Application */,
 				C822CAE52A36205400CAA5E0 /* Modules */,
-				94F6750A2A39FE7C0007576D /* Network */,
-				E1A7DF872A4E230D00881EA3 /* FirebaseManager */,
+				C8A20A4E2A51C72600C52575 /* Services */,
 				C822CAE62A36207300CAA5E0 /* Resourses */,
 				C822CAE72A36208300CAA5E0 /* Plist */,
 			);
@@ -472,8 +471,8 @@
 			children = (
 				C822CAB42A36203200CAA5E0 /* AppDelegate.swift */,
 				C822CAB62A36203200CAA5E0 /* SceneDelegate.swift */,
+				C8A20A4C2A51C12800C52575 /* AuthSwitch.swift */,
 				C86BD8D22A37189100FBD6FA /* Builder.swift */,
-				94F6751B2A3B69CD0007576D /* TabBarController.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -481,11 +480,11 @@
 		C822CAE52A36205400CAA5E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C8A20A502A51C79C00C52575 /* TabBar */,
 				0F34A0312A462DF900CB5E14 /* Edit */,
 				0F34A02C2A44F85300CB5E14 /* Profile */,
 				C8E528382A44C4D40091DC82 /* Explore */,
 				EB705AEB2A45E54100154E3F /* Playlist */,
-				EB38BF532A44A6200038AC91 /* AVPlayer */,
 				EB38BF3E2A44A4D60038AC91 /* Play */,
 				EB38BF492A44A5900038AC91 /* Album */,
 				C8D6E0652A3A6313000FACC9 /* Search */,
@@ -562,6 +561,34 @@
 				C86BD8C82A36625500FBD6FA /* Roboto-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C8A20A4E2A51C72600C52575 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EB38BF532A44A6200038AC91 /* AVPlayer */,
+				C8A20A4F2A51C73900C52575 /* Realm */,
+				94F6750A2A39FE7C0007576D /* Network */,
+				E1A7DF872A4E230D00881EA3 /* Firebase */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C8A20A4F2A51C73900C52575 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				94F37A7F2A458FCE001FDADF /* Realm.swift */,
+				94473CED2A4B1445008D04B0 /* RecentlyPlayedRealm.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		C8A20A502A51C79C00C52575 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				94F6751B2A3B69CD0007576D /* TabBarController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		C8D6E04F2A3A4B18000FACC9 /* Authentication */ = {
@@ -645,12 +672,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		E1A7DF872A4E230D00881EA3 /* FirebaseManager */ = {
+		E1A7DF872A4E230D00881EA3 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
 				E1A7DF882A4E233600881EA3 /* FirebaseManager.swift */,
 			);
-			path = FirebaseManager;
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		E1A7DF8A2A4E253100881EA3 /* Frameworks */ = {
@@ -953,6 +980,7 @@
 				C86BD8D32A37189100FBD6FA /* Builder.swift in Sources */,
 				C8D6E06C2A3A6313000FACC9 /* SearchCategoryTableView.swift in Sources */,
 				C8E528482A44C4D40091DC82 /* TempModel.swift in Sources */,
+				C8A20A4D2A51C12800C52575 /* AuthSwitch.swift in Sources */,
 				94F6751C2A3B69CD0007576D /* TabBarController.swift in Sources */,
 				94EA02892A38416D00959697 /* PopularAlbumCell.swift in Sources */,
 				C8E528372A44776B0091DC82 /* HomePresenter.swift in Sources */,

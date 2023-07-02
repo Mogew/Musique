@@ -1,9 +1,3 @@
-//
-//  PlayPresenter.swift
-//  Musique
-//
-//  Created by sidzhe on 22.06.2023.
-//
 import RealmSwift
 import Foundation
 
@@ -41,7 +35,7 @@ protocol PlayPresenterProtocol: AnyObject {
 
 //MARK: - Class
 
-class PlayPresenter: PlayPresenterProtocol {
+final class PlayPresenter: PlayPresenterProtocol {
     
     //MARK: - Preperties
     

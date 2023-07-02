@@ -13,7 +13,7 @@ protocol SearchPresenterProtocol: AnyObject {
     var currentType: SearchType { get set }
 }
 
-class SearchPresenter: SearchPresenterProtocol {
+final class SearchPresenter: SearchPresenterProtocol {
     var currentType: SearchType = .mix
     weak var view: SearchViewProtocol?
     var searchArray: [SearchTracks] = []
