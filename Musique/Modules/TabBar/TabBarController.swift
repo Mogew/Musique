@@ -123,8 +123,8 @@ final class TabBarController: UITabBarController {
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tabBar.layer.masksToBounds = true
         tabBar.barTintColor = .mDarkBlue
-        self.tabBar.tintColor = .mLime
-        self.tabBar.unselectedItemTintColor = .mGray
+        tabBar.tintColor = .mLime
+        tabBar.unselectedItemTintColor = .mGray
         
     }
     
